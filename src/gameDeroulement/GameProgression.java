@@ -117,7 +117,7 @@ public class GameProgression {
 	
 	public static void menu(ApplicationContext context) {
 		while (true) {
-			int x = GameController.windowMenu(context);
+			int x = GameController.menu(context);
 			if (x == 1) {
 				startGame(context);
 				break;
@@ -128,6 +128,12 @@ public class GameProgression {
 			
 		}
 		context.exit(0);
+	}
+	
+	public static void choice(ApplicationContext context, String choice) {
+		while (true) {
+			GameController.windowChoice(context, CoreSet.barterWorld, choice);
+		}
 	}
 	
 }

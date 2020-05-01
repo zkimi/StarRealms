@@ -95,21 +95,28 @@ public class GameController {
 	}
 	
 	
-	public static int choice(ApplicationContext context, Cards c) {
+	public static int windowChoice(ApplicationContext context, Cards c, String choice) {
 		for(;;) {
 			GameView area = new GameView();
-			area.drawChoice(context, c);
+			area.drawChoice(context, c, choice);
 			
 			Event event = context.pollOrWaitEvent(10);
 	        if (event == null) {  // no event
 	        	continue;
 	        }
 	        Action action = event.getAction();
+		    
+	      //ON GERE LES CLICS
 	        if (action == Action.POINTER_DOWN) {
-	        	return 1;
+	        	System.out.println(choice);
 
-			}
-			return 1;
+			} else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
+	        	System.out.println(event.getKey().toString());
+	        	context.exit(0);
+	        	return 0;
+        
+	        	
+	        }
 		}
 	}
 	

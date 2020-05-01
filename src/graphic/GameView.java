@@ -1,5 +1,6 @@
 package graphic;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,6 +19,12 @@ import gameDeroulement.Market;
 import gameDeroulement.Players;
 
 public class GameView{
+	/* Variables pour ecran de choix */
+	String choice_sentence = "unknown";
+	Color color1 = Color.WHITE;
+	String choix1 = "unknown";
+	Color color2 = Color.WHITE;
+	String choix2 = "unknown";
 	
 	public BufferedImage rotate(BufferedImage buffered) {
         BufferedImage buffered2 = new BufferedImage(buffered.getHeight(),buffered.getWidth(),BufferedImage.TYPE_INT_RGB);
@@ -291,7 +298,36 @@ public class GameView{
     	});    
     }
     
-    public void drawChoice(ApplicationContext context, Cards c) {
+
+    
+    public void drawChoice(ApplicationContext context, Cards c, String choice) {
+    	
+    	   	
+    	/* Interpretation du choix */
+    	if (choice == "AorT") {// autorithy or trade
+    		choice_sentence = "Points d'influence ou Points de commerce";
+    		color1 = Color.GREEN;
+    		choix1 = "Points d'influence";
+    		color2 = Color.YELLOW;
+    		choix2 = "Points de commerce";
+    	}
+    	if (choice == "TorA") {
+    		choice_sentence = "Points de commerce ou Points de combat";
+    		color1 = Color.YELLOW;
+    		choix1 = "Points de commerce";
+    		color2 = Color.RED;
+    		choix2 = "Points d'attaque";
+    	}
+    	if (choice == "AorS") {
+    		choice_sentence = "Points d'attaque ou Capacité spéciale";
+    		color1 = Color.RED;
+    		choix1 = "Points d'attaque";
+    		color2 = Color.MAGENTA;
+    		choix2 = "Capacité spéciale";
+    	}
+    	
+    	
+    	
     	context.renderFrame(graphics -> {
     		ScreenInfo screenInfo = context.getScreenInfo();
             float width = screenInfo.getWidth();
@@ -304,30 +340,29 @@ public class GameView{
             } catch (IOException e) {
                 throw new RuntimeException("problem while drawing background.png ");
             }
-            
-            	graphics.setColor(Color.GRAY);
-                graphics.fill(new Rectangle2D.Float(width/3, height/3-50, width/3, height/4));
-                /*Path path_card = Paths.get("res/"+c.getTitle()+".jpg");
+
+                Path path_card = Paths.get("res/cards/"+c.getTitle()+".png");
                 try (InputStream in = Files.newInputStream(path_card)) {
                     BufferedImage img = ImageIO.read(in);
-                    graphics.drawImage(img, null, 0, 0);
+                    graphics.drawImage(img, Math.round(width/3), Math.round(height/3-50), Math.round(width/3), Math.round(height/3), null);
                 } catch (IOException e) {
                     throw new RuntimeException("problem while drawing"+ c.getTitle() +".png ");
-                }*/
+                }
+                graphics.setFont(new Font("Tahoma", Font.PLAIN, 18)); 
+                graphics.setColor(Color.WHITE);
+                graphics.drawString("Vous avez le choix entre : "+choice_sentence, width/3 , height/3+255);
                 
-                //Puis les 2 choix possible
-                if(c.getScrap().keySet().size() > 0) {
+                
                 graphics.setColor(Color.GRAY);
                 graphics.fill(new Rectangle2D.Float(width/4, 2*height/3, width/8, height/10));
-                graphics.setColor(Color.YELLOW);
-                graphics.drawString("SCRAP : Ajouter "+c.getScrap() , width/4+50 , 2*height/3+50);
-                }
-                else {                
+                graphics.setColor(color1);
+                graphics.drawString(choix1, width/4+25 , 2*height/3+50);
+            
                 graphics.setColor(Color.GRAY);
                 graphics.fill(new Rectangle2D.Float(3*width/4-width/8, 2*height/3, width/8, height/10));
-                graphics.setColor(Color.YELLOW);
-                graphics.drawString("NE PAS UTILISER SCRAP" , 3*width/4-width/8+50 , 2*height/3+50);
-                }
+                graphics.setColor(color2);
+                graphics.drawString(choix2, 3*width/4-width/8+25 , 2*height/3+50);
+                
                 
                 
         		

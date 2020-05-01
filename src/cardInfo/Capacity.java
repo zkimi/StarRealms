@@ -1,10 +1,17 @@
 package cardInfo;
 
+import java.awt.Color;
 import java.util.HashMap;
 
+import gameDeroulement.GameProgression;
 import gameDeroulement.Players;
+import graphic.GameController;
+import fr.umlv.zen5.Application;
+import fr.umlv.zen5.ApplicationContext;
 
 public class Capacity {//à un type de capacité est affecté une clé qui a pour valeur l'intensité, on effectue ainsi chacune de ces capacité
+	
+	static String choice = "unknown";
 	
 	public static void applyCap(HashMap<String, Integer> cap, Players p) {
 		for (String key : cap.keySet()) {
@@ -36,6 +43,11 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 			case "FleetHQ":	
 				fleetHQ(p);
 				break;
+			
+			case "Choice":	
+				choice(cap, p);
+				break;
+				
 			default:
 				break;
 			}
@@ -84,6 +96,24 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 		if (count >= 1) {
 			p.addFightPoint(count);
 		}
+	}
+	
+	private static void choice(HashMap<String, Integer> cap, Players p) {
+				
+		if (cap.get("Choice") == 1) { // si 1 alors pts Authority OU pts Trade
+			choice = "AorT";
+		}
+		if (cap.get("Choice") == 2) { // si 2 alors pts Trade OU pts Attaque
+			choice = "TorA";
+		}
+		if (cap.get("Choice") == 3) { // si 1 alors pts Attaque OU cap spé
+			choice = "AorS";
+		}
+		
+		Application.run(Color.BLACK, context ->{
+			GameProgression.choice(context,choice);
+		});
+		
 	}
 	
 }
