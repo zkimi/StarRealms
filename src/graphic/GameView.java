@@ -303,29 +303,39 @@ public class GameView{
     public void drawChoice(ApplicationContext context, Cards c, String choice, String possibility1, String possibility2) {
     	
     	   	
-    	/* Interpretation du choix */
-    	if (choice == "AorT") {// autorithy or trade
+    	/* Interpretation du choix */    	
+    	switch(choice) {
+    	case "AorT":
     		choice_sentence = "Points d'influence ou Points de commerce";
     		color1 = Color.GREEN;
     		choix1 = possibility1.substring(1,possibility1.length())+" points d'influence";
     		color2 = Color.YELLOW;
     		choix2 = possibility2.substring(1,possibility2.length())+" points de commerce";
-    	}
-    	if (choice == "TorC") {
+    		break;
+    	case "TorC":
     		choice_sentence = "Points de commerce ou Points de combat";
     		color1 = Color.YELLOW;
     		choix1 = possibility1.substring(1,possibility1.length())+" points de commerce";
     		color2 = Color.RED;
     		choix2 = possibility2.substring(1,possibility2.length())+" points d'attaque";
-    	}
-    	if (choice == "CorS") {
+    		break;
+    	case "CorS":
     		choice_sentence = "Points d'attaque ou Capacité spéciale";
     		color1 = Color.RED;
     		choix1 = possibility1.substring(1,possibility1.length())+" points d'attaque";
     		color2 = Color.MAGENTA;
     		choix2 = "Capacité spéciale";
+    		break;
+    	case "AorC":
+    		choice_sentence = "Points d'influence ou Points d'attaque";
+    		color1 = Color.GREEN;
+    		choix1 = possibility1.substring(1,possibility1.length())+" points d'influence";
+    		color2 = Color.RED;
+    		choix2 = possibility2.substring(1,possibility2.length())+" points d'attaque";
+    		break;
+    	default:
+    		break;		
     	}
-    	
     	
     	
     	context.renderFrame(graphics -> {
@@ -342,7 +352,7 @@ public class GameView{
             }
             	
             
-            	if (c.getType() == "Base") {
+            	if (c.getType() == "Base") { // si c'est une base
 	                Path path_card = Paths.get("res/cards/"+c.getTitle()+".png");
 	                try (InputStream in = Files.newInputStream(path_card)) {
 	                    BufferedImage img = ImageIO.read(in);
@@ -350,7 +360,7 @@ public class GameView{
 	                } catch (IOException e) {
 	                    throw new RuntimeException("problem while drawing"+ c.getTitle() +".png ");
 	                }
-            	} else if (c.getType() == "Ship") {
+            	} else if (c.getType() == "Ship") { // sinon si c'est un vaisseau
             		Path path_card = Paths.get("res/cards/"+c.getTitle()+".png");
 	                try (InputStream in = Files.newInputStream(path_card)) {
 	                    BufferedImage img = ImageIO.read(in);

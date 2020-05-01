@@ -1,5 +1,6 @@
 package graphic;
 
+import cardInfo.Capacity;
 import fr.umlv.zen5.ApplicationContext;
 import fr.umlv.zen5.Event;
 import fr.umlv.zen5.ScreenInfo;
@@ -14,7 +15,17 @@ public class EventClick {
         double cooX = event.getLocation().getX();
         double cooY = event.getLocation().getY();
 		
-		return 1;
+        if ( 2*height/3<cooY && cooY< (2*height/3) + height/10) {
+        	if (width/4<cooX && cooX<width/4+(width/8)) { // si bouton choix 1
+        		System.out.println("Le joueur choisi la première capacité");
+        		
+				return 1;
+			}else if(3*width/4-width/8<cooX && cooX< (3*width/4-width/8)+width/8){ // sinon si bouton choix 2
+				System.out.println("Le joueur choisi la deuxième capacité");
+				return 2;	
+			}
+		}
+        return 0;
 	}
 	
 	static void getClickEvent(Event event, ApplicationContext context, Players p1, Players p2) {
@@ -88,8 +99,13 @@ public class EventClick {
 				if ((i*width+10)/10 < cooX && cooX < ((i*width+10)/10)+(width+10)/11) { // si le clic se trouve sur la carte 
 					
 					if ((i-2) >= 0 && (i-2)*p1.getNavigHand() < p1.showHand().size()) { // si la carte existe (avoid OutOfBounds Exception)
+							
+						if (Capacity.isChoiceCard(p1.showHand().get((i-2)*p1.getNavigHand()))) { // si la carte possède un choix
+							Capacity.choice(p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity(), p1.showHand().get((i-2)*p1.getNavigHand()), p1, context);
+						} // sinon
 							System.out.println("Je place la carte : " + p1.showHand().get((i-2)*p1.getNavigHand()) + " qui se trouvait dans ma main.");
 							p1.playCard(p1.showHand().get((i-2)*p1.getNavigHand())); 
+						
 						}	
 					}
 				}

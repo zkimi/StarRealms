@@ -29,6 +29,7 @@ public class Jeux {
 				case 4:
 					System.out.println("Chasse à l'homme");
 					break;
+
 				}		
 			}		
 		});

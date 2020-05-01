@@ -85,13 +85,11 @@ public class Market {
 		 * 1 : Autorithy or Trade 
 		 * 2 : Trade or Combat
 		 * 3 : Combat or Special Action
+		 * 4 : Authority or Combat
 		 * 
-		 * Après avoir renseigné le premier digit collez la valeur de la première possibilitée puis de la deuxieme
-		 * Par ex: Pour 2 pts trade ou 5 pts combat on écrira : ("Choice", 225);
+		 * Après avoir renseigné le premier digit (pattern de choix) collez y la valeur de la première possibilitée puis de la deuxieme dans l'ordre
+		 * Par ex: Pour 2 pts trade ou 5 pts combat on écrira : addCapacity("Choice", 225);
 		 */
-		
-		
-		CoreSet.scout.addCapacity("Choice", 225);
 		
 		
 		/* Blob */
@@ -114,7 +112,8 @@ public class Market {
 		// machinebase draw a card, then scrap
 		CoreSet.missileBot.addCapacity("AttackPoint", 2);
 		CoreSet.missileMech.addCapacity("AttackPoint", 6);
-		// patrol mech, choix ! 3 ou 5 combat
+		CoreSet.patrolMech.addCapacity("Choice", 235);
+		
 		// stealth needle copy another ship
 		CoreSet.supplyBot.addCapacity("TradePoint", 2);
 		CoreSet.tradeBot.addCapacity("TradePoint", 1);
@@ -138,13 +137,14 @@ public class Market {
 		CoreSet.warWorld.addCapacity("AttackPoint", 3);
 		
 		/* Trade Federation */
-		// CoreSet.barterWorld CHOIX
+		CoreSet.barterWorld.addCapacity("Choice", 122);
 		CoreSet.centralOffice.addCapacity("TradePoint", 2);
 		CoreSet.commandShip.addCapacity("Authority", 4);
 		CoreSet.commandShip.addCapacity("AttackPoint", 5);
 		CoreSet.commandShip.addCapacity("Draw", 2);
 		CoreSet.cutter.addCapacity("Authority", 4);
 		CoreSet.cutter.addCapacity("TradePoint", 2);
+		CoreSet.defenseCenter.addCapacity("Choice", 432);
 		// CoreSet.defenseCenter CHOIX
 		CoreSet.embassyYacht.addCapacity("Authority", 3);
 		CoreSet.embassyYacht.addCapacity("TradePoint", 2);
@@ -157,7 +157,7 @@ public class Market {
 		CoreSet.portOfCall.addCapacity("TradePoint", 3);
 		CoreSet.tradeEscort.addCapacity("Authority", 4);
 		CoreSet.tradeEscort.addCapacity("AttackPoint", 4);
-		//CoreSet.tradingPost CHOIX.
+		CoreSet.tradingPost.addCapacity("Choice", 111);
 		
 		
 		CoreSet.explorer.addCapacity("TradePoint", 2);

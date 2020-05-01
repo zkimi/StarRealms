@@ -131,9 +131,37 @@ public class GameProgression {
 		context.exit(0);
 	}
 	
-	public static void choice(ApplicationContext context,Cards c, String choice, String pos1, String pos2) {
+	public static void choice(ApplicationContext contextChoice,Cards c, String choice, String pos1, String pos2, Players p) {
 		while (true) {
-			GameController.windowChoice(context, c, choice, pos1, pos2);
+			int choix = GameController.windowChoice(contextChoice, c, choice, pos1, pos2);
+			if (choix == 1) {
+				
+				if (pos1.startsWith("T")) {
+					p.addTradePoint(Integer.parseInt(pos1.substring(1,pos1.length())));
+					break;
+				} else if (pos1.startsWith("A")) {
+					p.addAuthority(Integer.parseInt(pos1.substring(1,pos1.length())));
+					break;
+				} else if (pos1.startsWith("C")) {
+					p.addFightPoint(Integer.parseInt(pos1.substring(1,pos1.length())));
+					break;
+				}
+				
+			} else if (choix == 2) {
+				
+				if (pos2.startsWith("T")) {
+					p.addTradePoint(Integer.parseInt(pos2.substring(1,pos2.length())));
+					break;
+				} else if (pos2.startsWith("C")) {
+					p.addFightPoint(Integer.parseInt(pos2.substring(1,pos2.length())));
+					break;
+				} else if (pos2.startsWith("S")) {
+					// reconnaitre la capacité spé appel à une autre func.
+					break;
+				}
+				
+			}
+			break;
 		}
 	}
 	

@@ -33,7 +33,6 @@ public class GameController {
 					
 				}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
 					
-					
 					return;
 					
 				}else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
@@ -108,15 +107,8 @@ public class GameController {
 		    
 	      //ON GERE LES CLICS
 	        if (action == Action.POINTER_DOWN) {
-	        	System.out.println(choice);
-
-			} else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
-	        	System.out.println(event.getKey().toString());
-	        	context.exit(0);
-	        	return 0;
-        
-	        	
-	        }
+	        	return EventClick.getClickEventChoice(event, context);
+			}
 		}
 	}
 	

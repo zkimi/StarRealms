@@ -11,9 +11,9 @@ import fr.umlv.zen5.ApplicationContext;
 
 public class Capacity {//à un type de capacité est affecté une clé qui a pour valeur l'intensité, on effectue ainsi chacune de ces capacité
 	
-	static String choice = "unknown";
-	static String possibility1;
-	static String possibility2;
+	private static String choice = "unknown";
+	private static String possibility1;
+	private static String possibility2;
 	
 	public static void applyCap(HashMap<String, Integer> cap, Players p, Cards c) {
 		for (String key : cap.keySet()) {
@@ -45,15 +45,15 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 			case "FleetHQ":	
 				fleetHQ(p);
 				break;
-			
-			case "Choice":	
-				choice(cap, c);
-				break;
-				
+
 			default:
 				break;
 			}
 		}
+	}
+	
+	public static boolean isChoiceCard(Cards c) {
+		return c.getCapacity().get("Choice") != null;
 	}
 	
 	private static void giveAttackPoint(HashMap<String, Integer> cap, Players p) {
@@ -100,37 +100,41 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 		}
 	}
 	
-	private static void choice(HashMap<String, Integer> cap, Cards c) {
-		
+	public static void choice(HashMap<String, Integer> cap, Cards c, Players p, ApplicationContext context) {
+				
 		System.out.println("Lancement de l'écran de choix pour la carte : "+c.getTitle());
 		
-		String number = String.valueOf(cap.get("Choice"));
-		String[] valeurs = number.split(""); 
-		int[] integers = new int[valeurs.length]; 
+		String number = String.valueOf(cap.get("Choice")); // on prend la valeur de la clé Choice
+		String[] valeurs = number.split(""); // on split chaque numéro dans un tableau
+		int[] integers = new int[valeurs.length];  // on créé tableau de int de la longueur du tableau de str
 
-		for (int i = 0; i < integers.length; i++){
-		    integers[i] = Integer.parseInt(valeurs[i]); 
+		for (int i = 0; i < integers.length; i++){ // pour chaque case du tableau int
+		    integers[i] = Integer.parseInt(valeurs[i]); // on y met la valeur du string converti en INT
 		}
 		
-		if (integers[0] == 1) { // si 1 alors pts Authority OU pts Trade
-			choice = "AorT";
+		if (integers[0] == 1) { // si premier digit = 1 alors pts Authority OU pts Trade
+			choice = "AorT"; // interpretation de ces 3 champs ensuite par GameView
 			possibility1 = "A"+integers[1];
 			possibility2 = "T"+integers[2];
 		}
-		else if (integers[0] == 2) { // si 2 alors pts Trade OU pts Attaque
-			choice = "TorC";
+		else if (integers[0] == 2) { // si premier digit =  2 alors pts Trade OU pts Attaque
+			choice = "TorC"; // interpretation de ces 3 champs ensuite par GameView
 			possibility1 = "T"+integers[1];
 			possibility2 = "C"+integers[2];
 		}
-		else if (integers[0] == 3) { // si 1 alors pts Attaque OU cap spé
-			choice = "CorS";
+		else if (integers[0] == 3) { // si premier digit = 3 alors pts Attaque OU cap spé
+			choice = "CorS"; // interpretation de ces 3 champs ensuite par GameView
 			possibility1 = "C"+integers[1];
 			possibility2 = "S"+integers[2];
 		}
+		else if (integers[0] == 4) { // si premier digit = 4 alors pts Authoruty OU Attaque
+			choice = "AorC"; // interpretation de ces 3 champs ensuite par GameView
+			possibility1 = "A"+integers[1];
+			possibility2 = "C"+integers[2];
+		}
 		
-		Application.run(Color.BLACK, context ->{
-			GameProgression.choice(context,c,choice,possibility1, possibility2);
-		});
+		GameProgression.choice(context,c,choice,possibility1, possibility2, p); // lancement de l'écran de choix avec récup du clic.
+
 		
 	}
 	
