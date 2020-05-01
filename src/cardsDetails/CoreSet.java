@@ -59,7 +59,7 @@ public class CoreSet {
 	
 	/* STAR EMPIRE */
 	
-	public static Cards battleCruiser = new Ship("Battle Cruiser", "desc",6 ,"Star Empire");
+	public static Cards battleCruiser = new Ship("Battlecruiser", "desc",6 ,"Star Empire");
 	
 	public static Cards corvette = new Ship("Corvette", "desc", 2, "Star Empire");
 	
