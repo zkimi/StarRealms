@@ -238,16 +238,19 @@ public class Players {
 	public void attackPlayer(Players target) {		
 		for (int i = 0; i < target.hand.size(); i++) {
 			if (target.hand.get(i).isOutpost()) { // si le joueur possède un avant poste
+				System.out.println("WTF");
 				if(fightPoints > target.hand.get(i).getDefense()) { // si le joueur à plus de pts d'attaque que l'avant poste peut absorber
 					removeCard(target.hand.get(i), target.hand); // on supprime la carte de la main du joueur puisqu'elle est morte
 					fightPoints -= target.hand.get(i).getDefense(); // on enleve le nombre de points d'attaque débité
 				} else {
 					fightPoints -= target.hand.get(i).getDefense(); // on enleve le nombre de points d'attaque à l'avant poste
 				}
-			} // si il a pas d'avant poste, ses points d'influence sont directement touchés.
-			target.defensePoints -= fightPoints;
-			fightPoints = 0;
-		}
+			}
+		}// si il a pas d'avant poste, ses points d'influence sont directement touchés.
+		
+		target.defensePoints -= fightPoints;
+		fightPoints = 0;
+		
 	}
 	
 	public void replaceCards() {//cette méthode remplace la pile par la defausse et mélange la pilet

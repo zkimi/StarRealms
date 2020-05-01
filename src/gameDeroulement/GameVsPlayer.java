@@ -46,8 +46,6 @@ public class GameVsPlayer {
 			p1.pickCardsInHand(3);
 			System.out.println(p1.showHand());
 			System.out.println("\n");
-			System.out.println("Main de " +p2.getName()+" : ");
-			p2.pickCardsInHand(5);
 			System.out.println(p2.showHand());
 			maingame(p1, p2, context);
 		}else {
@@ -62,8 +60,6 @@ public class GameVsPlayer {
 			p2.pickCardsInHand(3);
 			System.out.println(p2.showHand());
 			System.out.println("\n");
-			System.out.println("Main de " +p1.getName()+" : ");
-			p1.pickCardsInHand(5);
 			System.out.println(p1.showHand());
 			maingame(p1, p2, context);
 			
@@ -78,15 +74,17 @@ public class GameVsPlayer {
 		while (true) {
 			if(p1.isfirst()) {
 				GameController.window(p1, p2, context);
+				p1.remShip(); //a la fin du tour les ships en jeux partent
 				p1.second();
 				p2.first();
-				//p2.pickCardsInHand(5);
+				p2.pickCardsInHand(5);
 				
 			}else{
 				GameController.window(p2, p1, context);
+				p2.remShip(); //a la fin du tour les ships en jeux partent
 				p2.second();
 				p1.first();
-				//p1.pickCardsInHand(5);
+				p1.pickCardsInHand(5);
 			}
 			
 			//on arrete le jeu
