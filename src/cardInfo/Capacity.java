@@ -12,8 +12,10 @@ import fr.umlv.zen5.ApplicationContext;
 public class Capacity {//à un type de capacité est affecté une clé qui a pour valeur l'intensité, on effectue ainsi chacune de ces capacité
 	
 	static String choice = "unknown";
+	static String possibility1;
+	static String possibility2;
 	
-	public static void applyCap(HashMap<String, Integer> cap, Players p) {
+	public static void applyCap(HashMap<String, Integer> cap, Players p, Cards c) {
 		for (String key : cap.keySet()) {
 			switch (key) {
 			case "AttackPoint":
@@ -45,7 +47,7 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 				break;
 			
 			case "Choice":	
-				choice(cap, p);
+				choice(cap, c);
 				break;
 				
 			default:
@@ -98,20 +100,36 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 		}
 	}
 	
-	private static void choice(HashMap<String, Integer> cap, Players p) {
-				
-		if (cap.get("Choice") == 1) { // si 1 alors pts Authority OU pts Trade
+	private static void choice(HashMap<String, Integer> cap, Cards c) {
+		
+		System.out.println("Lancement de l'écran de choix pour la carte : "+c.getTitle());
+		
+		String number = String.valueOf(cap.get("Choice"));
+		String[] valeurs = number.split(""); 
+		int[] integers = new int[valeurs.length]; 
+
+		for (int i = 0; i < integers.length; i++){
+		    integers[i] = Integer.parseInt(valeurs[i]); 
+		}
+		
+		if (integers[0] == 1) { // si 1 alors pts Authority OU pts Trade
 			choice = "AorT";
+			possibility1 = "A"+integers[1];
+			possibility2 = "T"+integers[2];
 		}
-		if (cap.get("Choice") == 2) { // si 2 alors pts Trade OU pts Attaque
-			choice = "TorA";
+		else if (integers[0] == 2) { // si 2 alors pts Trade OU pts Attaque
+			choice = "TorC";
+			possibility1 = "T"+integers[1];
+			possibility2 = "C"+integers[2];
 		}
-		if (cap.get("Choice") == 3) { // si 1 alors pts Attaque OU cap spé
-			choice = "AorS";
+		else if (integers[0] == 3) { // si 1 alors pts Attaque OU cap spé
+			choice = "CorS";
+			possibility1 = "C"+integers[1];
+			possibility2 = "S"+integers[2];
 		}
 		
 		Application.run(Color.BLACK, context ->{
-			GameProgression.choice(context,choice);
+			GameProgression.choice(context,c,choice,possibility1, possibility2);
 		});
 		
 	}

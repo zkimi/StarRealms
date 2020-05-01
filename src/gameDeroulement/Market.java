@@ -81,6 +81,19 @@ public class Market {
 	
 	private static void initializeCapacity() {//initialise les capacités de toutes les cartes
 		
+		/* PATTERN CHOIX :
+		 * 1 : Autorithy or Trade 
+		 * 2 : Trade or Combat
+		 * 3 : Combat or Special Action
+		 * 
+		 * Après avoir renseigné le premier digit collez la valeur de la première possibilitée puis de la deuxieme
+		 * Par ex: Pour 2 pts trade ou 5 pts combat on écrira : ("Choice", 225);
+		 */
+		
+		
+		CoreSet.scout.addCapacity("Choice", 225);
+		
+		
 		/* Blob */
 		CoreSet.battleBlob.addCapacity("AttackPoint", 8);
 		CoreSet.battlePod.addCapacity("AttackPoint", 4);

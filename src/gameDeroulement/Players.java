@@ -164,7 +164,7 @@ public class Players {
 	
 	public void checkCardPowerUps(Cards c) {
 		
-		Capacity.applyCap(c.getCapacity(), this);
+		Capacity.applyCap(c.getCapacity(), this, c);
 		
 		if (c.getAlly().keySet().size() > 0) {
 			//On regarde si il y a des cartes de la meme faction
@@ -176,7 +176,7 @@ public class Players {
 			}
 			for (Cards c2 : table) {
 				if (c.getFaction().equals(c2.getFaction())) {
-					Capacity.applyCap(c.getAlly(), this);;
+					Capacity.applyCap(c.getAlly(), this, c);;
 				}
 			}
 		}	
@@ -287,7 +287,7 @@ public class Players {
 	}
 	
 	public void useScrap(Cards c) {
-		Capacity.applyCap(c.getScrap(), this);
+		Capacity.applyCap(c.getScrap(), this, c);
 	}
 	
 	public void addFightPoint(int x) {//Cette méthode ajoute des points d'attaque à l'user

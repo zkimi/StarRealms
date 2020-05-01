@@ -3,6 +3,7 @@ package gameDeroulement;
 import java.util.ArrayList;
 import java.util.Random;
 
+import cardInfo.Cards;
 import cardsDetails.CoreSet;
 import fr.umlv.zen5.ApplicationContext;
 import graphic.GameController;
@@ -130,9 +131,9 @@ public class GameProgression {
 		context.exit(0);
 	}
 	
-	public static void choice(ApplicationContext context, String choice) {
+	public static void choice(ApplicationContext context,Cards c, String choice, String pos1, String pos2) {
 		while (true) {
-			GameController.windowChoice(context, CoreSet.barterWorld, choice);
+			GameController.windowChoice(context, c, choice, pos1, pos2);
 		}
 	}
 	

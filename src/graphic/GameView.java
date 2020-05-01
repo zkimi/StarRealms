@@ -300,28 +300,28 @@ public class GameView{
     
 
     
-    public void drawChoice(ApplicationContext context, Cards c, String choice) {
+    public void drawChoice(ApplicationContext context, Cards c, String choice, String possibility1, String possibility2) {
     	
     	   	
     	/* Interpretation du choix */
     	if (choice == "AorT") {// autorithy or trade
     		choice_sentence = "Points d'influence ou Points de commerce";
     		color1 = Color.GREEN;
-    		choix1 = "Points d'influence";
+    		choix1 = possibility1.substring(1,possibility1.length())+" points d'influence";
     		color2 = Color.YELLOW;
-    		choix2 = "Points de commerce";
+    		choix2 = possibility2.substring(1,possibility2.length())+" points de commerce";
     	}
-    	if (choice == "TorA") {
+    	if (choice == "TorC") {
     		choice_sentence = "Points de commerce ou Points de combat";
     		color1 = Color.YELLOW;
-    		choix1 = "Points de commerce";
+    		choix1 = possibility1.substring(1,possibility1.length())+" points de commerce";
     		color2 = Color.RED;
-    		choix2 = "Points d'attaque";
+    		choix2 = possibility2.substring(1,possibility2.length())+" points d'attaque";
     	}
-    	if (choice == "AorS") {
+    	if (choice == "CorS") {
     		choice_sentence = "Points d'attaque ou Capacité spéciale";
     		color1 = Color.RED;
-    		choix1 = "Points d'attaque";
+    		choix1 = possibility1.substring(1,possibility1.length())+" points d'attaque";
     		color2 = Color.MAGENTA;
     		choix2 = "Capacité spéciale";
     	}
@@ -340,14 +340,27 @@ public class GameView{
             } catch (IOException e) {
                 throw new RuntimeException("problem while drawing background.png ");
             }
-
-                Path path_card = Paths.get("res/cards/"+c.getTitle()+".png");
-                try (InputStream in = Files.newInputStream(path_card)) {
-                    BufferedImage img = ImageIO.read(in);
-                    graphics.drawImage(img, Math.round(width/3), Math.round(height/3-50), Math.round(width/3), Math.round(height/3), null);
-                } catch (IOException e) {
-                    throw new RuntimeException("problem while drawing"+ c.getTitle() +".png ");
-                }
+            	
+            
+            	if (c.getType() == "Base") {
+	                Path path_card = Paths.get("res/cards/"+c.getTitle()+".png");
+	                try (InputStream in = Files.newInputStream(path_card)) {
+	                    BufferedImage img = ImageIO.read(in);
+	                    graphics.drawImage(img, Math.round(width/3), Math.round(height/3-50), Math.round(width/3), Math.round(height/3), null);
+	                } catch (IOException e) {
+	                    throw new RuntimeException("problem while drawing"+ c.getTitle() +".png ");
+	                }
+            	} else if (c.getType() == "Ship") {
+            		Path path_card = Paths.get("res/cards/"+c.getTitle()+".png");
+	                try (InputStream in = Files.newInputStream(path_card)) {
+	                    BufferedImage img = ImageIO.read(in);
+	                    graphics.drawImage(img, Math.round(width/3+75), Math.round(height/6-50), Math.round(width/4), Math.round(height/2), null);
+	                } catch (IOException e) {
+	                    throw new RuntimeException("problem while drawing"+ c.getTitle() +".png ");
+	                }
+            	}
+                
+                
                 graphics.setFont(new Font("Tahoma", Font.PLAIN, 18)); 
                 graphics.setColor(Color.WHITE);
                 graphics.drawString("Vous avez le choix entre : "+choice_sentence, width/3 , height/3+255);

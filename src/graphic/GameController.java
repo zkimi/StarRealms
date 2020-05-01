@@ -95,10 +95,10 @@ public class GameController {
 	}
 	
 	
-	public static int windowChoice(ApplicationContext context, Cards c, String choice) {
+	public static int windowChoice(ApplicationContext context, Cards c, String choice, String possibility1, String possibility2) {
 		for(;;) {
 			GameView area = new GameView();
-			area.drawChoice(context, c, choice);
+			area.drawChoice(context, c, choice, possibility1, possibility2);
 			
 			Event event = context.pollOrWaitEvent(10);
 	        if (event == null) {  // no event
