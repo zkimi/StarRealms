@@ -3,11 +3,10 @@ package cardInfo;
 import java.awt.Color;
 import java.util.HashMap;
 
-import gameDeroulement.GameProgression;
-import gameDeroulement.Players;
-import graphic.GameController;
+import graphic.ChoiceCap;
 import fr.umlv.zen5.Application;
 import fr.umlv.zen5.ApplicationContext;
+import gameComponent.Player;
 
 public class Capacity {//à un type de capacité est affecté une clé qui a pour valeur l'intensité, on effectue ainsi chacune de ces capacité
 	
@@ -15,7 +14,7 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 	private static String possibility1;
 	private static String possibility2;
 	
-	public static void applyCap(HashMap<String, Integer> cap, Players p, Cards c) {
+	public static void applyCap(HashMap<String, Integer> cap, Player p, Cards c) {
 		for (String key : cap.keySet()) {
 			switch (key) {
 			case "AttackPoint":
@@ -56,23 +55,23 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 		return c.getCapacity().get("Choice") != null;
 	}
 	
-	private static void giveAttackPoint(HashMap<String, Integer> cap, Players p) {
+	private static void giveAttackPoint(HashMap<String, Integer> cap, Player p) {
 		p.addFightPoint(cap.get("AttackPoint"));
 	}
 	
-	private static void giveTradePoint(HashMap<String, Integer> cap, Players p) {
+	private static void giveTradePoint(HashMap<String, Integer> cap, Player p) {
 		p.addTradePoint(cap.get("TradePoint"));
 	}
 	
-	private static void draw(HashMap<String, Integer> cap, Players p) {
+	private static void draw(HashMap<String, Integer> cap, Player p) {
 		p.pickCardsInHand(cap.get("Draw"));
 	}
 	
-	private static void giveAuthority(HashMap<String, Integer> cap, Players p) {
+	private static void giveAuthority(HashMap<String, Integer> cap, Player p) {
 		p.addAuthority(cap.get("Authority"));
 	}
 	
-	private static void embassyYatch(HashMap<String, Integer> cap, Players p) {//capacité unique à Embassy yatch, si + de 2 bases en jeu, pioche 2 cartes
+	private static void embassyYatch(HashMap<String, Integer> cap, Player p) {//capacité unique à Embassy yatch, si + de 2 bases en jeu, pioche 2 cartes
 		int count = 0;
 		for (Cards card : p.getTable()) {
 			if (card.getType().equals("Base")) {
@@ -84,11 +83,11 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 		}		
 	}
 	
-	private static void opponentDiscard(HashMap<String, Integer> cap, Players p) { // le joueur adverse DOIT défausser une carte de son choix.
+	private static void opponentDiscard(HashMap<String, Integer> cap, Player p) { // le joueur adverse DOIT défausser une carte de son choix.
 		// code
 	}
 	
-	private static void fleetHQ(Players p) { // FLEET HQ : all ship get "Add 1 Combat"
+	private static void fleetHQ(Player p) { // FLEET HQ : all ship get "Add 1 Combat"
 		int count = 0;
 		for (Cards card : p.getTable()) {
 			if (card.getType().equals("Ship")) {
@@ -100,7 +99,7 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 		}
 	}
 	
-	public static void choice(HashMap<String, Integer> cap, Cards c, Players p, ApplicationContext context) {
+	public static void choice(HashMap<String, Integer> cap, Cards c, Player p, ApplicationContext context) {
 				
 		System.out.println("Lancement de l'écran de choix pour la carte : "+c.getTitle());
 		
@@ -133,9 +132,43 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 			possibility2 = "C"+integers[2];
 		}
 		
-		GameProgression.choice(context,c,choice,possibility1, possibility2, p); // lancement de l'écran de choix avec récup du clic.
+		choice(context,c,choice,possibility1, possibility2, p); // lancement de l'écran de choix avec récup du clic.
 
 		
 	}
+	
+	public static void choice(ApplicationContext contextChoice,Cards c, String choice, String pos1, String pos2, Player p) {
+        while (true) {
+            int choix = ChoiceCap.controller(contextChoice, c, choice, pos1, pos2);
+            if (choix == 1) {
+                
+                if (pos1.startsWith("T")) {
+                    p.addTradePoint(Integer.parseInt(pos1.substring(1,pos1.length())));
+                    break;
+                } else if (pos1.startsWith("A")) {
+                    p.addAuthority(Integer.parseInt(pos1.substring(1,pos1.length())));
+                    break;
+                } else if (pos1.startsWith("C")) {
+                    p.addFightPoint(Integer.parseInt(pos1.substring(1,pos1.length())));
+                    break;
+                }
+                
+            } else if (choix == 2) {
+                
+                if (pos2.startsWith("T")) {
+                    p.addTradePoint(Integer.parseInt(pos2.substring(1,pos2.length())));
+                    break;
+                } else if (pos2.startsWith("C")) {
+                    p.addFightPoint(Integer.parseInt(pos2.substring(1,pos2.length())));
+                    break;
+                } else if (pos2.startsWith("S")) {
+                    // reconnaitre la capacité spé appel à une autre func.
+                    break;
+                }
+                
+            }
+            break;
+        }
+    }
 	
 }
