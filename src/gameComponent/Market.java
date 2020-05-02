@@ -275,16 +275,6 @@ public class Market {
 		explorers.add(c);
 	}
 	
-	public static String viewShownMarket(){
-		StringBuilder viewCards = new StringBuilder();
-		viewCards.append("--------- Commerce ---------\n");
-		int count = 1;
-		for (int i = 0; i < shownMarket.size(); i++) {
-			viewCards.append("Card n°").append(count).append(" : ").append("[").append(shownMarket.get(i)).append("]\n");
-			count+=1;
-		}
-		return viewCards.toString();
-	}
 
 	
 	

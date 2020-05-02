@@ -52,16 +52,16 @@ public class Menu {
         double cooY = event.getLocation().getY();
         
         if ( 2*height/4<cooY && cooY< (2*height/4) + height/10) {
-        	if (width/4<cooX && cooX<width/4+(width/8)) {
+        	if (width/4<cooX && cooX<width/4+(360)) {
 				return 2;
-			}else if(3*width/4-width/8<cooX && cooX< (3*width/4-width/8)+width/8){
+			}else if(3*width/4-360<cooX && cooX< (3*width/4-360)+360){
 				return 1;
 				
 			}
 		}else if (( 3*height/4<cooY && cooY< (3*height/4) + height/10)) {
-			if (width/4<cooX && cooX<width/4+(width/8)) {
+			if (width/4<cooX && cooX<width/4+(360)) {
 				return 3;
-			}else if(3*width/4-width/8<cooX && cooX< (3*width/4-width/8)+width/8){
+			}else if(3*width/4-360<cooX && cooX< (3*width/4-360)+360){
 				return 4;
 				
 			}
@@ -93,25 +93,40 @@ public class Menu {
             }
             
             //On affiche les choix possibles
-            graphics.setColor(Color.GRAY);
-            graphics.fill(new Rectangle2D.Float(width/4, 2*height/4, width/8, height/10));
-            graphics.setColor(Color.YELLOW);
-            graphics.drawString("2 joueurs avec IA" , width/4+50 , 2*height/4+50);
+            Path oneVsOne = Paths.get("res/buttons/1v1.png");
+            try (InputStream in = Files.newInputStream(oneVsOne)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width/4), Math.round(2*height/4), 360, 110, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing 1vs1.png ");
+            }
+
             
-            graphics.setColor(Color.GRAY);
-            graphics.fill(new Rectangle2D.Float(3*width/4-width/8, 2*height/4, width/8, height/10));
-            graphics.setColor(Color.YELLOW);
-            graphics.drawString("2 joueurs sans IA" , 3*width/4-width/8+50 , 2*height/4+50);
+            Path oneVsBOT = Paths.get("res/buttons/1vsBOT.png");
+            try (InputStream in = Files.newInputStream(oneVsBOT)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(3*width/4-360), Math.round(2*height/4), 360, 110, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing 1vsBOT.png ");
+            }
             
-            graphics.setColor(Color.GRAY);
-            graphics.fill(new Rectangle2D.Float(width/4, 3*height/4, width/8, height/10));
-            graphics.setColor(Color.YELLOW);
-            graphics.drawString("Combat à mort" , width/4+50 , 3*height/4+50);
+            Path deathMatch = Paths.get("res/buttons/deathMatch.png");
+            try (InputStream in = Files.newInputStream(deathMatch)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width/4), Math.round(3*height/4), 360, 110, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing deathMatch.png ");
+            }
             
-            graphics.setColor(Color.GRAY);
-            graphics.fill(new Rectangle2D.Float(3*width/4-width/8, 3*height/4, width/8, height/10));
-            graphics.setColor(Color.YELLOW);
-            graphics.drawString("Chasse à l'homme" , 3*width/4-width/8+50 , 3*height/4+50);
+            Path manHunt = Paths.get("res/buttons/manHunt.png");
+            try (InputStream in = Files.newInputStream(manHunt)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(3*width/4-360), Math.round(3*height/4), 360, 110, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing manHunt.png ");
+            }
+            
+
             
            
     		
