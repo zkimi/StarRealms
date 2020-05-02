@@ -466,7 +466,7 @@ public class MainGame {
 								} // sinon
 								
 
-								if (p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity().get("OpponentDiscard") != null) { // si la carte a une cap opponentDiscard
+								if (p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity().get("OpponentDiscard") != null && p1.getPenalityDiscard()==0) { // si la carte a une cap opponentDiscard
 									message(context, "OpponentDiscard", p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity().get("OpponentDiscard")); // on affiche un msg
 									p2.addPenalityDiscard(p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity().get("OpponentDiscard")); // on ajoute la penalité a l'adversaire
 									

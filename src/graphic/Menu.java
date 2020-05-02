@@ -1,16 +1,13 @@
 package graphic;
 
-import java.awt.Color;
-import java.awt.geom.Rectangle2D;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.imageio.ImageIO;
-
 import fr.umlv.zen5.ApplicationContext;
 import fr.umlv.zen5.Event;
 import fr.umlv.zen5.ScreenInfo;
@@ -93,21 +90,20 @@ public class Menu {
             }
             
             //On affiche les choix possibles
-            Path oneVsOne = Paths.get("res/buttons/1v1.png");
-            try (InputStream in = Files.newInputStream(oneVsOne)) {
-                BufferedImage img = ImageIO.read(in);
-                graphics.drawImage(img, Math.round(width/4), Math.round(2*height/4), 360, 110, null);
-            } catch (IOException e) {
-                throw new RuntimeException("problem while drawing 1vs1.png ");
-            }
-
-            
             Path oneVsBOT = Paths.get("res/buttons/1vsBOT.png");
             try (InputStream in = Files.newInputStream(oneVsBOT)) {
                 BufferedImage img = ImageIO.read(in);
-                graphics.drawImage(img, Math.round(3*width/4-360), Math.round(2*height/4), 360, 110, null);
+                graphics.drawImage(img, Math.round(width/4), Math.round(2*height/4), 360, 110, null);
             } catch (IOException e) {
                 throw new RuntimeException("problem while drawing 1vsBOT.png ");
+            }
+
+            Path oneVsOne = Paths.get("res/buttons/1v1.png");
+            try (InputStream in = Files.newInputStream(oneVsOne)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(3*width/4-360), Math.round(2*height/4), 360, 110, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing 1v1.png ");
             }
             
             Path deathMatch = Paths.get("res/buttons/deathMatch.png");

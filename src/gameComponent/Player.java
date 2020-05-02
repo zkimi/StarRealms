@@ -156,6 +156,7 @@ public class Player {
 			if (penalityDiscard > 0) {
 				addCard(c, discarding);
 				removeCard(c, hand);
+				penalityDiscard -= 1;
 			} else {
 				addCard(c, table); // on l'ajoute sur la table
 				removeCard(c, hand); // on la retire de la main
