@@ -1,10 +1,7 @@
 package cardInfo;
 
-import java.awt.Color;
 import java.util.HashMap;
-
 import graphic.ChoiceCap;
-import fr.umlv.zen5.Application;
 import fr.umlv.zen5.ApplicationContext;
 import gameComponent.Player;
 
@@ -81,10 +78,6 @@ public class Capacity {//à un type de capacité est affecté une clé qui a pour va
 		if (count >= 2) {
 			p.pickCardsInHand(2);
 		}		
-	}
-	
-	private static void opponentDiscard(HashMap<String, Integer> cap, Player p) { // le joueur adverse DOIT défausser une carte de son choix.
-		// code
 	}
 	
 	private static void fleetHQ(Player p) { // FLEET HQ : all ship get "Add 1 Combat"

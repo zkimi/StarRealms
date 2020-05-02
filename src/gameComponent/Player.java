@@ -19,6 +19,7 @@ public class Player {
 	private ArrayList<Cards> table; // jeu posé sur la table
 	private ArrayList<Cards> hand; // main du joueur
 	private ArrayList<Cards> discarding; // défausse du joueur
+	private int penalityDiscard = 0; // penalité défausse de carte
 
 	public Player(String name) {
 		this.id = 0;
@@ -152,9 +153,14 @@ public class Player {
 	
 	public void playCard(Cards c) {
 		if (hand.contains(c)) {
-			addCard(c, table); // on l'ajoute sur la table
-			removeCard(c, hand); // on la retire de la main
-			checkCardPowerUps(c); // si carte possède effets spéciaux
+			if (penalityDiscard > 0) {
+				addCard(c, discarding);
+				removeCard(c, hand);
+			} else {
+				addCard(c, table); // on l'ajoute sur la table
+				removeCard(c, hand); // on la retire de la main
+				checkCardPowerUps(c); // si carte possède effets spéciaux
+			}
 			//return "Carte jouée : OK.";
 		} 
 		//return "Erreur : Vous ne pouvez pas jouer cette carte, elle ne se trouve pas dans votre main.";
@@ -232,6 +238,10 @@ public class Player {
 		return fightPoints;
 	}
 	
+	public int getPenalityDiscard() {
+		return penalityDiscard;
+	}
+	
 	
 	public void attackPlayer(Player target) {		
 		for (int i = 0; i < target.hand.size(); i++) {
@@ -298,6 +308,10 @@ public class Player {
 	
 	public void addAuthority(int x) {//Cette méthode ajoute des points d'authority
 		defensePoints += x;
+	}
+	
+	public void addPenalityDiscard(int x) {
+		penalityDiscard += x;
 	}
 
 }

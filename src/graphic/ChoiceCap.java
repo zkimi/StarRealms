@@ -10,16 +10,13 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import javax.imageio.ImageIO;
-
 import cardInfo.Cards;
 import fr.umlv.zen5.ApplicationContext;
 import fr.umlv.zen5.Event;
 import fr.umlv.zen5.ScreenInfo;
 import fr.umlv.zen5.Event.Action;
-import gameComponent.Market;
-import gameComponent.Player;
+
 
 public class ChoiceCap {
 	

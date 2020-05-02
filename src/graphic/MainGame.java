@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -56,6 +57,40 @@ public class MainGame {
 	        }
 		}
 	}
+	
+	public static void message(ApplicationContext context, String type, int nb) {
+		for(;;) {
+
+			drawMessage(context, type, nb);
+			
+			Event event = context.pollOrWaitEvent(10);
+	        if (event == null) {  // no event
+	        	continue;
+	        }
+	        try {
+				TimeUnit.SECONDS.sleep(3);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	        break;
+		}
+	}
+	
+	public static void drawMessage(ApplicationContext context, String type, int nbDiscard) {
+    	context.renderFrame(graphics -> {
+    		ScreenInfo screenInfo = context.getScreenInfo();
+            float width = screenInfo.getWidth();
+            float height = screenInfo.getHeight(); 
+            
+	    	graphics.setColor(Color.WHITE);
+	    	graphics.setFont(new Font("Comic Sans MS", Font.ITALIC, 30)); 
+	    	if (type == "OpponentDiscard") {
+	    		graphics.drawString("Vous venez de jouer une carte qui oblige le joueur adverse à défausser "+nbDiscard+ " carte(s) au prochain tour.", width/4-150 , height/2+150);
+    		}
+	    	
+	       // graphics.drawString("Cliquez sur la carte à défausser.", width/4 , height/2+50);
+    	});
+    }
 	
 	
 	private static void draw(ApplicationContext context, Player p1, Player p2) {
@@ -299,6 +334,7 @@ public class MainGame {
 	      //Ici on affiche la main du joueur
 	        for (int i = 2; i < 8; i++) {
 	            if (p1.getNavigHand()*(i-2) < p1.showHand().size()) {
+	            	
 	                
 	                if (p1.showHand().get(p1.getNavigHand()*(i-2)).getType() == "Base") {
 	                	Path path_trade = Paths.get("res/cards/"+p1.showHand().get(p1.getNavigHand()*(i-2)).getTitle()+".png");
@@ -331,7 +367,12 @@ public class MainGame {
 	        graphics.setColor(Color.BLACK);
 	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , (3*height)/5+200);
 	        
-	        
+	        // eventuels messages
+	        if (p1.getPenalityDiscard() > 0) {
+	        	graphics.setColor(Color.WHITE);
+		    	graphics.setFont(new Font("Comic Sans MS", Font.ITALIC, 30)); 
+	        	graphics.drawString("Le joueur adverse a joué une carte qui vous oblige à défausser "+p1.getPenalityDiscard()+ " carte(s), cliquez dessus.", width/4-150 , height/2);
+			}
 	      });
 	      
 	    }
@@ -411,24 +452,33 @@ public class MainGame {
 			}
 		}
 		//MAIN DU JOUEUR
-		if (((3*height)/5)+150 < cooY && cooY < ((height*4)/5)+150) { // si on se trouve sur le bon axe Y
-			
-			for (int i = 2; i < 8; i++) { // boucle 6 cartes
-				
-				if ((i*width+10)/10 < cooX && cooX < ((i*width+10)/10)+(width+10)/11) { // si le clic se trouve sur la carte 
+				if (((3*height)/5)+150 < cooY && cooY < ((height*4)/5)+150) { // si on se trouve sur le bon axe Y
 					
-					if ((i-2) >= 0 && (i-2)*p1.getNavigHand() < p1.showHand().size()) { // si la carte existe (avoid OutOfBounds Exception)
-							
-						if (Capacity.isChoiceCard(p1.showHand().get((i-2)*p1.getNavigHand()))) { // si la carte possède un choix
-							Capacity.choice(p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity(), p1.showHand().get((i-2)*p1.getNavigHand()), p1, context);
-						} // sinon
-							System.out.println("Je place la carte : " + p1.showHand().get((i-2)*p1.getNavigHand()) + " qui se trouvait dans ma main.");
-							p1.playCard(p1.showHand().get((i-2)*p1.getNavigHand())); 
+					for (int i = 2; i < 8; i++) { // boucle 6 cartes
 						
-						}	
+						if ((i*width+10)/10 < cooX && cooX < ((i*width+10)/10)+(width+10)/11) { // si le clic se trouve sur la carte 
+							
+							if ((i-2) >= 0 && (i-2)*p1.getNavigHand() < p1.showHand().size()) { // si la carte existe (avoid OutOfBounds Exception)
+									
+								
+								if (Capacity.isChoiceCard(p1.showHand().get((i-2)*p1.getNavigHand()))) { // si la carte possède un choix
+										Capacity.choice(p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity(), p1.showHand().get((i-2)*p1.getNavigHand()), p1, context);
+								} // sinon
+								
+
+								if (p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity().get("OpponentDiscard") != null) { // si la carte a une cap opponentDiscard
+									message(context, "OpponentDiscard", p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity().get("OpponentDiscard")); // on affiche un msg
+									p2.addPenalityDiscard(p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity().get("OpponentDiscard")); // on ajoute la penalité a l'adversaire
+									
+								}
+									System.out.println("Je place la carte : " + p1.showHand().get((i-2)*p1.getNavigHand()) + " qui se trouvait dans ma main.");
+									p1.playCard(p1.showHand().get((i-2)*p1.getNavigHand())); 
+								
+								}	
+							}
+						}
 					}
-				}
-			}
+					
 			
 		
 		//Attaquer adversaire

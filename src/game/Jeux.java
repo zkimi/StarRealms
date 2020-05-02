@@ -3,11 +3,9 @@ package game;
 import java.awt.Color;
 
 import fr.umlv.zen5.Application;
-import fr.umlv.zen5.ApplicationContext;
 import gameMode.DeathMatch;
 import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
-import graphic.ChoiceCap;
 import graphic.Menu;
 
 public class Jeux {
