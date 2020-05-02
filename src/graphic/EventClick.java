@@ -144,8 +144,10 @@ public class EventClick {
         
         if (2*height/3<cooY && cooY< 2*height/3 + 105/2) {
         	if (width/4<cooX && cooX<width/4+480/2) {
+        		System.out.println("Le joueur souhaite relancer une nouvelle partie");
 				return 1;
 			}else if(3*width/4-width/8<cooX && cooX< 3*width/4){
+				System.out.println("Le joueur souhaite quitter le jeu");
 				return 2;
 				
 			}

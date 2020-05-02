@@ -54,22 +54,81 @@ public class GameView{
         } catch (IOException e) {
             throw new RuntimeException("problem while drawing background.png ");
         }
-
+      
         
         //On affiche les info des joueurs
         graphics.setColor(Color.WHITE);
         graphics.drawString("Main actuelle : "+p1.getName(), width-150, 20);
         
         
-        graphics.drawString("Influence adverse : "+p2.getDefensePoints(), 10, 20);
-        graphics.drawString("Point commerce adverse : "+p2.getTradePoints(), 10, 40);
-        graphics.drawString("Point attaque adverse : "+p2.getFightPoints(), 10, 60);
+        graphics.setFont(new Font("Tahoma", Font.BOLD, 20)); 
+        
+        Path path_influence = Paths.get("res/elements/influence.png");
+        try (InputStream in = Files.newInputStream(path_influence)) {
+            BufferedImage img = ImageIO.read(in);
+            graphics.drawImage(img, 10, 10, 80, 46, null);
+        } catch (IOException e) {
+            throw new RuntimeException("problem while drawing influence.png (adverse) ");
+        }
+        graphics.drawString(""+p2.getDefensePoints(), 36, 37);
+        
+        Path path_commerce = Paths.get("res/elements/argent.png");
+        try (InputStream in = Files.newInputStream(path_commerce)) {
+            BufferedImage img = ImageIO.read(in);
+            graphics.drawImage(img, 100, 10, 50, 52, null);
+        } catch (IOException e) {
+            throw new RuntimeException("problem while drawing argent.png ");
+        }
+        graphics.setColor(Color.BLACK);
+        graphics.drawString(""+p2.getTradePoints(), 117, 43);
+        
+        Path path_attaque = Paths.get("res/elements/attaque.png");
+        try (InputStream in = Files.newInputStream(path_attaque)) {
+            BufferedImage img = ImageIO.read(in);
+            graphics.drawImage(img,155,5, 64, 64, null);
+        } catch (IOException e) {
+            throw new RuntimeException("problem while drawing attaque.png ");
+        }
+        graphics.setColor(Color.WHITE);
+        graphics.drawString(""+p2.getFightPoints(), 178, 45);
+        
+        
+        graphics.setFont(new Font("Verdana", Font.PLAIN, 11));
         graphics.drawString("Nb cartes défausse adverse : "+p2.showDiscarding().size(), 10, 80);
         
-        graphics.drawString("Influence joueur actuel : "+p1.getDefensePoints(), 10, height-70);
-        graphics.drawString("Point commerce joueur actuel : "+p1.getTradePoints(), 10, height-50);
-        graphics.drawString("Point attaque joueur actuel : "+p1.getFightPoints(), 10, height-30);
-        graphics.drawString("Cartes dans la défausse : "+p1.showDiscarding().size(), 10, height-10);
+        try (InputStream in = Files.newInputStream(path_influence)) {
+            BufferedImage img = ImageIO.read(in);
+            graphics.drawImage(img, 10, Math.round(height-70), 110, 64, null);
+        } catch (IOException e) {
+            throw new RuntimeException("problem while drawing influence.png ");
+        }
+        graphics.setFont(new Font("Tahoma", Font.BOLD, 25)); 
+        graphics.drawString(""+p1.getDefensePoints(), 47, height-35);
+        
+        try (InputStream in = Files.newInputStream(path_commerce)) {
+            BufferedImage img = ImageIO.read(in);
+            graphics.drawImage(img, 120, Math.round(height-70), 62, 64, null);
+        } catch (IOException e) {
+            throw new RuntimeException("problem while drawing argent.png ");
+        }
+        graphics.setColor(Color.BLACK);
+        graphics.drawString(""+p1.getTradePoints(), 143, height-30);
+        
+        try (InputStream in = Files.newInputStream(path_attaque)) {
+            BufferedImage img = ImageIO.read(in);
+            graphics.drawImage(img, 190, Math.round(height-85), 84, 84, null);
+        } catch (IOException e) {
+            throw new RuntimeException("problem while drawing attaque.png ");
+        }
+        graphics.setColor(Color.WHITE);
+        graphics.drawString(""+p1.getFightPoints(), 223, height-33);
+        
+        
+        graphics.setFont(new Font("Verdana", Font.PLAIN, 11));
+        graphics.drawString("Cartes dans la défausse : "+p1.showDiscarding().size(), 10, height-100);
+        
+        
+        graphics.setFont(new Font("Verdana", Font.PLAIN, 11));
         
         //Ici on affiche les cartes de l'adversaire en jeu
         for (int i = 2; i < 8; i++) {
