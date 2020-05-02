@@ -27,7 +27,7 @@ public class Jeux {
 					break;
 					
 				case 4:
-					System.out.println("Chasse à l'homme TEST");
+					System.out.println("Chasse à l'homme");
 					break;
 
 				}		
