@@ -179,10 +179,8 @@ public class Player {
 					count++;
 				}
 			}
-			for (Cards c2 : table) {
-				if (c.getFaction().equals(c2.getFaction())) {
-					Capacity.applyCap(c.getAlly(), this, c);;
-				}
+			if (count > 1) {
+				Capacity.applyCap(c.getAlly(), this, c);
 			}
 		}	
 	}
@@ -214,10 +212,10 @@ public class Player {
 			
 			// on check si la main possède le nombre
 			if (hand.size() != number) {
-			if (discarding.size()>0) {
-				replaceCards();
-				pickCardsInHand(diff);
-			}
+				if (discarding.size()>0) {
+					replaceCards();
+					pickCardsInHand(diff);
+				}
 			}
 
 		} 
@@ -225,7 +223,9 @@ public class Player {
 	}
 	
 	
-	
+	public ArrayList<Cards> getHand(){
+		return hand;
+	}
 
 	public int getDefensePoints() {
 		return defensePoints;

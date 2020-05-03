@@ -340,6 +340,12 @@ public class GraphManHunt {
 	        graphics.setColor(Color.BLACK);
 	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , (3*height)/5+200);
 	        
+	      //Bouton tout jouer
+	        graphics.setColor(Color.YELLOW);
+	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10, (2*height)/5+225, width/11, height/12));
+	        graphics.setColor(Color.BLACK);
+	        graphics.drawString("Tout jouer", width - (width/11) + 10 , (2*height)/5+250);
+	        
 	        
 	      });
 	      

@@ -93,8 +93,6 @@ public class Market {
 		 * Par ex: Pour 2 pts trade ou 5 pts combat on écrira : addCapacity("Choice", 225);
 		 */
 		
-		CoreSet.scout.addCapacity("OpponentDiscard", 2);
-		
 		/* Blob */
 		CoreSet.battleBlob.addCapacity("AttackPoint", 8);
 		CoreSet.battlePod.addCapacity("AttackPoint", 4);

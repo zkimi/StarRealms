@@ -367,6 +367,14 @@ public class MainGame {
 	        graphics.setColor(Color.BLACK);
 	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , (3*height)/5+200);
 	        
+	        
+	        //Bouton tout jouer
+	        graphics.setColor(Color.YELLOW);
+	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10, (2*height)/5+225, width/11, height/12));
+	        graphics.setColor(Color.BLACK);
+	        graphics.drawString("Tout jouer", width - (width/11) + 10 , (2*height)/5+250);
+	        
+	        
 	        // eventuels messages
 	        if (p1.getPenalityDiscard() > 0) {
 	        	graphics.setColor(Color.WHITE);
@@ -487,7 +495,7 @@ public class MainGame {
 			p1.attackPlayer(p2);
 		}
 		
-		//Carte suivante 
+		//Carte suivante et bouton pour tout jouer
 		if ( width-(width/11)-10 < cooX && cooX < width-10 ) {
 			if (50 < cooY && cooY < height/12+50) {
 				System.out.println("Je clique sur les cartes suivantes de l'adversaire");
@@ -500,6 +508,8 @@ public class MainGame {
 			}else if ((3*height)/5+175< cooY && cooY < (3*height)/5+175 +  height/12) {
 				System.out.println("Je clique sur les cartes suivantes");
 				p1.navigH();
+			}else if ((2*height)/5+225<cooY && cooY<(2*height)/5+225 + height/12) {//Bouton tout jouer
+				System.out.println("Je joue toutes mes cartes");
 			}
 		}
 	}	
