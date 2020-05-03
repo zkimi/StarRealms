@@ -6,6 +6,7 @@ import fr.umlv.zen5.Application;
 import gameMode.DeathMatch;
 import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
+import gameMode.ManHunt;
 import graphic.Menu;
 
 public class Jeux {
@@ -27,7 +28,7 @@ public class Jeux {
 					break;
 					
 				case 4:
-					System.out.println("Chasse à l'homme");
+					ManHunt.startGame(context);
 					break;
 
 				}		

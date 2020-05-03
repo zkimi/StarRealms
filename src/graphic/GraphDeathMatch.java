@@ -28,7 +28,7 @@ public class GraphDeathMatch {
 	
 	public static void controller(int turn,ArrayList<Player> playerList, ApplicationContext context) {
 		showNext(playerList, turn);//pour eviter que au début du tour le joueur tombe sur lui même
-		
+
 		for(;;) {
 			draw(context, playerList.get(turn),  playerList, turn); 
 	        Event event = context.pollOrWaitEvent(10);
@@ -42,6 +42,17 @@ public class GraphDeathMatch {
 	        //ON GERE LES CLICS
 	        if (action == Action.POINTER_DOWN) {
 				click(event, context, playerList.get(turn),playerList, turn);
+				if (turn == 0) {//On verifie si il a tué sa cible, si oui on arrete
+					if (show == playerList.size()-1) {
+						if (playerList.get(playerList.size()-1).getLife()<=0) {
+							return;
+						}
+					}
+				}else if (show == turn-1) {
+					if (playerList.get(turn-1).getLife()<=0) {
+						return;
+					}
+				}
 				
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
@@ -189,11 +200,21 @@ public class GraphDeathMatch {
 	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , 75);
 	        
 	        
-	        //NOUVEAUTE DEATHMATCH
+	        //NOUVEAUTE DEATHMATCH et specifité MANHUNT
 	        graphics.setColor(Color.YELLOW);
 	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10,100 + height/12,  width/11, height/12));
 	        graphics.setColor(Color.BLACK);
-	        graphics.drawString(playerList.get(show).getName(), width - (width/11) , height/12 +150);
+	        graphics.drawString(playerList.get(show).getName(), width - (width/11) , height/12 +125);
+	        
+	        if (turn == 0) {//On indique à l'utilisateur si c'est sa sible
+				if (show == playerList.size()-1) {
+					graphics.setColor(Color.BLACK);
+			        graphics.drawString("Votre cible", width - (width/11) , height/12 +150);
+				}
+			}else if (show == turn-1) {
+				graphics.setColor(Color.BLACK);
+		        graphics.drawString("Votre cible", width - (width/11) , height/12 +150);
+			}
 	        
 	        
 
@@ -434,9 +455,19 @@ public class GraphDeathMatch {
 			
 		
 		//Attaquer adversaire
-		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {
-			System.out.println("J'attaque l'adversaire");
-			p1.attackPlayer(playerList.get(show));
+		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {//Il faut bien vérifier que l'utilisateur attaque sa cible
+			if (turn == 0) {
+				if (show == playerList.size()-1) {
+					System.out.println("J'attaque l'adversaire");
+					p1.attackPlayer(playerList.get(show));
+				}
+			}else if (show == turn-1) {
+				System.out.println("J'attaque l'adversaire");
+				p1.attackPlayer(playerList.get(show));	
+			}else {
+				System.out.println("Je ne peux pas attaquer, ce n'est pas ma cible");
+			}
+			
 		}
 		
 		//Carte suivante 
