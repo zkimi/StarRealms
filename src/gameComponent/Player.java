@@ -164,7 +164,6 @@ public class Player {
 			}
 			//return "Carte jouée : OK.";
 		} 
-		//return "Erreur : Vous ne pouvez pas jouer cette carte, elle ne se trouve pas dans votre main.";
 	}
 	
 	public void checkCardPowerUps(Cards c) {

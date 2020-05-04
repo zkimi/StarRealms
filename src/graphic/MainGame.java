@@ -509,6 +509,12 @@ public class MainGame {
 				System.out.println("Je clique sur les cartes suivantes");
 				p1.navigH();
 			}else if ((2*height)/5+225<cooY && cooY<(2*height)/5+225 + height/12) {//Bouton tout jouer
+				
+				
+				while (p1.getHand().size() > 0) {
+					p1.playCard(p1.showHand().get(0));
+				}
+				
 				System.out.println("Je joue toutes mes cartes");
 			}
 		}
