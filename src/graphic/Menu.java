@@ -1,6 +1,8 @@
 package graphic;
 
 
+import java.awt.Color;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,6 +65,12 @@ public class Menu {
 				
 			}
 		}
+        
+        if (0<cooX && cooX <360) {
+			if (0< cooY && cooY<110) {
+				return 5;
+			}
+		}
 		return 0;
 	}
 	
@@ -71,7 +79,9 @@ public class Menu {
     		ScreenInfo screenInfo = context.getScreenInfo();
             float width = screenInfo.getWidth();
             float height = screenInfo.getHeight(); 
-    		
+            
+            
+            
     		Path path_background = Paths.get("res/misc/bg.jpg");
             try (InputStream in = Files.newInputStream(path_background)) {
                 BufferedImage img = ImageIO.read(in);
@@ -79,6 +89,8 @@ public class Menu {
             } catch (IOException e) {
                 throw new RuntimeException("problem while drawing background.png ");
             }
+            
+            
                
             
             Path logo = Paths.get("res/misc/logo.png");
@@ -122,7 +134,13 @@ public class Menu {
                 throw new RuntimeException("problem while drawing manHunt.png ");
             }
             
-
+            Path save = Paths.get("res/buttons/chargeSave.png");
+            try (InputStream in = Files.newInputStream(save)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(0), Math.round(0), 360, 110, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing chargeSave.png ");
+            }
             
            
     		

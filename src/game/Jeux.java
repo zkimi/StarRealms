@@ -30,6 +30,10 @@ public class Jeux {
 				case 4:
 					ManHunt.startGame(context);
 					break;
+					
+				case 5:
+					System.out.println("je charge");
+					break;
 
 				}		
 			}		
