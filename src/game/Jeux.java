@@ -8,6 +8,7 @@ import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
 import gameMode.ManHunt;
 import graphic.Menu;
+import save.graphicLoad;
 
 public class Jeux {
 	public static void main(String[] args) {
@@ -33,7 +34,7 @@ public class Jeux {
 					
 				case 5:
 					System.out.println("je charge");
-					break;
+					graphicLoad.controller(context);
 
 				}		
 			}		
