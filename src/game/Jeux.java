@@ -34,7 +34,7 @@ public class Jeux {
 					
 				case 5:
 					System.out.println("je charge");
-					graphicLoad.controller(context);
+					graphicLoad.controller(context, null);
 
 				}		
 			}		

@@ -3,8 +3,11 @@ package save;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,7 +22,7 @@ import fr.umlv.zen5.Event.Action;
 public class graphicLoad {
 	private static String name = "";
 	
-	public static int controller(ApplicationContext context) {
+	public static int controller(ApplicationContext context, String name) {
 		for(;;) {
 			draw(context);
 			
@@ -36,8 +39,13 @@ public class graphicLoad {
 				;
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
-				context.exit(0);
-				return 0;
+				boolean state_file = verifyFile();
+				
+				if (state_file) {
+					decryptSave();
+				} else {
+					// print msg d'erreur
+				}
 				
 			}else  if ((action == Action.KEY_PRESSED) && event.getKey().toString() != "SPACE") {//arrete
 	        	type(event);
@@ -53,6 +61,23 @@ public class graphicLoad {
 			name += event.getKey().toString().toLowerCase();
 		}
 	}
+	
+	private static boolean verifyFile() {		
+		Path path = Path.of("saves/"+name+".txt");
+		
+		if (Files.isReadable(path)) {
+			System.out.println("Le fichier "+name+".txt"+" existe.");
+			return true;
+		}
+		System.out.println("Le fichier "+name+".txt"+" n'existe pas.");
+		return false;
+	}
+	
+	private static void decryptSave() {
+		
+	}
+		
+
 	
 	private static void draw(ApplicationContext context) {
     	context.renderFrame(graphics -> {
