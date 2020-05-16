@@ -1,2 +1,13 @@
-bonjour
-ça va?
+P1/Influence:40
+P1/TradePoints:3
+P1/FightPoints:3
+P1/Discarding:[]
+P1/Table:[]
+P1/Hand:[]
+P2/Influence:50
+P2/TradePoints:5
+P2/FightPoints:8
+P2/Discarding:[]
+P2/Table:[]
+P2/Hand:[]
+

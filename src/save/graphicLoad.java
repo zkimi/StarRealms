@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,7 +43,12 @@ public class graphicLoad {
 				boolean state_file = verifyFile();
 				
 				if (state_file) {
-					decryptSave();
+					try {
+						decryptSave();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} else {
 					// print msg d'erreur
 				}
@@ -65,7 +71,7 @@ public class graphicLoad {
 	private static boolean verifyFile() {		
 		Path path = Path.of("saves/"+name+".txt");
 		
-		if (Files.isReadable(path)) {
+		if (Files.isReadable(path)) { // si le fichier est lisible
 			System.out.println("Le fichier "+name+".txt"+" existe.");
 			return true;
 		}
@@ -73,8 +79,17 @@ public class graphicLoad {
 		return false;
 	}
 	
-	private static void decryptSave() {
-		
+	private static void decryptSave() throws IOException{
+		Path path = Path.of("saves/"+name+".txt");
+
+		try (BufferedReader reader = Files.newBufferedReader(path,Charset.forName("ISO-8859-1"))){
+			String line;
+			System.out.println("Lecture de la sauvegarde "+name);
+
+			for (int i = 1; (line=reader.readLine()) != null; i++) {
+				System.out.println(line);
+			}
+		}
 	}
 		
 
