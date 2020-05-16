@@ -12,6 +12,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -19,6 +20,7 @@ import fr.umlv.zen5.ApplicationContext;
 import fr.umlv.zen5.Event;
 import fr.umlv.zen5.ScreenInfo;
 import fr.umlv.zen5.Event.Action;
+import gameComponent.Player;
 
 public class graphicLoad {
 	private static String name = "";
@@ -37,7 +39,7 @@ public class graphicLoad {
 	        
 	      //ON GERE LES CLICS
 	        if (action == Action.POINTER_DOWN) {
-				;
+				click(event,context);
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
 				boolean state_file = verifyFile();
@@ -58,6 +60,22 @@ public class graphicLoad {
 	        	
 	        }
 		}
+	}
+	
+	private static void click(Event event, ApplicationContext context) {
+		  ScreenInfo screenInfo = context.getScreenInfo();
+	      float width = screenInfo.getWidth();
+	      float height = screenInfo.getHeight(); 
+	      double cooX = event.getLocation().getX();
+	      double cooY = event.getLocation().getY(); 
+	      
+	      if (2*height/3+200<cooY && cooY< (2*height/3+200) + height/10) {
+	        	if (width/4<cooX && cooX<width/4+(width/2)) {
+	        		name="";
+					System.out.println("Je reset");
+	        	}
+		   }
+	      
 	}
 	
 	
@@ -122,6 +140,11 @@ public class graphicLoad {
             graphics.setColor(Color.yellow);
             graphics.drawString(name, width/2-50 , 2*height/3+50);
             
+            
+            graphics.setColor(Color.GRAY);
+            graphics.fill(new Rectangle2D.Float(width/4, 2*height/3+200, width/2, height/10));
+            graphics.setColor(Color.yellow);
+            graphics.drawString("Effacer le nom du fichier", width/2-50 , 2*height/3+250);
            
     		
     	});
