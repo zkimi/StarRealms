@@ -51,7 +51,7 @@ public class graphicLoad {
 						e.printStackTrace();
 					}
 				} else {
-					// print msg d'erreur
+					context.exit(0);
 				}
 				
 			}else  if ((action == Action.KEY_PRESSED) && event.getKey().toString() != "SPACE") {//arrete
