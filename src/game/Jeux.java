@@ -43,7 +43,7 @@ public class Jeux {
 					
 				case 5:
 					System.out.println("je charge");
-					graphicLoad.controller(context, null);
+					graphicLoad.controller(context);
 
 				}		
 			}		
