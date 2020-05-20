@@ -1,5 +1,6 @@
 package gameMode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -9,9 +10,10 @@ import gameComponent.Market;
 import gameComponent.Player;
 import graphic.EndGame;
 import graphic.GraphDeathMatch;
+import graphic.GraphManHunt;
 
 public class ManHunt {
-	public static void startGame(ApplicationContext context) {
+	public static void startGame(ApplicationContext context){
 		Market.initializeCards();
 		Player p1 = new Player("Joueur 1");
 		Player p2 = new Player("Joueur 2");
@@ -44,7 +46,7 @@ public class ManHunt {
 		int win = 0;
 		while (true) {
 			for (int i = playerList.size() - 1; i >=0; i--) {
-				GraphDeathMatch.controller(i , playerList, context);
+				GraphManHunt.controller(i , playerList, context);
 				playerList.get(i).endTurn();
 				if (i == 0 ) {//On verifie si son voisin n'est pas mort et si non il pioche
 					if (playerList.get(playerList.size()-1).getLife() <= 0) {
@@ -68,7 +70,7 @@ public class ManHunt {
 		}	
 	}
 	
-	public static void enGame(ApplicationContext context, Player winner) {
+	public static void enGame(ApplicationContext context, Player winner){
 		while (true) {
 			int x = EndGame.controller(context, winner);
 			if (x == 1) {

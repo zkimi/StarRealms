@@ -26,7 +26,7 @@ import save.Save;
 
 public class MainGame {
 	
-	public static void controller(Player p1, Player p2, ApplicationContext context) throws IOException {
+	public static void controller(Player p1, Player p2, ApplicationContext context){
 		for(;;) {
 			
 		    draw(context, p1, p2);
@@ -56,7 +56,12 @@ public class MainGame {
 				p1.second();
 				p2.first();
 				p2.pickCardsInHand(5);
-	        	Save.gameVsPlayerSave(context, p1, p2);
+	        	try {
+					Save.gameVsPlayerSave(context, p1, p2);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        	context.exit(0);
 	        	return;
         

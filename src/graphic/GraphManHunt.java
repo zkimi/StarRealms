@@ -22,12 +22,13 @@ import fr.umlv.zen5.ScreenInfo;
 import fr.umlv.zen5.Event.Action;
 import gameComponent.Market;
 import gameComponent.Player;
+import save.Save;
 
 public class GraphManHunt {
 	
 	private static int show = 0;
 	
-	public static void controller(int turn,ArrayList<Player> playerList, ApplicationContext context) {
+	public static void controller(int turn,ArrayList<Player> playerList, ApplicationContext context){
 		showNext(playerList, turn);//pour eviter que au début du tour le joueur tombe sur lui même
 		
 		for(;;) {
@@ -51,6 +52,12 @@ public class GraphManHunt {
 				
 			}else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
 	        	System.out.println(event.getKey().toString());
+	        	playerList.get(turn).endTurn();
+	        	try {
+					Save.manHuntSave(context, playerList, turn);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 	        	context.exit(0);
 	        	return;
         

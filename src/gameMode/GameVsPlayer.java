@@ -15,7 +15,7 @@ import graphic.MainGame;
 
 public class GameVsPlayer {
 	
-	public static void startGame(ApplicationContext context) throws IOException {
+	public static void startGame(ApplicationContext context){
 		Market.initializeCards();
 		Player p1 = new Player("Joueur 1");
 		Player p2 = new Player("Joueur 2");
@@ -75,7 +75,7 @@ public class GameVsPlayer {
 		
 	}
 	
-	public static void maingame(Player p1,Player p2, ApplicationContext context) throws IOException{
+	public static void maingame(Player p1,Player p2, ApplicationContext context){
 		while (true) {
 			if(p1.isfirst()) {
 				MainGame.controller(p1, p2, context);
@@ -105,7 +105,7 @@ public class GameVsPlayer {
 		
 	}
 	
-	public static void enGame(ApplicationContext context, Player winner) throws IOException {
+	public static void enGame(ApplicationContext context, Player winner){
 		while (true) {
 			int x = EndGame.controller(context, winner);
 			if (x == 1) {

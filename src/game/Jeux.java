@@ -18,19 +18,11 @@ public class Jeux {
 				int x = Menu.controller(context);
 				switch (x) {
 				case 1:
-					try {
-						GameVsPlayer.startGame(context);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					GameVsPlayer.startGame(context);
 					break;
 
 				case 2:
-					try {
-						GameVsBot.startGame(context);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					GameVsBot.startGame(context);
 					break;
 				
 				case 3:

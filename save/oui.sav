@@ -1,0 +1,32 @@
+Mode: ManHunt 
+Turn: 2
+Player Joueur 2
+Id: 0
+Life: 50
+Money: 0
+Damage: 0
+Cards: Scout, Scout, Scout, Scout, Scout, Viper, Scout, Viper, Scout, Scout, 
+Table: 
+Hand: 
+Discarding: 
+Player Joueur 3
+Id: 0
+Life: 50
+Money: 0
+Damage: 0
+Cards: Viper, Scout, Scout, Scout, Scout, Scout, Scout, Scout, Viper, Scout, 
+Table: 
+Hand: 
+Discarding: 
+Player Joueur 1
+Id: 0
+Life: 50
+Money: 0
+Damage: 0
+Cards: Scout, Scout, Viper, Scout, Scout, Viper, Scout, 
+Table: 
+Hand: Scout, Scout, Scout, 
+Discarding: 
+Explorer: Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, 
+Market: Royal Redoubt, Freighter, Trading Post, Space Station, Machine Base, Imperial Fighter, Trading Post, Battle Mech, Junkyard, Imperial Frigate, Patrol Mech, Flagship, Patrol Mech, Battlecruiser, Imperial Fighter, Port Of Call, Trade Pod, Blob Wheel, Survey Ship, Trade Bot, Supply Bot, Imperial Frigate, Blob Wheel, Blob Destroyer, Blob Carrier, Blob World, Trade Pod, Federation Shuttle, Blob Wheel, Battle Pod, Trade Pod, Command Ship, Missile Mech, Stealth Needle, Blob Fighter, Trade Escort, Blob Fighter, Space Station, Federation Shuttle, Brain World, Embassy Yacht, Barter World, Survey Ship, Imperial Fighter, Fleet HQ, Missile Bot, Dreadnaught, Trade Bot, War World, Supply Bot, Missile Bot, Blob Fighter, Recycling Station, Supply Bot, Federation Shuttle, Defense Center, Freighter, Embassy Yacht, Mech World, Blob Destroyer, Battle Blob, Imperial Frigate, Cutter, Ram, Survey Ship, Battle Station, Mothership, Corvette, Recycling Station, Corvette, Battle Pod, Cutter, The Hive, Central Office, Battle Station, 
+Shown: Ram, Barter World, Trade Bot, Missile Bot, Cutter, 
