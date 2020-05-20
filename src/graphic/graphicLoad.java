@@ -1,4 +1,4 @@
-package save;
+package graphic;
 
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
@@ -23,11 +23,11 @@ import fr.umlv.zen5.Event.Action;
 import gameComponent.Player;
 
 public class graphicLoad {
-	private static String name = "";
-	
-	public static int controller(ApplicationContext context, String name) {
+
+	public static int controller(ApplicationContext context) {
+		String name = "";
 		for(;;) {
-			draw(context);
+			draw(context, name);
 			
 	        Event event = context.pollOrWaitEvent(10);
 	        if (event == null) {  // no event
@@ -39,14 +39,14 @@ public class graphicLoad {
 	        
 	      //ON GERE LES CLICS
 	        if (action == Action.POINTER_DOWN) {
-				click(event,context);
+				name = click(event,context, name);
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
-				boolean state_file = verifyFile();
+				boolean state_file = verifyFile(name);
 				
 				if (state_file) {
 					try {
-						decryptSave();
+						decryptSave(name);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -55,14 +55,14 @@ public class graphicLoad {
 				}
 				
 			}else  if ((action == Action.KEY_PRESSED) && event.getKey().toString() != "SPACE") {//arrete
-	        	type(event);
+	        	name = type(event, name);
         
 	        	
 	        }
 		}
 	}
 	
-	private static void click(Event event, ApplicationContext context) {
+	private static String click(Event event, ApplicationContext context, String name) {
 		  ScreenInfo screenInfo = context.getScreenInfo();
 	      float width = screenInfo.getWidth();
 	      float height = screenInfo.getHeight(); 
@@ -75,17 +75,19 @@ public class graphicLoad {
 					System.out.println("Je reset");
 	        	}
 		   }
+	      return name;
 	      
 	}
 	
 	
-	private static void type(Event event) {
+	private static String type(Event event, String name) {
 		if (Character.isLetter(event.getKey().toString().charAt(0)) && event.getKey().toString().length() == 1 ) {//On test si la le charactere est une lettre
 			name += event.getKey().toString().toLowerCase();
 		}
+		return name;
 	}
 	
-	private static boolean verifyFile() {		
+	private static boolean verifyFile(String name) {		
 		Path path = Path.of("saves/"+name+".txt");
 		
 		if (Files.isReadable(path)) { // si le fichier est lisible
@@ -96,7 +98,7 @@ public class graphicLoad {
 		return false;
 	}
 	
-	private static void decryptSave() throws IOException{
+	private static void decryptSave(String name) throws IOException{
 		Path path = Path.of("saves/"+name+".txt");
 
 		try (BufferedReader reader = Files.newBufferedReader(path,Charset.forName("ISO-8859-1"))){
@@ -111,7 +113,7 @@ public class graphicLoad {
 		
 
 	
-	private static void draw(ApplicationContext context) {
+	private static void draw(ApplicationContext context, String name) {
     	context.renderFrame(graphics -> {
     		ScreenInfo screenInfo = context.getScreenInfo();
             float width = screenInfo.getWidth();

@@ -9,7 +9,7 @@ import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
 import gameMode.ManHunt;
 import graphic.Menu;
-import save.graphicLoad;
+import graphic.graphicLoad;
 
 public class Jeux {
 	public static void main(String[] args) {
