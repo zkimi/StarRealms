@@ -203,6 +203,16 @@ public class GraphManHunt {
 	        graphics.setColor(Color.BLACK);
 	        graphics.drawString(playerList.get(show).getName(), width - (width/11) , height/12 +150);
 	        
+	        if (turn == 0) {//On indique à l'utilisateur si c'est sa sible
+				if (show == playerList.size()-1) {
+					graphics.setColor(Color.BLACK);
+			        graphics.drawString("Votre cible", width - (width/11) , height/12 +125);
+				}
+			}else if (show == turn-1) {
+				graphics.setColor(Color.BLACK);
+		        graphics.drawString("Votre cible", width - (width/11) , height/12 +125);
+			}
+	        
 	        
 
 	        
@@ -449,8 +459,18 @@ public class GraphManHunt {
 		
 		//Attaquer adversaire
 		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {
-			System.out.println("J'attaque l'adversaire");
-			p1.attackPlayer(playerList.get(show));
+			if (turn == 0) {
+				if (show == playerList.size()-1) {
+					System.out.println("J'attaque l'adversaire");
+					p1.attackPlayer(playerList.get(show));
+				}
+			}else if (show == turn-1) {
+				System.out.println("J'attaque l'adversaire");
+				p1.attackPlayer(playerList.get(show));	
+			}else {
+				System.out.println("Je ne peux pas attaquer, ce n'est pas ma cible");
+			}
+				
 		}
 		
 		//Carte suivante 

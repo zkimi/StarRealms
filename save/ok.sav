@@ -1,0 +1,32 @@
+Mode: ManHunt 
+Turn: 1
+Player Joueur 2
+Id: 0
+Life: 50
+Money: 0
+Damage: 0
+Cards: Scout, Scout, Viper, Scout, Viper, Scout, Scout, Scout, Scout, Scout, 
+Table: 
+Hand: 
+Discarding: 
+Player Joueur 3
+Id: 0
+Life: 50
+Money: 0
+Damage: 0
+Cards: Scout, Scout, Scout, Viper, Viper, 
+Table: 
+Hand: Scout, Scout, Scout, Scout, Scout, 
+Discarding: 
+Player Joueur 1
+Id: 0
+Life: 50
+Money: 0
+Damage: 0
+Cards: Scout, Scout, Scout, Scout, Scout, Viper, Scout, 
+Table: 
+Hand: Scout, Scout, Viper, 
+Discarding: 
+Explorer: Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, 
+Market: Missile Bot, Space Station, War World, Brain World, Blob Wheel, Freighter, Blob Wheel, Blob Fighter, Recycling Station, Fleet HQ, Barter World, Survey Ship, Mech World, Battle Mech, Trade Bot, Patrol Mech, Battle Blob, Trade Bot, Blob Fighter, Supply Bot, Defense Center, Imperial Fighter, Trading Post, Missile Bot, Trade Bot, Imperial Fighter, Embassy Yacht, Supply Bot, Blob Fighter, Cutter, Central Office, Missile Bot, Blob Wheel, Blob Destroyer, Battle Station, Port Of Call, Recycling Station, Federation Shuttle, Junkyard, Federation Shuttle, Survey Ship, Freighter, Battle Station, Trade Pod, Blob Carrier, Battle Pod, Federation Shuttle, Imperial Fighter, Flagship, Survey Ship, Barter World, Corvette, The Hive, Trade Pod, Cutter, Supply Bot, Trading Post, Stealth Needle, Blob Destroyer, Mothership, Blob World, Trade Pod, Battlecruiser, Corvette, Missile Mech, Imperial Frigate, Dreadnaught, Imperial Frigate, Space Station, Battle Pod, Ram, Embassy Yacht, Cutter, Royal Redoubt, Imperial Frigate, 
+Shown: Trade Escort, Ram, Command Ship, Machine Base, Patrol Mech, 

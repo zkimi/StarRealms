@@ -27,7 +27,7 @@ public class GraphDeathMatch {
 	private static int show = 0;
 	
 	public static void controller(int turn,ArrayList<Player> playerList, ApplicationContext context) {
-		showNext(playerList, turn);//pour eviter que au début du tour le joueur tombe sur lui même
+		showNext(playerList, turn);//pour eviter que au dÃ©but du tour le joueur tombe sur lui mÃªme
 
 		for(;;) {
 			draw(context, playerList.get(turn),  playerList, turn); 
@@ -115,7 +115,7 @@ public class GraphDeathMatch {
 	        
 	        
 	        graphics.setFont(new Font("Verdana", Font.PLAIN, 11));
-	        graphics.drawString("Nb cartes défausse adverse : "+playerList.get(show).showDiscarding().size(), 10, 80);
+	        graphics.drawString("Nb cartes dÃ©fausse adverse : "+playerList.get(show).showDiscarding().size(), 10, 80);
 	        
 	        try (InputStream in = Files.newInputStream(path_influence)) {
 	            BufferedImage img = ImageIO.read(in);
@@ -146,7 +146,7 @@ public class GraphDeathMatch {
 	        
 	        
 	        graphics.setFont(new Font("Verdana", Font.PLAIN, 11));
-	        graphics.drawString("Cartes dans la défausse : "+p1.showDiscarding().size(), 10, height-100);
+	        graphics.drawString("Cartes dans la dÃ©fausse : "+p1.showDiscarding().size(), 10, height-100);
 	        
 	        
 	        graphics.setFont(new Font("Verdana", Font.PLAIN, 11));
@@ -188,7 +188,7 @@ public class GraphDeathMatch {
 	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , 75);
 	        
 	        
-	        //NOUVEAUTE DEATHMATCH et specifité MANHUNT
+	        //NOUVEAUTE DEATHMATCH et specifitÃ© MANHUNT
 	        graphics.setColor(Color.YELLOW);
 	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10,100 + height/12,  width/11, height/12));
 	        graphics.setColor(Color.BLACK);
@@ -376,7 +376,7 @@ public class GraphDeathMatch {
 		//Ligne achat
 		if ( height/5+50 < cooY && cooY < height*2/5+50) {
 			if (10 < cooX && cooX < width/11+10) {
-				System.out.println("J'achète une carte explorer.");
+				System.out.println("J'achÃ¨te une carte explorer.");
 				p1.buyExplorer();
 				
 			}else {
@@ -384,7 +384,7 @@ public class GraphDeathMatch {
 				for (int i = 3; i < 8; i++) {
 					if ((i*width+10)/10 < cooX && cooX < ((i*width+10)/10)+(width+10)/11) {
 						
-						System.out.println("J'achète la carte : " + Market.getShownMarket().get((i-3)) + "dans le marché." );
+						System.out.println("J'achÃ¨te la carte : " + Market.getShownMarket().get((i-3)) + "dans le marchÃ©." );
 						p1.buyCard(Market.getShownMarket().get((i-3)));
 
 						
@@ -401,11 +401,11 @@ public class GraphDeathMatch {
 				
 				
 			}else {
-				//Carte posées
+				//Carte posÃ©es
 				for (int i = 2; i < 8; i++) {
 					if ((i*width+10)/10 < cooX && cooX < ((i*width+10)/10)+(width+10)/11) {
 						if ((i-2)*p1.getNavigTable()< p1.getTable().size()) {
-							if (p1.showTable().get((i-2)*p1.getNavigTable()).getScrap().keySet().size() >0) {//On regarde si il a des capacité scrap
+							if (p1.showTable().get((i-2)*p1.getNavigTable()).getScrap().keySet().size() >0) {//On regarde si il a des capacitÃ© scrap
 								p1.useScrap(p1.showTable().get((i-2)*p1.getNavigTable()));			
 							}
 							
@@ -427,7 +427,7 @@ public class GraphDeathMatch {
 					
 					if ((i-2) >= 0 && (i-2)*p1.getNavigHand() < p1.showHand().size()) { // si la carte existe (avoid OutOfBounds Exception)
 							
-						if (Capacity.isChoiceCard(p1.showHand().get((i-2)*p1.getNavigHand()))) { // si la carte possède un choix
+						if (Capacity.isChoiceCard(p1.showHand().get((i-2)*p1.getNavigHand()))) { // si la carte possÃ¨de un choix
 							Capacity.choice(p1.showHand().get((i-2)*p1.getNavigHand()).getCapacity(), p1.showHand().get((i-2)*p1.getNavigHand()), p1, context);
 						} // sinon
 							System.out.println("Je place la carte : " + p1.showHand().get((i-2)*p1.getNavigHand()) + " qui se trouvait dans ma main.");
@@ -440,7 +440,7 @@ public class GraphDeathMatch {
 			
 		
 		//Attaquer adversaire
-		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {//Il faut bien vérifier que l'utilisateur attaque sa cible
+		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {//Il faut bien vÃ©rifier que l'utilisateur attaque sa cible
 				p1.attackPlayer(playerList.get(show));			
 		}
 		
