@@ -313,7 +313,47 @@ public class Player {
 	public void addPenalityDiscard(int x) {
 		penalityDiscard += x;
 	}
-
+	
+	public String getType() {
+		return "Player";
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public String cardsToString() {
+		StringBuilder s = new StringBuilder();
+		for (Cards c : cards) {
+			s.append(c.getTitle()+", ");
+		}
+		return s.toString();
+	}
+	
+	public String tableToString() {
+		StringBuilder s = new StringBuilder();
+		for (Cards c : table) {
+			s.append(c.getTitle()+", ");
+		}
+		return s.toString();
+	}
+	
+	public String handToString() {
+		StringBuilder s = new StringBuilder();
+		for (Cards c : hand) {
+			s.append(c.getTitle()+", ");
+		}
+		return s.toString();
+	}
+	
+	public String discardToString() {
+		StringBuilder s = new StringBuilder();
+		for (Cards c : discarding) {
+			s.append(c.getTitle()+", ");
+		}
+		return s.toString();
+	}
 }
+
 
 

@@ -51,7 +51,7 @@ public class MainGame {
 				
 			}else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
 	        	System.out.println(event.getKey().toString());
-	        	Save.gameVsPlayerSave(context);
+	        	Save.gameVsPlayerSave(context, p1, p2);
 	        	context.exit(0);
 	        	return;
         

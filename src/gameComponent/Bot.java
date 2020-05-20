@@ -92,4 +92,9 @@ public class Bot extends Player {
 		}
 		
 	}
+	
+	@Override
+	public String getType() {
+		return "Bot";
+	}
 }

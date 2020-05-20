@@ -88,18 +88,18 @@ public class graphicLoad {
 	}
 	
 	private static boolean verifyFile(String name) {		
-		Path path = Path.of("saves/"+name+".txt");
+		Path path = Path.of("saves/"+name+".sav");
 		
 		if (Files.isReadable(path)) { // si le fichier est lisible
-			System.out.println("Le fichier "+name+".txt"+" existe.");
+			System.out.println("Le fichier "+name+".sav"+" existe.");
 			return true;
 		}
-		System.out.println("Le fichier "+name+".txt"+" n'existe pas.");
+		System.out.println("Le fichier "+name+".sav"+" n'existe pas.");
 		return false;
 	}
 	
 	private static void decryptSave(String name) throws IOException{
-		Path path = Path.of("saves/"+name+".txt");
+		Path path = Path.of("saves/"+name+".sav");
 
 		try (BufferedReader reader = Files.newBufferedReader(path,Charset.forName("ISO-8859-1"))){
 			String line;
