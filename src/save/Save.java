@@ -102,4 +102,45 @@ public class Save {
 			}
 		}
 	}
+	
+	public static void manDeathMatch(ApplicationContext  context, ArrayList<Player> playerList, int turn) throws IOException{
+		String name = graphicSave.controller(context);
+		if (name.length()==0) {
+			context.exit(0);
+		}else {
+
+			Path p = Path.of("save/"+name+".sav");
+			Charset charset = StandardCharsets.UTF_8;
+			try(BufferedWriter writer = Files.newBufferedWriter(p, charset)){				
+				StringBuilder s = new StringBuilder();
+				
+				s.append("Mode: DeathMatch \n");
+				s.append("Turn: "+Integer.toString(turn)+"\n");
+				
+				for (Player player : playerList) {
+					s.append(player.getType()+" "+player.getName()+"\n");
+					s.append("Id: "+player.getId()+"\n");
+					s.append("Life: "+player.getDefensePoints()+"\n");
+					s.append("Money: "+player.getTradePoints()+"\n");
+					s.append("Damage: "+player.getTradePoints()+"\n");
+					s.append("Cards: "+player.cardsToString()+"\n");
+					s.append("Table: "+player.tableToString()+"\n");
+					s.append("Hand: "+player.handToString()+"\n");
+					s.append("Discarding: "+player.discardToString()+"\n");
+				}
+
+				
+				
+				
+				//On finit par le market
+				s.append("Explorer: "+Market.explorerToString()+"\n");
+				s.append("Market: "+Market.marketToString()+"\n");
+				s.append("Shown: "+Market.showMarketToString()+"\n");
+				
+				writer.write(s.toString());
+				writer.flush();
+			}
+		}
+	}
+	
 }
