@@ -25,7 +25,7 @@ import gameComponent.Player;
 public class graphicSave {
 	private static String name = "";
 	
-	public static String controller(ApplicationContext context, String name) {
+	public static String controller(ApplicationContext context) {
 		for(;;) {
 			draw(context);
 			

@@ -1,5 +1,6 @@
 package gameMode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import cardsDetails.CoreSet;
@@ -12,7 +13,7 @@ import graphic.MainGame;
 
 public class GameVsBot {
 	
-	public static void startGame(ApplicationContext context) {
+	public static void startGame(ApplicationContext context) throws IOException {
 		Market.initializeCards();
 		Player p1 = new Player("Joueur 1");
 		Bot p2 = new Bot("Joueur 2");
@@ -70,7 +71,7 @@ public class GameVsBot {
 		
 	}
 	
-	public static void maingame(Player p1,Bot p2, ApplicationContext context){
+	public static void maingame(Player p1,Bot p2, ApplicationContext context) throws IOException{
 		while (true) {
 			if(p1.isfirst()) {
 				MainGame.controller(p1, p2, context);
@@ -100,7 +101,7 @@ public class GameVsBot {
 		
 	}
 	
-	public static void enGame(ApplicationContext context, Player winner) {
+	public static void enGame(ApplicationContext context, Player winner) throws IOException {
 		while (true) {
 			int x = EndGame.controller(context, winner);
 			if (x == 1) {

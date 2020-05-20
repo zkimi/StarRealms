@@ -22,11 +22,12 @@ import fr.umlv.zen5.ScreenInfo;
 import fr.umlv.zen5.Event.Action;
 import gameComponent.Market;
 import gameComponent.Player;
+import save.Save;
 import save.graphicSave;
 
 public class MainGame {
 	
-	public static void controller(Player p1, Player p2, ApplicationContext context) {
+	public static void controller(Player p1, Player p2, ApplicationContext context) throws IOException {
 		for(;;) {
 			
 		    draw(context, p1, p2);
@@ -51,7 +52,7 @@ public class MainGame {
 				
 			}else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
 	        	System.out.println(event.getKey().toString());
-	        	graphicSave.controller(context, "");
+	        	Save.gameVsPlayerSave(context);
 	        	context.exit(0);
 	        	return;
         

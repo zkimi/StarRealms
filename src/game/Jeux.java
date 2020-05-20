@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Color;
+import java.io.IOException;
 
 import fr.umlv.zen5.Application;
 import gameMode.DeathMatch;
@@ -17,11 +18,19 @@ public class Jeux {
 				int x = Menu.controller(context);
 				switch (x) {
 				case 1:
-					GameVsPlayer.startGame(context);
+					try {
+						GameVsPlayer.startGame(context);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					break;
 
 				case 2:
-					GameVsBot.startGame(context);
+					try {
+						GameVsBot.startGame(context);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					break;
 				
 				case 3:
