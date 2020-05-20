@@ -273,6 +273,31 @@ public class Market {
 		explorers.add(c);
 	}
 	
+	
+	public static String explorerToString() {
+		StringBuilder s = new StringBuilder();
+		for (Cards c : explorers) {
+			s.append(c.getTitle()+", ");
+		}
+		return s.toString();
+	}
+	
+	public static String marketToString() {
+		StringBuilder s = new StringBuilder();
+		for (Cards c : market) {
+			s.append(c.getTitle()+", ");
+		}
+		return s.toString();
+	}
+	
+	public static String showMarketToString() {
+		StringBuilder s = new StringBuilder();
+		for (Cards c : shownMarket) {
+			s.append(c.getTitle()+", ");
+		}
+		return s.toString();
+	}
+
 
 	
 	

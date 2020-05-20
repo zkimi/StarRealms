@@ -51,6 +51,11 @@ public class MainGame {
 				
 			}else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
 	        	System.out.println(event.getKey().toString());
+	        	//il faut tout de meme finir le tour
+	        	p1.endTurn();
+				p1.second();
+				p2.first();
+				p2.pickCardsInHand(5);
 	        	Save.gameVsPlayerSave(context, p1, p2);
 	        	context.exit(0);
 	        	return;

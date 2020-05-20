@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import fr.umlv.zen5.ApplicationContext;
+import gameComponent.Market;
 import gameComponent.Player;
 import graphic.graphicSave;
 
@@ -49,6 +50,11 @@ public class Save {
 				s.append("Table: "+p2.tableToString()+"\n");
 				s.append("Hand: "+p2.handToString()+"\n");
 				s.append("Discarding: "+p2.discardToString()+"\n");
+				
+				//On finit par le market
+				s.append("Explorer: "+Market.explorerToString()+"\n");
+				s.append("Market: "+Market.marketToString()+"\n");
+				s.append("Shown: "+Market.showMarketToString()+"\n");
 				
 				writer.write(s.toString());
 				writer.flush();
