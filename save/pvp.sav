@@ -1,0 +1,22 @@
+Mode: PlayerVsPlayer 
+Player Joueur 1
+Id: 2
+Life: 50
+Money: 0
+Damage: 0
+Cards: Scout, Scout, Viper, Scout, Scout, Scout, Scout, 
+Table: 
+Hand: Scout, Scout, Viper, 
+Discarding: 
+Player Joueur 2
+Id: 1
+Life: 50
+Money: 0
+Damage: 0
+Cards: Viper, Scout, Scout, Scout, Scout, 
+Table: 
+Hand: Scout, Viper, Scout, Scout, Scout, 
+Discarding: 
+Explorer: Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, 
+Market: Battlecruiser, Missile Bot, Imperial Frigate, Battle Station, Blob Destroyer, Blob Wheel, Dreadnaught, Fleet HQ, Ram, Trade Bot, Imperial Frigate, Patrol Mech, Blob Wheel, Space Station, Imperial Fighter, Embassy Yacht, Freighter, Space Station, Missile Bot, Ram, Battle Station, Blob Carrier, Stealth Needle, Survey Ship, Blob Destroyer, Blob World, Trade Pod, Blob Fighter, Barter World, Supply Bot, Trade Bot, Freighter, Cutter, Battle Pod, Patrol Mech, Imperial Frigate, Cutter, Supply Bot, Trading Post, Battle Blob, Trade Bot, Trade Pod, War World, Mothership, Federation Shuttle, Imperial Fighter, Recycling Station, Blob Fighter, Royal Redoubt, Recycling Station, Brain World, Federation Shuttle, Corvette, Imperial Fighter, Blob Fighter, Missile Mech, Port Of Call, Battle Mech, Barter World, Command Ship, Trade Escort, Embassy Yacht, Trade Pod, Defense Center, Battle Pod, Machine Base, Blob Wheel, The Hive, Survey Ship, Mech World, Missile Bot, Cutter, Supply Bot, Federation Shuttle, Corvette, 
+Shown: Junkyard, Flagship, Central Office, Trading Post, Survey Ship, 

@@ -22,9 +22,9 @@ import fr.umlv.zen5.ScreenInfo;
 import fr.umlv.zen5.Event.Action;
 import gameComponent.Player;
 
-public class graphicLoad {
+public class GraphicLoad {
 
-	public static int controller(ApplicationContext context) {
+	public static String controller(ApplicationContext context) {
 		String name = "";
 		for(;;) {
 			draw(context, name);
@@ -45,12 +45,9 @@ public class graphicLoad {
 				boolean state_file = verifyFile(name);
 				
 				if (state_file) {
-					try {
-						decryptSave(name);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+					return name;
 				} else {
+					System.out.println("Le fichier n'existe pas.");
 					context.exit(0);
 				}
 				
@@ -88,7 +85,7 @@ public class graphicLoad {
 	}
 	
 	private static boolean verifyFile(String name) {		
-		Path path = Path.of("saves/"+name+".sav");
+		Path path = Path.of("save/"+name+".sav");
 		
 		if (Files.isReadable(path)) { // si le fichier est lisible
 			System.out.println("Le fichier "+name+".sav"+" existe.");
@@ -98,18 +95,7 @@ public class graphicLoad {
 		return false;
 	}
 	
-	private static void decryptSave(String name) throws IOException{
-		Path path = Path.of("saves/"+name+".sav");
 
-		try (BufferedReader reader = Files.newBufferedReader(path,Charset.forName("ISO-8859-1"))){
-			String line;
-			System.out.println("Lecture de la sauvegarde "+name);
-
-			for (int i = 1; (line=reader.readLine()) != null; i++) {
-				System.out.println(line);
-			}
-		}
-	}
 		
 
 	
