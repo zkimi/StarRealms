@@ -222,6 +222,13 @@ public class Market {
 		market.add(CoreSet.dreadnaught);
 		market.add(CoreSet.warWorld);
 		market.add(CoreSet.flagship);
+		market.add(United.embassyBase);
+		market.add(United.exchangePoint);
+		market.add(United.lookoutPost);
+		market.add(United.unionStronghold);
+		market.add(United.allianceLanding);
+		market.add(United.coalitionFortress);
+		market.add(United.unionCluster);
 		for (int i = 0; i < 3; i++) {
 			market.add(CoreSet.surveyShip);
 			market.add(CoreSet.imperialFrigate);
@@ -248,6 +255,14 @@ public class Market {
 			market.add(CoreSet.corvette);
 			market.add(CoreSet.spaceStation);
 			market.add(CoreSet.embassyYacht);
+			market.add(United.allianceTransport);
+			market.add(United.blobBot);
+			market.add(United.coalitionMessenger);
+			market.add(United.tradeStar);
+			market.add(United.allianceFrigate);
+			market.add(United.assaultPod);
+			market.add(United.coalitionFreighter);
+			market.add(United.unityFighter);
 		}
 		
 		for (int i = 0; i < 10; i++) {
