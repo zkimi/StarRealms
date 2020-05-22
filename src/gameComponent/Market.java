@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import cardInfo.Cards;
+import cardsDetails.ColonyWars;
 import cardsDetails.CoreSet;
 import cardsDetails.United;
 
@@ -58,6 +59,28 @@ public class Market {
 		United.allianceTransport.addAlly("Authority", 4);
 		United.blobBot.addAlly("TradePoint", 5); // seulement pour fac blob ?! comment faire
 		
+		/* EXTENSION COLONYWARS */
+		ColonyWars.cargoPod.addAlly("AttackPoint", 3);
+		ColonyWars.predator.addAlly("Draw", 1);
+		ColonyWars.swarmer.addAlly("AttackPoint", 2);
+		ColonyWars.battleBot.addAlly("AttackPoint", 2);
+		ColonyWars.convoyBot.addAlly("AttackPoint", 2);
+		ColonyWars.miningMech.addAlly("AttackPoint", 3);
+		ColonyWars.theOracle.addAlly("AttackPoint", 3);
+		ColonyWars.theWrecker.addAlly("Draw", 1);
+		ColonyWars.agingBattleship.addAlly("Draw", 2);
+		ColonyWars.heavyCruiser.addAlly("Draw", 1);
+		ColonyWars.imperialPalace.addAlly("AttackPoint", 4);
+		ColonyWars.lancer.addAlly("OpponentDiscard", 1);
+		ColonyWars.orbitalPlatform.addAlly("AttackPoint", 3);
+		ColonyWars.starBarge.addAlly("AttackPoint", 2);
+		ColonyWars.starBarge.addAlly("OpponentDiscard", 1);
+		ColonyWars.supplyDepot.addAlly("Draw", 1);
+		ColonyWars.patrolCutter.addAlly("Authority", 4);
+		ColonyWars.peacekeeper.addAlly("Draw", 1);
+		ColonyWars.solarSkiff.addAlly("Draw", 1);
+		ColonyWars.storageSilo.addAlly("TradePoint", 2);
+		ColonyWars.tradeHauler.addAlly("Authority", 3);
 	}
 	
 	private static void initializeScrap() {//initialise les capacités scrap
@@ -86,6 +109,15 @@ public class Market {
 		
 		/* PACK UNITED */
 		United.tradeStar.addScrap("AttackPoint", 2);
+		
+		/* EXTENSION COLONYWARS */
+		ColonyWars.bioformer.addScrap("TradePoint", 3);
+		ColonyWars.cargoPod.addScrap("AttackPoint", 3);
+		ColonyWars.stellarReef.addScrap("AttackPoint", 3);
+		ColonyWars.repairBot.addScrap("AttackPoint", 2);
+		ColonyWars.agingBattleship.addScrap("AttackPoint", 2);
+		ColonyWars.agingBattleship.addScrap("Draw", 2);
+		ColonyWars.gunship.addScrap("TradePoint", 4);
 	}
 	
 	private static void initializeCapacity() {//initialise les capacités de toutes les cartes
@@ -192,6 +224,60 @@ public class Market {
 		United.unityFighter.addCapacity("AttackPoint", 3);
 		/* unity Station cap spé a faire */
 		
+		/* EXTENSION COLONYWARS */
+		ColonyWars.bioformer.addCapacity("AttackPoint", 3);
+		ColonyWars.cargoPod.addCapacity("TradePoint", 3);
+		ColonyWars.leviathan.addCapacity("AttackPoint", 9);
+		ColonyWars.leviathan.addCapacity("Draw", 1);
+		ColonyWars.moonwurm.addCapacity("AttackPoint", 8);
+		ColonyWars.moonwurm.addCapacity("Draw", 1);
+		/* parasite choix spé */
+		ColonyWars.plasmaVent.addCapacity("AttackPoint", 4);
+		ColonyWars.predator.addCapacity("AttackPoint", 4);
+		ColonyWars.ravager.addCapacity("AttackPoint", 6);
+		ColonyWars.stellarReef.addCapacity("TradePoint", 1);
+		ColonyWars.swarmer.addCapacity("AttackPoint", 3);
+		ColonyWars.battleBot.addCapacity("AttackPoint", 2);
+		ColonyWars.convoyBot.addCapacity("AttackPoint", 4);
+		ColonyWars.frontierStation.addCapacity("Choice", 223);
+		ColonyWars.mechCruiser.addCapacity("AttackPoint", 4);
+		ColonyWars.miningMech.addCapacity("TradePoint", 3);
+		ColonyWars.repairBot.addCapacity("TradePoint", 2);
+		/* stealth tower, the incenarator capa spé */
+		ColonyWars.theWrecker.addCapacity("AttackPoint", 6);
+		ColonyWars.warningBeacon.addCapacity("AttackPoint", 2);
+		ColonyWars.agingBattleship.addCapacity("AttackPoint", 5);
+		ColonyWars.commandCenter.addCapacity("TradePoint", 2);
+		ColonyWars.emperorsDreadnaught.addCapacity("AttackPoint", 8);
+		ColonyWars.emperorsDreadnaught.addCapacity("Draw", 1);
+		ColonyWars.falcon.addCapacity("AttackPoint", 2);
+		ColonyWars.falcon.addCapacity("Draw", 1);
+		ColonyWars.gunship.addCapacity("AttackPoint", 5);
+		ColonyWars.heavyCruiser.addCapacity("AttackPoint", 4);
+		ColonyWars.imperialPalace.addCapacity("OpponentDiscard", 1);
+		ColonyWars.imperialPalace.addCapacity("Draw", 1);
+		ColonyWars.lancer.addCapacity("AttackPoint", 4);
+		// orbitalplatform capa spé
+		ColonyWars.starBarge.addCapacity("TradePoint", 2);
+		// supply depot capa spé
+		ColonyWars.centralStation.addCapacity("TradePoint", 2);
+		ColonyWars.colonySeedShip.addCapacity("TradePoint", 3);
+		ColonyWars.colonySeedShip.addCapacity("AttackPoint", 3);
+		ColonyWars.colonySeedShip.addCapacity("Authority", 3);
+		ColonyWars.factoryWorld.addCapacity("TradePoint", 3);
+		ColonyWars.federationShipyard.addCapacity("TradePoint", 2);
+		ColonyWars.frontierFerry.addCapacity("TradePoint", 3);
+		ColonyWars.frontierFerry.addCapacity("Authority", 4);
+		ColonyWars.loyalColony.addCapacity("TradePoint", 3);
+		ColonyWars.loyalColony.addCapacity("AttackPoint", 3);
+		ColonyWars.loyalColony.addCapacity("Authority", 3);
+		ColonyWars.patrolCutter.addCapacity("TradePoint", 2);
+		ColonyWars.patrolCutter.addCapacity("AttackPoint", 3);
+		ColonyWars.peacekeeper.addCapacity("AttackPoint", 6);
+		ColonyWars.peacekeeper.addCapacity("Authority", 6);
+		ColonyWars.solarSkiff.addCapacity("TradePoint", 2);
+		ColonyWars.storageSilo.addCapacity("Authority", 2);
+		ColonyWars.tradeHauler.addCapacity("TradePoint", 3);
 	}
 	
 	public static void initializeCards() {
