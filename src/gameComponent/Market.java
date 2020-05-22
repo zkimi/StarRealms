@@ -229,6 +229,10 @@ public class Market {
 		market.add(United.allianceLanding);
 		market.add(United.coalitionFortress);
 		market.add(United.unionCluster);
+		market.add(United.ceoShaner);
+		market.add(United.commodoreZhang);
+		market.add(United.confessorMorris);
+		market.add(United.hiveLord);
 		for (int i = 0; i < 3; i++) {
 			market.add(CoreSet.surveyShip);
 			market.add(CoreSet.imperialFrigate);
@@ -263,6 +267,10 @@ public class Market {
 			market.add(United.assaultPod);
 			market.add(United.coalitionFreighter);
 			market.add(United.unityFighter);
+			market.add(United.chairmanHaygan);
+			market.add(United.chancellorHartman);
+			market.add(United.commanderKlik);
+			market.add(United.screecher);
 		}
 		
 		for (int i = 0; i < 10; i++) {
