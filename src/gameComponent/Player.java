@@ -200,7 +200,7 @@ public class Player {
 				addCard(cards.get(0), hand);
 				removeCard(cards.get(0), cards);
 			}
-		} else if (difference_deck_defausse >= 0) {
+		} else if (difference_deck_defausse >= 0) { // si la diff entre le nombre demandé et le DECK + la défausse est supérieur à zéro 
 			
 			int temp = number-cards.size();
 			
@@ -350,6 +350,18 @@ public class Player {
 			s.append(c.getTitle()+", ");
 		}
 		return s.toString();
+	}
+	
+	public void setAuthority(int nb) {
+		defensePoints = nb;
+	}
+	
+	public void setTradePoints(int nb) {
+		tradePoints = nb;
+	}
+	
+	public void setAttackPoints(int nb) {
+		fightPoints = nb;
 	}
 }
 

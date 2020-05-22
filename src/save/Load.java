@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 import fr.umlv.zen5.ApplicationContext;
+import gameComponent.Player;
 import graphic.GraphicLoad;
 
 public class Load {
@@ -23,8 +24,9 @@ public class Load {
 			System.out.println(gameMode);
 			
 			if (gameMode.equals("PlayerVsPlayer")) {
+				decryptSave(lines, "PVP");
 				System.out.println("Sauvegarde PlayerVsPlayer");
-				context.exit(0);
+				//context.exit(0);
 				
 			}else if(gameMode.equals("PlayerVsBot")) {
 				System.out.println("Sauvegarde PlayerVsBot");
@@ -47,5 +49,22 @@ public class Load {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static void decryptSave(List<String> lines, String mode) {
+		
+		// detection joueur 1
+		//if (lines.get(2).startsWith("Player") && mode.equals("PVP")) {
+			
+			Player p1 = new Player(lines.get(2).split("Player")[1]);
+			p1.setAuthority(Integer.parseInt(lines.get(4).split(":")[1])); // restauration de l'influence
+			p1.setTradePoints(Integer.parseInt(lines.get(5).split(":")[1]));
+			p1.setAttackPoints(Integer.parseInt(lines.get(6).split(":")[1]));
+			
+			System.out.println(lines.get(7).split(":")[1].split(","));
+			
+		//}
+		
+		
 	}
 }
