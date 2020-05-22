@@ -26,9 +26,9 @@ public class Save {
 				StringBuilder s = new StringBuilder();
 				
 				if (p1.getType() == "Bot" || p2.getType() == "Bot") {//On regarde si on est en pvp ou pvbot
-					s.append("Mode: PlayerVsBot \n");
+					s.append("Mode: PlayerVsBot\n");
 				}else{
-					s.append("Mode: PlayerVsPlayer \n");
+					s.append("Mode: PlayerVsPlayer\n");
 				}
 				
 				//on écrit ensuite les utilisateurs
@@ -74,7 +74,7 @@ public class Save {
 			try(BufferedWriter writer = Files.newBufferedWriter(p, charset)){				
 				StringBuilder s = new StringBuilder();
 				
-				s.append("Mode: ManHunt \n");
+				s.append("Mode: ManHunt\n");
 				s.append("Turn: "+Integer.toString(turn)+"\n");
 				
 				for (Player player : playerList) {
@@ -114,7 +114,7 @@ public class Save {
 			try(BufferedWriter writer = Files.newBufferedWriter(p, charset)){				
 				StringBuilder s = new StringBuilder();
 				
-				s.append("Mode: DeathMatch \n");
+				s.append("Mode: DeathMatch\n");
 				s.append("Turn: "+Integer.toString(turn)+"\n");
 				
 				for (Player player : playerList) {

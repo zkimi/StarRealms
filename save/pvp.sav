@@ -1,22 +1,22 @@
-Mode: PlayerVsPlayer 
-Player Joueur 1
+Mode: PlayerVsPlayer
+Player Joueur 2
 Id: 2
 Life: 50
 Money: 0
 Damage: 0
-Cards: Scout, Scout, Viper, Scout, Scout, Scout, Scout, 
+Cards: Scout, Scout, Scout, Scout, Scout, Viper, Scout, 
 Table: 
 Hand: Scout, Scout, Viper, 
 Discarding: 
-Player Joueur 2
+Player Joueur 1
 Id: 1
 Life: 50
 Money: 0
 Damage: 0
 Cards: Viper, Scout, Scout, Scout, Scout, 
 Table: 
-Hand: Scout, Viper, Scout, Scout, Scout, 
+Hand: Scout, Scout, Scout, Scout, Viper, 
 Discarding: 
 Explorer: Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, 
-Market: Battlecruiser, Missile Bot, Imperial Frigate, Battle Station, Blob Destroyer, Blob Wheel, Dreadnaught, Fleet HQ, Ram, Trade Bot, Imperial Frigate, Patrol Mech, Blob Wheel, Space Station, Imperial Fighter, Embassy Yacht, Freighter, Space Station, Missile Bot, Ram, Battle Station, Blob Carrier, Stealth Needle, Survey Ship, Blob Destroyer, Blob World, Trade Pod, Blob Fighter, Barter World, Supply Bot, Trade Bot, Freighter, Cutter, Battle Pod, Patrol Mech, Imperial Frigate, Cutter, Supply Bot, Trading Post, Battle Blob, Trade Bot, Trade Pod, War World, Mothership, Federation Shuttle, Imperial Fighter, Recycling Station, Blob Fighter, Royal Redoubt, Recycling Station, Brain World, Federation Shuttle, Corvette, Imperial Fighter, Blob Fighter, Missile Mech, Port Of Call, Battle Mech, Barter World, Command Ship, Trade Escort, Embassy Yacht, Trade Pod, Defense Center, Battle Pod, Machine Base, Blob Wheel, The Hive, Survey Ship, Mech World, Missile Bot, Cutter, Supply Bot, Federation Shuttle, Corvette, 
-Shown: Junkyard, Flagship, Central Office, Trading Post, Survey Ship, 
+Market: Recycling Station, Battle Pod, Cutter, Barter World, Missile Bot, Royal Redoubt, Survey Ship, Trade Bot, Mech World, Imperial Fighter, Imperial Frigate, Trade Pod, Federation Shuttle, Space Station, Trading Post, Freighter, Missile Bot, Federation Shuttle, Blob Destroyer, War World, Defense Center, Barter World, Survey Ship, Trade Escort, Survey Ship, Stealth Needle, Dreadnaught, Supply Bot, Federation Shuttle, Ram, Blob Fighter, Missile Bot, Mothership, Trade Bot, Battle Mech, Space Station, Machine Base, Blob Destroyer, The Hive, Imperial Frigate, Patrol Mech, Embassy Yacht, Trade Bot, Junkyard, Trade Pod, Cutter, Flagship, Command Ship, Fleet HQ, Port Of Call, Supply Bot, Central Office, Brain World, Corvette, Blob Carrier, Patrol Mech, Blob Fighter, Battle Pod, Corvette, Trade Pod, Cutter, Battle Station, Recycling Station, Ram, Imperial Fighter, Imperial Fighter, Blob Fighter, Freighter, Supply Bot, Embassy Yacht, Trading Post, Imperial Frigate, Battlecruiser, Missile Mech, Battle Station, 
+Shown: Blob Wheel, Blob Wheel, Blob Wheel, Blob World, Battle Blob, 

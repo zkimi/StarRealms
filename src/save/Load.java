@@ -22,26 +22,34 @@ public class Load {
 			String gameMode = lines.get(0).split(": ")[1];
 			System.out.println(gameMode);
 			
-			if (gameMode.equals("PlayerVsPlayer")) {
-				System.out.println("Sauvegarde PlayerVsPlayer");
-				context.exit(0);
+			switch (gameMode) {
+				case "PlayerVsPlayer":
+					System.out.println("Sauvegarde PlayerVsPlayer");
+					context.exit(0);
+					break;
+					
+				case "PlayerBot":
+					System.out.println("Sauvegarde PlayerVsPlayer");
+					context.exit(0);
+					break;
+			
+				case "ManHunt":
+					System.out.println("Sauvegarde ManHunt");
+					context.exit(0);
+					break;
 				
-			}else if(gameMode.equals("PlayerBot")) {
-				System.out.println("Sauvegarde PlayerVsBot");
-				context.exit(0);
-				
-			}else if(gameMode.equals("ManHunt")) {
-				System.out.println("Sauvegarde ManHunt");
-				context.exit(0);
-				
-			}else if(gameMode.equals("DeathMatch")) {
-				System.out.println("Sauvegarde DeathMatch");
-				context.exit(0);
-			}else{
-				System.out.println("Sauvegarde corrompue");
-				context.exit(0);
+				case "DeathMatch":
+					System.out.println("Sauvegarde DeathMatch");
+					context.exit(0);
+					break;
+					
+
+				default:
+					System.out.println("Sauvegarde corrompue");
+					context.exit(0);
+					break;
 			}
-				
+			
 			
 		} catch (IOException e) {	
 			e.printStackTrace();
