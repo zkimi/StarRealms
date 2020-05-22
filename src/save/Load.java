@@ -26,7 +26,7 @@ public class Load {
 				System.out.println("Sauvegarde PlayerVsPlayer");
 				context.exit(0);
 				
-			}else if(gameMode.equals("PlayerBot")) {
+			}else if(gameMode.equals("PlayerVsBot")) {
 				System.out.println("Sauvegarde PlayerVsBot");
 				context.exit(0);
 				
