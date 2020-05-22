@@ -192,32 +192,30 @@ public class Player {
 	
 	public ArrayList<Cards> pickCardsInHand(int number){
 		
-		if (number <= cards.size()) { // sinon il pioche le bon nombre de cartes
-			System.out.println("taille de cards :" + cards.size() + " et contenu :" + cards);
+		int difference = cards.size() - number; // on regarde deja si on peut contenir la somme demandée dans le deck du joueur.
+		int difference_deck_defausse = cards.size()+discarding.size() - number;
+		
+		if (difference >= 0) { // si la diff est supérieur ou égale à zéro C OK.
 			for (int i = 0; i < number; i++) {
-				
 				addCard(cards.get(0), hand);
-				removeCard(cards.get(0), cards); // idem
-				
+				removeCard(cards.get(0), cards);
 			}
-		} else if (number <= cards.size()+discarding.size()) { // Si le nombre de cartes que doit piocher le joueur est plus grand que ses cartes dispo alors il piochera les cartes restantes.
+		} else if (difference_deck_defausse >= 0) {
 			
-			int diff = number - cards.size();
+			int temp = number-cards.size();
 			
 			for (int i = 0; i < cards.size(); i++) {
-				addCard(cards.get(i), hand);
-				removeCard(cards.get(i), cards);
+				addCard(cards.get(0), hand);
+				removeCard(cards.get(0), cards);
 			}
 			
-			// on check si la main possède le nombre
-			if (hand.size() != number) {
-				if (discarding.size()>0) {
-					replaceCards();
-					pickCardsInHand(diff);
-				}
+			for (int i = 0; i < temp; i++) {
+				addCard(discarding.get(0), hand);
+				removeCard(discarding.get(0), discarding);
 			}
-
+			
 		} 
+		
 		return hand;
 	}
 	
