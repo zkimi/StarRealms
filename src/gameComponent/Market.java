@@ -319,6 +319,26 @@ public class Market {
 		market.add(United.commodoreZhang);
 		market.add(United.confessorMorris);
 		market.add(United.hiveLord);
+		market.add(ColonyWars.leviathan);
+		market.add(ColonyWars.moonwurm);
+		market.add(ColonyWars.parasite);
+		market.add(ColonyWars.plasmaVent);
+		market.add(ColonyWars.frontierStation);
+		market.add(ColonyWars.mechCruiser);
+		market.add(ColonyWars.stealthTower);
+		market.add(ColonyWars.theIncinerator);
+		market.add(ColonyWars.theOracle);
+		market.add(ColonyWars.theWrecker);
+		market.add(ColonyWars.agingBattleship);
+		market.add(ColonyWars.emperorsDreadnaught);
+		market.add(ColonyWars.heavyCruiser);
+		market.add(ColonyWars.imperialPalace);
+		market.add(ColonyWars.supplyDepot);
+		market.add(ColonyWars.colonySeedShip);
+		market.add(ColonyWars.factoryWorld);
+		market.add(ColonyWars.federationShipyard);
+		market.add(ColonyWars.loyalColony);
+		market.add(ColonyWars.peacekeeper);
 		for (int i = 0; i < 3; i++) {
 			market.add(CoreSet.surveyShip);
 			market.add(CoreSet.imperialFrigate);
@@ -331,6 +351,20 @@ public class Market {
 			market.add(CoreSet.tradePod);
 			market.add(CoreSet.cutter);
 			market.add(CoreSet.federationShuttle);
+			market.add(ColonyWars.cargoPod);
+			market.add(ColonyWars.predator);
+			market.add(ColonyWars.stellarReef);
+			market.add(ColonyWars.swarmer);
+			market.add(ColonyWars.battleBot);
+			market.add(ColonyWars.convoyBot);
+			market.add(ColonyWars.repairBot);
+			market.add(ColonyWars.warningBeacon);
+			market.add(ColonyWars.lancer);
+			market.add(ColonyWars.orbitalPlatform);
+			market.add(ColonyWars.starBarge);
+			market.add(ColonyWars.patrolCutter);
+			market.add(ColonyWars.solarSkiff);
+			market.add(ColonyWars.tradeHauler);
 		}
 		for (int i = 0; i < 2; i++) {
 			market.add(CoreSet.tradingPost);
@@ -357,6 +391,15 @@ public class Market {
 			market.add(United.chancellorHartman);
 			market.add(United.commanderKlik);
 			market.add(United.screecher);
+			market.add(ColonyWars.bioformer);
+			market.add(ColonyWars.ravager);
+			market.add(ColonyWars.miningMech);
+			market.add(ColonyWars.commandCenter);
+			market.add(ColonyWars.falcon);
+			market.add(ColonyWars.gunship);
+			market.add(ColonyWars.centralStation);
+			market.add(ColonyWars.frontierFerry);
+			market.add(ColonyWars.storageSilo);
 		}
 		
 		for (int i = 0; i < 10; i++) {
