@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Random;
 import cardInfo.Cards;
 import cardsDetails.CoreSet;
+import cardsDetails.United;
 
 public class Market {
 	private static ArrayList<Cards> explorers = new ArrayList<>(); // pile explorers
@@ -53,6 +54,10 @@ public class Market {
 		// freighter you may put the next ship...
 		CoreSet.tradeEscort.addAlly("Draw", 1);
 		
+		/* PACK UNITED */
+		United.allianceTransport.addAlly("Authority", 4);
+		United.blobBot.addAlly("TradePoint", 5); // seulement pour fac blob ?! comment faire
+		
 	}
 	
 	private static void initializeScrap() {//initialise les capacités scrap
@@ -78,6 +83,9 @@ public class Market {
 		CoreSet.tradingPost.addScrap("AttackPoint", 3);
 		
 		CoreSet.explorer.addScrap("AttackPoint", 2);
+		
+		/* PACK UNITED */
+		United.tradeStar.addScrap("AttackPoint", 2);
 	}
 	
 	private static void initializeCapacity() {//initialise les capacités de toutes les cartes
@@ -163,7 +171,27 @@ public class Market {
 		
 		CoreSet.explorer.addCapacity("TradePoint", 2);
 		CoreSet.scout.addCapacity("TradePoint", 1);
-		CoreSet.viper.addCapacity("AttackPoint", 1);		
+		CoreSet.viper.addCapacity("AttackPoint", 1);	
+		
+		
+		/* PACK UNITED */
+		United.allianceTransport.addCapacity("TradePoint", 2);
+		United.blobBot.addCapacity("AttackPoint", 5);
+		United.coalitionMessenger.addCapacity("TradePoint", 2);
+		/* Embassy BASE cap spé a faire */
+		United.exchangePoint.addCapacity("AttackPoint", 2);
+		United.lookoutPost.addCapacity("Draw", 1);
+		United.tradeStar.addCapacity("TradePoint", 2);
+		United.unionStronghold.addCapacity("AttackPoint", 3);
+		United.allianceFrigate.addCapacity("AttackPoint", 4);
+		United.allianceLanding.addCapacity("TradePoint", 2);
+		United.assaultPod.addCapacity("AttackPoint", 3);
+		United.coalitionFortress.addCapacity("TradePoint", 2);
+		United.coalitionFreighter.addCapacity("TradePoint", 3);
+		United.unionCluster.addCapacity("AttackPoint", 4);
+		United.unityFighter.addCapacity("AttackPoint", 3);
+		/* unity Station cap spé a faire */
+		
 	}
 	
 	public static void initializeCards() {

@@ -19,7 +19,7 @@ public class Load {
 			lines = Files.readAllLines(p, StandardCharsets.UTF_8);
 			System.out.println(lines.get(0));
 			
-			String gameMode = lines.get(0).split(": ")[1];
+			String gameMode = lines.get(0).split(": ")[1].replaceAll("\\s+","");
 			System.out.println(gameMode);
 			
 			if (gameMode.equals("PlayerVsPlayer")) {
