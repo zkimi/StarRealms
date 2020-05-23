@@ -1,5 +1,7 @@
 package cardsDetails;
 
+import java.util.HashMap;
+
 import cardInfo.Base;
 import cardInfo.Cards;
 import cardInfo.Hero;
@@ -7,6 +9,8 @@ import cardInfo.Mission;
 import cardInfo.Ship;
 
 public class United {
+	
+	public static HashMap<String, Cards> united = new HashMap<String, Cards>();
 	
 	/* ASSAULT */
 	
@@ -90,5 +94,47 @@ public class United {
 	public static Cards rule = new Mission("Rule", "desc.", 0, "Unaligned");
 	
 	public static Cards unite = new Mission("Unite", "desc.", 0, "Unaligned");
+	
+	public static void initUnited() {
+		united.put("Alliance Transport", allianceTransport);
+		united.put("Blob Bot",blobBot);
+	  	united.put("Coalition Messenger",coalitionMessenger);
+		united.put("Embassy Base",embassyBase);
+		united.put("Exchange Point",exchangePoint);
+		united.put("Lookout Post",lookoutPost);
+		united.put("Trade Star",tradeStar);
+		united.put("Union Stronghold",unionStronghold);
+
+		united.put("Alliance Frigate",allianceFrigate);
+		united.put("Alliance Landing",allianceLanding);
+		united.put("Assault Pod",assaultPod);
+		united.put("Coalition Fortress",coalitionFortress);
+		united.put("Coalition Freighter",coalitionFreighter);
+		united.put("Union Cluster",unionCluster);
+		united.put("Unity Fighter",unityFighter);
+		united.put("Unity Station",unityStation);
+
+		united.put("CEO Shaner",ceoShaner);
+		united.put("Chairman Haygan",chairmanHaygan);
+		united.put("Chancellor Hartman",chancellorHartman);
+		united.put("Commander Klik",commanderKlik);
+		united.put("Commodore Zhang",commodoreZhang);
+		united.put("Confessor Morris",confessorMorris);
+		united.put("Hive Lord",hiveLord);
+		united.put("Screecher",screecher);
+
+		united.put("Ally",ally);
+		united.put("Armada",armada);
+		united.put("Colonize",colonize);
+		united.put("Convert",convert);
+		united.put("Defend",defend);
+		united.put("Diversify",diversify);
+		united.put("Dominate",dominate);
+		united.put("Exterminate",exterminate);
+		united.put("Influence",influence);
+		united.put("Monopolize",monopolize);
+		united.put("Rule",rule);
+		united.put("Unite",unite);
+	}
 
 }

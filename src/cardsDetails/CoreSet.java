@@ -1,11 +1,16 @@
 package cardsDetails;
 
+import java.util.HashMap;
+
 import cardInfo.Base;
 import cardInfo.Cards;
 import cardInfo.Explorer;
 import cardInfo.Ship;
 
 public class CoreSet {
+	
+	public static HashMap<String, Cards> coreSet = new HashMap<String, Cards>();
+
 	/* BLOB */
 	
 	public static Cards battleBlob = new Ship("Battle Blob", "Draw a card.", 6, "Blob");
@@ -115,6 +120,62 @@ public class CoreSet {
 	public static Cards scout = new Ship("Scout", "desc.", 0, "Unaligned");
 	
 	public static Cards viper = new Ship("Viper", "desc.", 0, "Unaligned");
+	
+	public static void initCoreSet() {
+		coreSet.put("Battle Blob",battleBlob);
+		coreSet.put("Battle Pod",battlePod);
+		coreSet.put("Blob Carrier",blobCarrier);
+		coreSet.put("Blob Destroyer",blobDestroyer);
+		coreSet.put("Blob Fighter",blobFighter);
+		coreSet.put("Blob Wheel",blobWheel);
+		coreSet.put("Blob World",blobWorld);
+		coreSet.put("Mothership ",mothership);
+		coreSet.put("Ram",ram);
+		coreSet.put("The Hive",theHive);
+		coreSet.put("Trade Pod",tradePod);
+
+		coreSet.put("Battle Mech",battleMech);
+		coreSet.put("Battle Station",battleStation);
+		coreSet.put("Brain World",brainWorld);
+		coreSet.put("Junkyard",junkyard);
+		coreSet.put("Machine Base",machineBase);
+		coreSet.put("Mech World",mechWorld);
+		coreSet.put("Missile Bot ",missileBot);
+		coreSet.put("Missile Mech",missileMech);
+		coreSet.put("Patrol Mech",patrolMech);
+		coreSet.put("Stealth Needle",stealthNeedle);
+		coreSet.put("Supply Bot",supplyBot);
+		coreSet.put("Trade Bot",tradeBot);
+
+		coreSet.put("Battlecruiser",battleCruiser);
+		coreSet.put("Corvette",corvette);
+		coreSet.put("Dreadnaught",dreadnaught);
+		coreSet.put("Fleet HQ",fleetHQ);
+		coreSet.put("Imperial Fighter",imperialFighter);
+		coreSet.put("Imperial Frigate",imperialFrigate);
+		coreSet.put("Recycling Station ",recyclingStation);
+		coreSet.put("Royal Redoubt",royalRedoubt);
+		coreSet.put("Space Station",spaceStation);
+		coreSet.put("Survey Ship",surveyShip);
+		coreSet.put("War World",warWorld);
+
+		coreSet.put("Barter World",barterWorld);
+		coreSet.put("Central Office",centralOffice);
+		coreSet.put("Command Ship",commandShip);
+		coreSet.put("Cutter",cutter);
+		coreSet.put("Defense Center",defenseCenter);
+		coreSet.put("Embassy Yacht",embassyYacht);
+		coreSet.put("Federation Shuttle",federationShuttle);
+		coreSet.put("Flagship",flagship);
+		coreSet.put("Freighter",freighter);
+		coreSet.put("Port of Call",portOfCall);
+		coreSet.put("Trade Escort ",tradeEscort);
+		coreSet.put("Trading Post",tradingPost);
+
+		coreSet.put("Explorer",explorer);
+		coreSet.put("Scout",scout);
+		coreSet.put("Viper",viper);
+	}
 	
 
 }

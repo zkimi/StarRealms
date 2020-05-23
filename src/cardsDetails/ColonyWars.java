@@ -1,10 +1,14 @@
 package cardsDetails;
 
+import java.util.HashMap;
+
 import cardInfo.Base;
 import cardInfo.Cards;
 import cardInfo.Ship;
 
 public class ColonyWars {
+	
+	public static HashMap<String, Cards> colonyWars = new HashMap<String, Cards>();
 
 	public static Cards bioformer = new Base(false, 4, "Bioformer", "desc", 4, "Blob");
 
@@ -91,5 +95,99 @@ public class ColonyWars {
 	public static Cards storageSilo = new Base(false,3, "Storage Silo", "desc", 2, "Trade Federation");
 	
 	public static Cards tradeHauler = new Ship("Trade Hauler", "desc.", 2, "Trade Federation");
+	
+	public static void initColonyWars() {
+		
+		colonyWars.put("Bioformer",bioformer);
+		
+		colonyWars.put("Cargo Pod",cargoPod);
+		
+		colonyWars.put("Leviathan",leviathan);
+		
+		colonyWars.put("Moonwurm",moonwurm);
+		
+		colonyWars.put("Parasite",parasite);
+		
+		colonyWars.put("Plasma Vent", plasmaVent);
+		
+		colonyWars.put("Predator",plasmaVent);
+		
+		colonyWars.put("Ravager",ravager);
+		
+		colonyWars.put("Stellar Reef",stellarReef);
+		
+		colonyWars.put("Swarmer", swarmer);
+		
+		colonyWars.put("Predator", predator);
+		
+		colonyWars.put("Stellar Reef",stellarReef);
+		
+		colonyWars.put("Battle Bot", battleBot);
+		
+		colonyWars.put("Convoy Bot", convoyBot);
+		
+		colonyWars.put("Frontier Station", frontierStation);
+		
+		colonyWars.put("Mech Cruiser", mechCruiser);
+		
+		colonyWars.put("Mining Mech", miningMech);
+		
+		colonyWars.put("Repair Bot", repairBot);
+		
+		colonyWars.put("Stealth Tower", stealthTower);
+		
+		colonyWars.put("The Incinerator", theIncinerator);
+		
+		colonyWars.put("The Oracle", theOracle);
+		
+		colonyWars.put("The Wrecker", theWrecker);
+		
+		colonyWars.put("Warning Beacon", warningBeacon);
+		
+		colonyWars.put("Aging Battleship", agingBattleship);
+		
+		colonyWars.put("Command Center", commandCenter);
+		
+		colonyWars.put("Emperors Dreadnaught", emperorsDreadnaught);
+		
+		colonyWars.put("Falcon", falcon);
+		
+		colonyWars.put("Gunship", gunship);
+		
+		colonyWars.put("Heavy Cruiser", heavyCruiser);
+		
+		colonyWars.put("Imperial Palace", imperialPalace);
+		
+		colonyWars.put("Lancer",lancer);
+		
+		colonyWars.put("Orbital Platform", orbitalPlatform);
+		
+		colonyWars.put("Star Barge", starBarge);
+		
+		colonyWars.put("Supply Depot", supplyDepot);
+		
+		colonyWars.put("Central Station", centralStation);
+		
+		colonyWars.put("Colony Seed Ship", colonySeedShip);
+		
+		colonyWars.put("Factory World", factoryWorld);
+		
+		colonyWars.put("Federation Shipyard", federationShipyard);
+		
+		colonyWars.put("Frontier Ferry", frontierFerry);
+		
+		colonyWars.put("Loyal Colony", loyalColony);
+		
+		colonyWars.put("Patrol Cutter", patrolCutter);
+		
+		colonyWars.put("Peacekeeper", peacekeeper);
+		
+		colonyWars.put("Solar Skiff", solarSkiff);
+		
+		colonyWars.put("Storage Solo", storageSilo);
+		
+		colonyWars.put("Trade Hauler", tradeHauler);
+		
+	}
 	
 }
