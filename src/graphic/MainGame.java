@@ -243,10 +243,10 @@ public class MainGame {
 	        ArrayList<Cards> market = Market.initializeTradeCards();
 	        if (market.size() > 0) {
 	        for (int i = 3; i < market.size()+3; i++) {
-	            
-	           if (market.get(i-3).getType() == "Base") {
-	            	Path path_trade = Paths.get("res/cards/"+market.get(i-3).getTitle()+".png");
-	                try (InputStream in = Files.newInputStream(path_trade)) {
+	        	if (market.get(i-3).getType() == "Base") {
+
+	            		Path path_trade = Paths.get("res/cards/"+market.get(i-3).getTitle()+".png");
+	            		try (InputStream in = Files.newInputStream(path_trade)) {
 	                    BufferedImage img = ImageIO.read(in);
 	                    
 	                    BufferedImage imgrotate = rotate(img);
