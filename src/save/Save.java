@@ -41,6 +41,7 @@ public class Save {
 				s.append("Table: "+p1.tableToString()+"\n");
 				s.append("Hand: "+p1.handToString()+"\n");
 				s.append("Discarding: "+p1.discardToString()+"\n");
+				s.append("Penality: "+p1.getPenalityDiscard()+"\n");
 				
 				s.append(p2.getType()+" "+p2.getName()+"\n");
 				s.append("Id: "+p2.getId()+"\n");
@@ -51,6 +52,7 @@ public class Save {
 				s.append("Table: "+p2.tableToString()+"\n");
 				s.append("Hand: "+p2.handToString()+"\n");
 				s.append("Discarding: "+p2.discardToString()+"\n");
+				s.append("Penality: "+p2.getPenalityDiscard()+"\n");
 				
 				//On finit par le market
 				s.append("Explorer: "+Market.explorerToString()+"\n");
@@ -87,6 +89,7 @@ public class Save {
 					s.append("Table: "+player.tableToString()+"\n");
 					s.append("Hand: "+player.handToString()+"\n");
 					s.append("Discarding: "+player.discardToString()+"\n");
+					s.append("Penality: "+player.getPenalityDiscard()+"\n");
 				}
 
 				
@@ -127,6 +130,7 @@ public class Save {
 					s.append("Table: "+player.tableToString()+"\n");
 					s.append("Hand: "+player.handToString()+"\n");
 					s.append("Discarding: "+player.discardToString()+"\n");
+					s.append("Penality: "+player.getPenalityDiscard()+"\n");
 				}
 
 				

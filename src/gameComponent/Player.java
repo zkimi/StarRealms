@@ -2,10 +2,13 @@ package gameComponent;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Objects;
 import cardInfo.Capacity;
 import cardInfo.Cards;
+import cardsDetails.ColonyWars;
 import cardsDetails.CoreSet;
+import cardsDetails.United;
 
 public class Player {
 	private String name;
@@ -20,6 +23,76 @@ public class Player {
 	private ArrayList<Cards> hand; // main du joueur
 	private ArrayList<Cards> discarding; // défausse du joueur
 	private int penalityDiscard = 0; // penalité défausse de carte
+	
+	public static Player initPlayerFromFile(String nameLine, String idLine, String lifeLine, String tradeLine, String fightLine,String cardLine ,String tableLine, String handLine, String discardLine, String penalityLine) {
+		Player p = new Player(nameLine.split(" ")[1]+nameLine.split(" ")[2]);
+		HashMap<String, Cards> coreSet = CoreSet.getCards();
+		HashMap<String, Cards> colonyWars = ColonyWars.getCards();
+		HashMap<String, Cards> united = United.getCards();
+
+		p.id = Integer.parseInt(idLine.split(": ")[1]);  
+		p.defensePoints =  Integer.parseInt(lifeLine.split(": ")[1]);
+		p.tradePoints = Integer.parseInt(tradeLine.split(": ")[1]);
+		p.fightPoints = Integer.parseInt(fightLine.split(": ")[1]);
+		
+		//On gère les cartes de l'utilisateur
+		String[] cards = cardLine.split(": |, ");
+		for (int i = 1; i < cards.length; i++) {
+			if (coreSet.containsKey(cards[i])) {//On verifie dans quelle dico la carte se situe
+				p.cards.add(coreSet.get(cards[i]));
+				
+			}else if (colonyWars.containsKey(cards[i])) {
+				p.cards.add(colonyWars.get(cards[i]));
+				
+			}else if(united.containsKey(cards[i])) {
+				p.cards.add(united.get(cards[i]));
+			}
+		}
+		
+		String[] table = tableLine.split(": |, ");
+		for (int i = 1; i < table.length; i++) {
+			if (coreSet.containsKey(table[i])) {//On verifie dans quelle dico la carte se situe
+				p.table.add(coreSet.get(table[i]));
+				
+			}else if (colonyWars.containsKey(table[i])) {
+				p.table.add(colonyWars.get(table[i]));
+				
+			}else if(united.containsKey(table[i])) {
+				p.table.add(united.get(table[i]));
+			}
+		}
+		
+		String[] hand = handLine.split(": |, ");
+		for (int i = 1; i < hand.length; i++) {
+			if (coreSet.containsKey(hand[i])) {
+				p.hand.add(coreSet.get(hand[i]));
+				
+			}else if (colonyWars.containsKey(hand[i])) {
+				p.hand.add(colonyWars.get(hand[i]));
+				
+			}else if(united.containsKey(hand[i])) {
+				p.hand.add(united.get(hand[i]));
+			}
+		}
+		
+		String[] discarding = discardLine.split(": |, ");
+		for (int i = 1; i < discarding.length; i++) {
+			System.out.println(hand.length);
+			if (coreSet.containsKey(discarding[i])) {
+				p.discarding.add(coreSet.get(discarding[i]));
+				
+			}else if (colonyWars.containsKey(discarding[i])) {
+				p.discarding.add(colonyWars.get(discarding[i]));
+				
+			}else if(united.containsKey(discarding[i])) {
+				p.discarding.add(united.get(discarding[i]));
+			}
+			
+			p.penalityDiscard = Integer.parseInt(penalityLine.split(": ")[1]);
+		}
+		
+		return p;
+	}
 
 	public Player(String name) {
 		this.id = 0;

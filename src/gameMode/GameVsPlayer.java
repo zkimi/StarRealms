@@ -2,6 +2,7 @@ package gameMode;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import cardsDetails.CoreSet;
@@ -14,6 +15,13 @@ import graphic.ChoiceCap;
 import graphic.MainGame;
 
 public class GameVsPlayer {
+	
+	public static void initFromFile(ApplicationContext context, List<String> lines) {
+		Market.initializeMarketFromFile(lines.get(21), lines.get(22), lines.get(23));
+		Player p1 = Player.initPlayerFromFile(lines.get(1), lines.get(2), lines.get(3), lines.get(4), lines.get(5), lines.get(6), lines.get(7), lines.get(8),lines.get(9),lines.get(10));
+		Player p2 = Player.initPlayerFromFile(lines.get(11), lines.get(12), lines.get(13), lines.get(14), lines.get(15), lines.get(16), lines.get(17), lines.get(18),lines.get(19),lines.get(20));
+		maingame(p1, p2, context);
+	}
 	
 	public static void startGame(ApplicationContext context){
 		Market.initializeCards();

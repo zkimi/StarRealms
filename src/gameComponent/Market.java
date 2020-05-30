@@ -18,6 +18,43 @@ public class Market {
 	/* CODE */
 	
 	
+	public static void initializeMarketFromFile(String explorer, String marketCard, String shown) {
+		HashMap<String, Cards> coreSet = CoreSet.initCoreSet();
+		HashMap<String, Cards> colonyWars = ColonyWars.initColonyWars();
+		HashMap<String, Cards> united = United.initUnited();
+		
+		String[] explorerLine = explorer.split(": |, ");
+		for (int i = 1; i < explorerLine.length; i++) {
+			explorers.add(coreSet.get(explorerLine[i]));
+		}
+		
+		String[] marketLine = marketCard.split(": |, ");
+		for (int i = 1; i < marketLine.length; i++) {
+			if (coreSet.containsKey(marketLine[i])) {//On verifie dans quelle dico la carte se situe
+				market.add(coreSet.get(marketLine[i]));
+				
+			}else if (colonyWars.containsKey(marketLine[i])) {
+				market.add(colonyWars.get(marketLine[i]));
+				
+			}else if(united.containsKey(marketLine[i])) {
+				market.add(united.get(marketLine[i]));
+			}
+		}
+		
+		String[] shownLine = marketCard.split(": |, ");//idem pour le shown
+		for (int i = 1; i < shownLine.length; i++) {
+			if (coreSet.containsKey(shownLine[i])) {
+				market.add(coreSet.get(shownLine[i]));
+				
+			}else if (colonyWars.containsKey(shownLine[i])) {
+				market.add(colonyWars.get(shownLine[i]));
+				
+			}else if(united.containsKey(shownLine[i])) {
+				market.add(united.get(shownLine[i]));
+			}
+		}
+	}
+	
 	public static void initializeCards() {
 		//Ces dictionnaires serviront à initialiser le jeu avec les packs que l'on souhaite inserer.
 		HashMap<String, Cards> coreSet = CoreSet.initCoreSet();
@@ -38,16 +75,18 @@ public class Market {
 		market.add(coreSet.get("Mech World"));
 		market.add(coreSet.get("Machine Base"));
 		market.add(coreSet.get("Junkyard"));
+
 		market.add(coreSet.get("Brain World"));
-		market.add(coreSet.get("Battle Mech"));
-		market.add(coreSet.get("The Hive"));
+		market.add(coreSet.get("Battle Mech"));		
+		market.add(coreSet.get("The Hive"));		
 		market.add(coreSet.get("Mothership"));
-		market.add(coreSet.get("Blob World"));
+		market.add(coreSet.get("Blob World"));		
 		market.add(coreSet.get("Blob Carrier"));
 		market.add(coreSet.get("Battle Blob"));
-		market.add(coreSet.get("Dreadnaught"));
+		market.add(coreSet.get("Dreadnaught"));		
 		market.add(coreSet.get("War World"));
 		market.add(coreSet.get("Flagship"));
+		
 		
 		market.add(united.get("Embassy Base"));
 		market.add(united.get("Exchange Point"));
@@ -106,8 +145,8 @@ public class Market {
 			market.add(colonyWars.get("Lancer"));
 			market.add(colonyWars.get("Orbital Platform"));
 			market.add(colonyWars.get("Star Barge"));
-			market.add(colonyWars.get("patrol Cutter"));
-			market.add(colonyWars.get("solar Skiff"));
+			market.add(colonyWars.get("Patrol Cutter"));
+			market.add(colonyWars.get("Solar Skiff"));
 			market.add(colonyWars.get("Trade Hauler"));
 		}
 		for (int i = 0; i < 2; i++) {

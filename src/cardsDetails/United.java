@@ -175,5 +175,9 @@ public class United {
 		/* PACK UNITED */
 		tradeStar.addScrap("AttackPoint", 2);
 	}
+	
+	public static HashMap<String, Cards> getCards(){
+		return united;
+	}
 
 }
