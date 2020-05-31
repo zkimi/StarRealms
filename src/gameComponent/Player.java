@@ -425,17 +425,7 @@ public class Player {
 		return s.toString();
 	}
 	
-	public void setAuthority(int nb) {
-		defensePoints = nb;
-	}
-	
-	public void setTradePoints(int nb) {
-		tradePoints = nb;
-	}
-	
-	public void setAttackPoints(int nb) {
-		fightPoints = nb;
-	}
+
 }
 
 

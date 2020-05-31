@@ -242,9 +242,7 @@ public class MainGame {
 	        
 	        ArrayList<Cards> market = Market.initializeTradeCards();
 	        if (market.size() > 0) {
-	        	System.out.println(market);
 	        for (int i = 3; i < market.size()+3; i++) {
-	        	System.out.println(i);
 	        	if (market.get(i-3).getType() == "Base") {
 
 	            		Path path_trade = Paths.get("res/cards/"+market.get(i-3).getTitle()+".png");

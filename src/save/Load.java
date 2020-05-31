@@ -8,6 +8,7 @@ import java.util.List;
 
 import fr.umlv.zen5.ApplicationContext;
 import gameComponent.Player;
+import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
 import graphic.GraphicLoad;
 
@@ -31,8 +32,9 @@ public class Load {
 					context.exit(0);
 					break;
 					
-				case "PlayerBot":
+				case "PlayerVsBot":
 					System.out.println("Sauvegarde PlayerVsBot");
+					GameVsBot.initFromFile(context, lines);
 					context.exit(0);
 					break;
 			

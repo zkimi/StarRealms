@@ -1,9 +1,88 @@
 package gameComponent;
 
+import java.util.HashMap;
+
 import cardInfo.Capacity;
 import cardInfo.Cards;
+import cardsDetails.ColonyWars;
+import cardsDetails.CoreSet;
+import cardsDetails.United;
 
 public class Bot extends Player {
+	
+	public static Bot initBotFromFile(String nameLine, String idLine, String lifeLine, String tradeLine, String fightLine,String cardLine ,String tableLine, String handLine, String discardLine, String penalityLine){
+		Bot p = new Bot(nameLine.split(" ")[1]+nameLine.split(" ")[2]);
+		HashMap<String, Cards> coreSet = CoreSet.getCards();
+		HashMap<String, Cards> colonyWars = ColonyWars.getCards();
+		HashMap<String, Cards> united = United.getCards();
+		
+		if (Integer.parseInt(idLine.split(": ")[1]) == 1) {
+			p.first();
+		}else if (Integer.parseInt(idLine.split(": ")[1]) == 2) {
+			
+		}
+		p.addAuthority(Integer.parseInt(lifeLine.split(": ")[1]) - p.getLife());//On rajoute la vie que le bot a dans le fichier en oubliant celle par défaut
+		p.addTradePoint(Integer.parseInt(tradeLine.split(": ")[1]) - p.getTradePoints());
+		p.addFightPoint(Integer.parseInt(fightLine.split(": ")[1]) - p.getFightPoints());
+		
+		//On gère les cartes de l'utilisateur
+		String[] cards = cardLine.split(": |, ");
+		for (int i = 1; i < cards.length; i++) {
+			if (coreSet.containsKey(cards[i])) {//On verifie dans quelle dico la carte se situe
+				p.showCards().add(coreSet.get(cards[i]));
+				
+			}else if (colonyWars.containsKey(cards[i])) {
+				p.showCards().add(colonyWars.get(cards[i]));
+				
+			}else if(united.containsKey(cards[i])) {
+				p.showCards().add(united.get(cards[i]));
+			}
+		}
+		String[] table = tableLine.split(": |, ");
+		for (int i = 1; i < table.length; i++) {
+			if (coreSet.containsKey(table[i])) {//On verifie dans quelle dico la carte se situe
+				p.showTable().add(coreSet.get(table[i]));
+				
+			}else if (colonyWars.containsKey(table[i])) {
+				p.showTable().add(colonyWars.get(table[i]));
+				
+			}else if(united.containsKey(table[i])) {
+				p.showTable().add(united.get(table[i]));
+			}
+		}
+		
+		String[] hand = handLine.split(": |, ");
+		for (int i = 1; i < hand.length; i++) {
+			if (coreSet.containsKey(hand[i])) {
+				p.showHand().add(coreSet.get(hand[i]));
+				
+			}else if (colonyWars.containsKey(hand[i])) {
+				p.showHand().add(colonyWars.get(hand[i]));
+				
+			}else if(united.containsKey(hand[i])) {
+				p.showHand().add(united.get(hand[i]));
+			}
+		}
+		
+		String[] discarding = discardLine.split(": |, ");
+		for (int i = 1; i < discarding.length; i++) {
+			System.out.println(hand.length);
+			if (coreSet.containsKey(discarding[i])) {
+				p.showDiscarding().add(coreSet.get(discarding[i]));
+				
+			}else if (colonyWars.containsKey(discarding[i])) {
+				p.showDiscarding().add(colonyWars.get(discarding[i]));
+				
+			}else if(united.containsKey(discarding[i])) {
+				p.showDiscarding().add(united.get(discarding[i]));
+			}
+			
+			p.addPenalityDiscard(Integer.parseInt(penalityLine.split(": ")[1]) - p.getPenalityDiscard()); 
+		}
+		
+		return p;
+	}
+	
 
 	public Bot(String name) {
 		super(name);
