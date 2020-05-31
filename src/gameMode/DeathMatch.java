@@ -64,7 +64,6 @@ public class DeathMatch {
 		ArrayList<Player> death = new ArrayList<Player>();
 		while (true) {
 			while (i >=0) {
-				System.out.println(playerList.size());
 				if (playerList.get(i).getLife() <= 0) {//Si le joueur est mort on le retire de la liste
 					death.add(playerList.get(i));
 					playerList.remove(i);

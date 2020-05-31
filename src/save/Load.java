@@ -11,6 +11,7 @@ import gameComponent.Player;
 import gameMode.DeathMatch;
 import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
+import gameMode.ManHunt;
 import graphic.GraphicLoad;
 
 public class Load {
@@ -41,6 +42,7 @@ public class Load {
 			
 				case "ManHunt":
 					System.out.println("Sauvegarde ManHunt");
+					ManHunt.initFromFile(context, lines);
 					context.exit(0);
 					break;
 				

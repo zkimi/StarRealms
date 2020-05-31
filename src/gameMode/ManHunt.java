@@ -3,6 +3,7 @@ package gameMode;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import cardsDetails.CoreSet;
 import fr.umlv.zen5.ApplicationContext;
@@ -13,6 +14,21 @@ import graphic.GraphDeathMatch;
 import graphic.GraphManHunt;
 
 public class ManHunt {
+	public static void initFromFile(ApplicationContext context, List<String> lines) {
+		Market.initializeMarketFromFile(lines.get(lines.size()-3), lines.get(lines.size()-2), lines.get(lines.size()-1));
+		//On tous les joueurs 
+		ArrayList<Player> playersList = new ArrayList<>();
+		int i = 2;
+		while (lines.get(i).split(" ")[0].equals("Player")){
+			Player p =  Player.initPlayerFromFile(lines.get(i), lines.get(i+1), lines.get(i+2), lines.get(i+3), lines.get(i+4), lines.get(i+5), lines.get(i+6), lines.get(i+7),lines.get(i+8),lines.get(i+9));
+			i+=10;
+			playersList.add(p);
+		}
+		System.out.println(playersList);
+		mainGame(playersList, context,Integer.parseInt(lines.get(1).split(": ")[1]));
+	
+	}
+	
 	public static void startGame(ApplicationContext context){
 		Market.initializeCards();
 		Player p1 = new Player("Joueur 1");
@@ -39,13 +55,13 @@ public class ManHunt {
 		
 		Collections.shuffle(playersList);
 		playersList.get(playersList.size()-1).pickCardsInHand(3);
-		mainGame(playersList, context);
+		mainGame(playersList, context,  playersList.size() - 1);
 	}
 	
-	private static void mainGame(ArrayList<Player> playerList,ApplicationContext context){
+	private static void mainGame(ArrayList<Player> playerList,ApplicationContext context, int i){
 		int win = 0;
 		while (true) {
-			for (int i = playerList.size() - 1; i >=0; i--) {
+			while (i >=0){
 				GraphManHunt.controller(i , playerList, context);
 				playerList.get(i).endTurn();
 				if (i == 0 ) {//On verifie si son voisin n'est pas mort et si non il pioche
@@ -63,6 +79,7 @@ public class ManHunt {
 					}
 					playerList.get(i-1).pickCardsInHand(5);
 				}
+				i--;
 			}
 			if (win != 0) {
 				break;
