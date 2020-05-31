@@ -8,6 +8,7 @@ import java.util.List;
 
 import fr.umlv.zen5.ApplicationContext;
 import gameComponent.Player;
+import gameMode.DeathMatch;
 import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
 import graphic.GraphicLoad;
@@ -45,6 +46,7 @@ public class Load {
 				
 				case "DeathMatch":
 					System.out.println("Sauvegarde DeathMatch");
+					DeathMatch.initFromFile(context, lines);
 					context.exit(0);
 					break;
 					

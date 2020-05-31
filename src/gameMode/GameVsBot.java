@@ -15,7 +15,7 @@ import graphic.MainGame;
 public class GameVsBot {
 	
 	public static void initFromFile(ApplicationContext context, List<String> lines) {
-		Market.initializeMarketFromFile(lines.get(21), lines.get(22), lines.get(23));
+		Market.initializeMarketFromFile(lines.get(lines.size()-3), lines.get(lines.size()-2), lines.get(lines.size()-1));
 		Player p1 = Player.initPlayerFromFile(lines.get(1), lines.get(2), lines.get(3), lines.get(4), lines.get(5), lines.get(6), lines.get(7), lines.get(8),lines.get(9),lines.get(10));
 		Bot p2 = Bot.initBotFromFile(lines.get(11), lines.get(12), lines.get(13), lines.get(14), lines.get(15), lines.get(16), lines.get(17), lines.get(18),lines.get(19),lines.get(20));
 		ArrayList<Player> playersList = new ArrayList<>();

@@ -2,6 +2,7 @@ package gameMode;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 import cardsDetails.CoreSet;
@@ -14,6 +15,22 @@ import graphic.GraphDeathMatch;
 import graphic.MainGame;
 
 public class DeathMatch {
+	
+	public static void initFromFile(ApplicationContext context, List<String> lines) {
+		Market.initializeMarketFromFile(lines.get(lines.size()-3), lines.get(lines.size()-2), lines.get(lines.size()-1));
+		//On tous les joueurs 
+		ArrayList<Player> playersList = new ArrayList<>();
+		int i = 2;
+		while (lines.get(i).split(" ")[0].equals("Player")){
+			Player p =  Player.initPlayerFromFile(lines.get(i), lines.get(i+1), lines.get(i+2), lines.get(i+3), lines.get(i+4), lines.get(i+5), lines.get(i+6), lines.get(i+7),lines.get(i+8),lines.get(i+9));
+			i+=10;
+			playersList.add(p);
+		}
+		System.out.println(playersList);
+		mainGame(playersList, context,Integer.parseInt(lines.get(1).split(": ")[1]));
+	
+	}
+	
 	public static void startGame(ApplicationContext context) {
 		Market.initializeCards();
 		Player p1 = new Player("Joueur 1");
@@ -40,13 +57,14 @@ public class DeathMatch {
 		
 		Collections.shuffle(playersList);
 		playersList.get(playersList.size()-1).pickCardsInHand(3);
-		mainGame(playersList, context);
+		mainGame(playersList, context, playersList.size() - 1);
 	}
 	
-	private static void mainGame(ArrayList<Player> playerList,ApplicationContext context){
+	private static void mainGame(ArrayList<Player> playerList,ApplicationContext context, int i){
 		ArrayList<Player> death = new ArrayList<Player>();
 		while (true) {
-			for (int i = playerList.size() - 1; i >=0; i--) {
+			while (i >=0) {
+				System.out.println(playerList.size());
 				if (playerList.get(i).getLife() <= 0) {//Si le joueur est mort on le retire de la liste
 					death.add(playerList.get(i));
 					playerList.remove(i);
@@ -55,6 +73,7 @@ public class DeathMatch {
 					}else {
 						playerList.get(i-1).pickCardsInHand(5);
 					}
+					i--;
 					continue;
 				}
 				GraphDeathMatch.controller(i , playerList, context);
@@ -63,13 +82,15 @@ public class DeathMatch {
 					playerList.get(playerList.size()-1).pickCardsInHand(5);
 				}else {
 					playerList.get(i-1).pickCardsInHand(5);
-				}			
+				}	
+				i--;
 			}
 			
 			if (playerList.size() == 1) {// si il n'y a plus qu'un joueur en vie il a gagné
 				enGame(context, playerList.get(0));
 				break;
 			}
+			i = playerList.size() - 1;
 		}
 	}
 	
