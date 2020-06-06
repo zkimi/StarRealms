@@ -97,9 +97,26 @@ public class MainGame {
 	    	graphics.setColor(Color.WHITE);
 	    	graphics.setFont(new Font("Comic Sans MS", Font.ITALIC, 30)); 
 	    	if (type == "OpponentDiscard") {
+	    		graphics.setColor(Color.BLACK);
+	    		graphics.drawString("Vous venez de jouer une carte qui oblige le joueur adverse à défausser "+nbDiscard+ " carte(s) au prochain tour.", width/4-150 , (height/2+150)+2);
+	    		graphics.setColor(Color.WHITE);
 	    		graphics.drawString("Vous venez de jouer une carte qui oblige le joueur adverse à défausser "+nbDiscard+ " carte(s) au prochain tour.", width/4-150 , height/2+150);
     		}
-	    	
+	    	if (type == "DestroyBaseNotEnoughAttackPoints") {
+	    		graphics.setColor(Color.BLACK);
+	    		graphics.drawString("Vous avez tenté d'attaquer la base adverse, pas assez de points d'attaque, vous les avez perdu.", width/4-250 , Math.round(height/5+50)+Math.round(height/5+50)-25+2);
+	    		graphics.setColor(Color.WHITE);
+	    		graphics.drawString("Vous avez tenté d'attaquer la base adverse, pas assez de points d'attaque, vous les avez perdu.", width/4-250 , Math.round(height/5+50)+Math.round(height/5+50)-25);
+	    	}
+	    	if (type == "OpponentGotOutpost") {
+	    		graphics.setColor(Color.BLACK);
+	    		graphics.drawString("L'adversaire possède un avant-poste, détruisez-le d'abord.", width/4-150 , Math.round(height/5+50)+Math.round(height/5+50)-25+2);
+	    		graphics.setColor(Color.WHITE);
+	    		graphics.drawString("L'adversaire possède un avant-poste, détruisez-le d'abord.", width/4-150 , Math.round(height/5+50)+Math.round(height/5+50)-25);
+	    		
+	    	}
+
+	    		    	
 	       // graphics.drawString("Cliquez sur la carte à défausser.", width/4 , height/2+50);
     	});
     }
@@ -419,7 +436,29 @@ public class MainGame {
 		if (10 < cooY && cooY < (height/5)) {
 			for (int i = 2; i < 8; i++) {
 				if ((i*width+10)/10 < cooX && cooX < ((i*width+10)/10)+(width+10)/11) {
-					System.out.println("Je clique sur la carte de la main adverse : " + (i-1));
+					System.out.println("Je clique sur la carte de la table adverse : " + (i-1));
+					
+					if ((i-2) >= 0 && (i-2)*p2.getNavigTable() < p2.showTable().size()) { // si la carte existe (avoid OutOfBounds Exception)
+						
+						
+						System.out.println(p2.showTable().get((i-2)*p2.getNavigTable()));
+						
+						if (p2.showTable().get((i-2)*p2.getNavigTable()).getType() == "Base") {
+							
+							System.out.println("C'est une base, tentative de destruction");
+							
+							if (p1.getFightPoints() < p2.showTable().get((i-2)*p2.getNavigTable()).getDefense()) {
+								message(context, "DestroyBaseNotEnoughAttackPoints", 0); // on affiche un msg
+								System.out.println("Destruction échouée");
+							}
+							
+							p1.destroyBase(p2, p2.showTable().get((i-2)*p2.getNavigTable()));
+							
+							
+						} else {
+							System.out.println("Ce n'est pas une base");
+						}
+					}
 					
 				}
 			}
@@ -504,7 +543,12 @@ public class MainGame {
 		//Attaquer adversaire
 		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {
 			System.out.println("J'attaque l'adversaire");
-			p1.attackPlayer(p2);
+			
+			if (p1.opponentGotOutpost(p2)) {
+				message(context, "OpponentGotOutpost", 0); // on affiche un msg
+			} else {
+				p1.attackPlayer(p2);
+			}
 		}
 		
 		//Carte suivante et bouton pour tout jouer

@@ -315,24 +315,38 @@ public class Player {
 	
 	
 	public void attackPlayer(Player target) {		
-		for (int i = 0; i < target.hand.size(); i++) {
-			if (target.hand.get(i).isOutpost()) { // si le joueur possède un avant poste
-				System.out.println("WTF");
-				if(fightPoints > target.hand.get(i).getDefense()) { // si le joueur à plus de pts d'attaque que l'avant poste peut absorber
-					removeCard(target.hand.get(i), target.hand); // on supprime la carte de la main du joueur puisqu'elle est morte
-					fightPoints -= target.hand.get(i).getDefense(); // on enleve le nombre de points d'attaque débité
+		
+		boolean gotOutpost = false;
+		
+		for (int i = 0; i < target.table.size(); i++) { // inspection de toutes les cartes
+			if (target.table.get(i).isOutpost()) { 
+				gotOutpost = true;
+				if(fightPoints >= target.table.get(i).getDefense()) { // si le joueur à plus de pts d'attaque que l'avant poste peut absorber
+					fightPoints -= target.table.get(i).getDefense(); // on enleve le nombre de points d'attaque débité
+					removeCard(target.table.get(i), target.table); // on supprime la carte de la main du joueur puisqu'elle est morte
 				} else {
-					fightPoints -= target.hand.get(i).getDefense(); // on enleve le nombre de points d'attaque à l'avant poste
+					fightPoints = 0; // il a perdu ses points
 				}
 			}
-		}// si il a pas d'avant poste, ses points d'influence sont directement touchés.
+		}
 		
-		target.defensePoints -= fightPoints;
-		fightPoints = 0;
+		if (gotOutpost == false) { // si aucun avant poste
+			target.defensePoints -= fightPoints;
+			fightPoints = 0;
+		}
 		
 	}
 	
-	public void replaceCards() {//cette méthode remplace la pile par la defausse et mélange la pilet
+	public void destroyBase(Player target, Cards base) {
+		if (this.fightPoints >= base.getDefense()) {
+			this.fightPoints -= base.getDefense(); // on enleve les pts utilisés
+			removeCard(base, target.table); // on supprime la base qui est détruite
+		} else {
+			this.fightPoints = 0; // sinon il a perdu ses points LOL
+		}
+	}
+	
+	public void replaceCards() {//cette méthode remplace la pile par la defausse et mélange la pile
 		
 		for (int i = 0; i < discarding.size(); i++) {
 			addCard(discarding.get(i), cards);
@@ -342,6 +356,14 @@ public class Player {
 		
 	}
 	
+	public boolean opponentGotOutpost(Player opponent) {
+		for (int i = 0; i < opponent.table.size(); i++) { // inspection de toutes les cartes
+			if (opponent.table.get(i).isOutpost()) { 
+				return true;
+			}
+		}
+		return false;
+	}
 	
 
 	@Override
