@@ -1,5 +1,6 @@
 package gameComponent;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TeamTwo extends ArrayList<Player>{
 	private final String name;
@@ -8,9 +9,9 @@ public class TeamTwo extends ArrayList<Player>{
 
 	public TeamTwo(Player p1, Player p2, int id, String name) {
 		super();
-		this.name = name;
-		this.add(p1);
-		this.add(p2);
+		this.name = Objects.requireNonNull(name);
+		this.add(Objects.requireNonNull(p1));
+		this.add(Objects.requireNonNull(p2));
 		this.id = id;
 	}
 	

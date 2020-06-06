@@ -11,6 +11,7 @@ import gameComponent.Player;
 import gameComponent.TeamTwo;
 import graphic.EndGame;
 import graphic.GraphDeathMatch;
+import graphic.GraphHydraTwo;
 import graphic.MainGame;
 
 public class hydra {
@@ -47,8 +48,8 @@ public class hydra {
 		p3.shuffleCards();
 		p4.shuffleCards();
 		
-		TeamTwo t1 = new TeamTwo(playersList.get(0), playersList.get(1), 1);
-		TeamTwo t2 = new TeamTwo(playersList.get(2), playersList.get(3), 2);
+		TeamTwo t1 = new TeamTwo(playersList.get(0), playersList.get(1), 1, "Team 1");
+		TeamTwo t2 = new TeamTwo(playersList.get(2), playersList.get(3), 2, "Team 2");
 		t1.pickCardsInHand(3);
 		t2.pickCardsInHand(5);
 		
@@ -59,7 +60,7 @@ public class hydra {
 		while (true) {
 			if(t1.isFirst()) {
 				for (Player player : t1) {
-					MainGame.controller(p1, p2, context);
+					GraphHydraTwo.controller(player, t1, t2, playerList, context);
 					player.endTurn();
 				}
 				
@@ -69,7 +70,7 @@ public class hydra {
 				
 			}else{
 				for (Player player : t2) {
-					MainGame.controller(p1, p2, context);
+					GraphHydraTwo.controller(player, t2, t1, playerList, context);
 					player.endTurn();
 				}
 			}
