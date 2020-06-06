@@ -1,6 +1,7 @@
 package graphic;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -94,25 +95,35 @@ public class graphicSave {
             } catch (IOException e) {
                 throw new RuntimeException("problem while drawing background.png ");
             }
+
+            
+            Path path_sauvegarde_label = Paths.get("res/misc/sauvegarde_label.png");
+            try (InputStream in = Files.newInputStream(path_sauvegarde_label)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width/4), Math.round(height/3), 960, 105, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing sauvegarde_label.png ");
+            }
+            
+            Path path_sauvegarde_input = Paths.get("res/misc/sauvegarde_input.png");
+            try (InputStream in = Files.newInputStream(path_sauvegarde_input)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width/4), Math.round(2*height/3), 960, 105, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing sauvegarde_input.png ");
+            }
+            graphics.setFont(new Font("Tahoma", Font.BOLD, 25)); 
+            graphics.setColor(Color.WHITE);
+            graphics.drawString(name, width/2-50 , 2*height/3+60);
             
             
-               
-            
-            graphics.setColor(Color.GRAY);
-            graphics.fill(new Rectangle2D.Float(width/4, height/3, width/2, height/10));
-            graphics.setColor(Color.yellow);
-            graphics.drawString("Entrez le nom de la sauvegarde ou rien si vous ne sauvegardez pas. (seuls les minuscules sont acceptées)", width/4 , height/3+50);
-            
-            graphics.setColor(Color.GRAY);
-            graphics.fill(new Rectangle2D.Float(width/4, 2*height/3, width/2, height/10));
-            graphics.setColor(Color.yellow);
-            graphics.drawString(name, width/2-50 , 2*height/3+50);
-            
-            
-            graphics.setColor(Color.GRAY);
-            graphics.fill(new Rectangle2D.Float(width/4, 2*height/3+200, width/2, height/10));
-            graphics.setColor(Color.yellow);
-            graphics.drawString("Effacer le nom du fichier", width/2-50 , 2*height/3+250);
+            Path path_sauvegarde_reset = Paths.get("res/misc/sauvegarde_reset.png");
+            try (InputStream in = Files.newInputStream(path_sauvegarde_reset)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width/4), Math.round(2*height/3+200), 960, 105, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing sauvegarde_reset.png ");
+            }
            
     		
     	});
