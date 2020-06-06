@@ -66,9 +66,12 @@ public class Menu {
 			}
 		}
         
-        if (0<cooX && cooX <360) {
-			if (0< cooY && cooY<110) {
+        if (0< cooY && cooY<110) {
+			if (0<cooX && cooX <360) {
 				return 5;
+			}
+			else if(width - 360 < cooX && cooX < width) {
+				return 6;
 			}
 		}
 		return 0;
@@ -142,7 +145,14 @@ public class Menu {
                 throw new RuntimeException("problem while drawing chargeSave.png ");
             }
             
-           
+            Path hydre = Paths.get("res/buttons/hydre.png");
+            try (InputStream in = Files.newInputStream(hydre)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width-360), Math.round(0), 360, 110, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing hydre.png ");
+            }
+            
     		
     	});
 	}

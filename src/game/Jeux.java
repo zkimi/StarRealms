@@ -37,6 +37,9 @@ public class Jeux {
 				case 5:
 					System.out.println("je charge");
 					Load.load(context);
+					
+				case 6:
+					System.out.println("Hydre");
 
 				}		
 			}		
