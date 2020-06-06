@@ -42,7 +42,7 @@ private static int show = 0;
 	        
 	        //ON GERE LES CLICS
 	        if (action == Action.POINTER_DOWN) {
-				click(event, context, playerList.get(turn),playerList, turn);
+				click(event, context, p,  playerList, t1 , t2);
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
 				
@@ -50,11 +50,6 @@ private static int show = 0;
 				
 			}else  if ((action == Action.KEY_PRESSED || action == Action.KEY_RELEASED) && event.getKey().toString() != "SPACE") {//arrete
 	        	System.out.println(event.getKey().toString());
-	        	try {
-					Save.manDeathMatch(context, playerList, turn);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
 	        	context.exit(0);
 	        	return;
         
@@ -97,7 +92,11 @@ private static int show = 0;
 	        } catch (IOException e) {
 	            throw new RuntimeException("problem while drawing influence.png (adverse) ");
 	        }
-	        graphics.drawString(""+playerList.get(show).getDefensePoints(), 36, 37);
+	        if (t1.contains(playerList.get(show))) {
+	        	graphics.drawString(""+t1.getLife(), 36, 37);
+			}else {
+				graphics.drawString(""+t2.getLife(), 36, 37);
+			}
 	        
 	        Path path_commerce = Paths.get("res/elements/argent.png");
 	        try (InputStream in = Files.newInputStream(path_commerce)) {
@@ -130,7 +129,7 @@ private static int show = 0;
 	            throw new RuntimeException("problem while drawing influence.png ");
 	        }
 	        graphics.setFont(new Font("Tahoma", Font.BOLD, 25)); 
-	        graphics.drawString(""+p1.getDefensePoints(), 47, height-35);
+	        graphics.drawString(""+t1.getLife(), 47, height-35);
 	        
 	        try (InputStream in = Files.newInputStream(path_commerce)) {
 	            BufferedImage img = ImageIO.read(in);
@@ -194,12 +193,20 @@ private static int show = 0;
 	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , 75);
 	        
 	        
-	        //NOUVEAUTE DEATHMATCH et specifité MANHUNT
+	        //NOUVEAUTE 
 	        graphics.setColor(Color.YELLOW);
 	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10,100 + height/12,  width/11, height/12));
 	        graphics.setColor(Color.BLACK);
 	        graphics.drawString(playerList.get(show).getName(), width - (width/11) , height/12 +125);
 	        
+	        if (t2.contains(playerList.get(show))) {//On indique à l'utilisateur si c'est sa sible
+					graphics.setColor(Color.BLACK);
+			        graphics.drawString("Equipe adverse", width - (width/11) , height/12 +135);
+			}
+	        else if (t1.contains(playerList.get(show))) {
+				graphics.setColor(Color.BLACK);
+		        graphics.drawString("Votre allié", width - (width/11) , height/12 +135);
+			}
 	        
 	        
 
@@ -359,7 +366,7 @@ private static int show = 0;
 	
 	
 	
-	private static void click(Event event, ApplicationContext context, Player p1, ArrayList<Player> playerList, int turn) {
+	private static void click(Event event, ApplicationContext context, Player p1, ArrayList<Player> playerList, TeamTwo t1, TeamTwo t2) {
 	ScreenInfo screenInfo = context.getScreenInfo();
       float width = screenInfo.getWidth();
       float height = screenInfo.getHeight(); 
@@ -447,7 +454,11 @@ private static int show = 0;
 		
 		//Attaquer adversaire
 		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {//Il faut bien vérifier que l'utilisateur attaque sa cible
-				p1.attackPlayer(playerList.get(show));			
+			if (t2.contains(playerList.get(show))) {
+				t1.attack(t2, p1);
+			}else {
+				System.out.println("Vous ne pouvez pas attaquer un allié !");
+			}			
 		}
 		
 		//Carte suivante 
@@ -467,7 +478,7 @@ private static int show = 0;
 			//nouveaute DEATHMATCH
 			if (100 + height/12 < cooY && cooY < 100 + 2*height/12) {
 				System.out.println("Je veux voir le joueur suivant");
-				showNext(playerList, turn);
+				showNext(playerList, playerList.indexOf(p1));
 			}
 		}
 	}

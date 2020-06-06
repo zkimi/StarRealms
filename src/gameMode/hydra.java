@@ -73,6 +73,9 @@ public class hydra {
 					GraphHydraTwo.controller(player, t2, t1, playerList, context);
 					player.endTurn();
 				}
+				t1.setId(1);
+				t2.setId(2);
+				t1.pickCardsInHand(5);
 			}
 			
 			//on arrete le jeu

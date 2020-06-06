@@ -8,6 +8,7 @@ import gameMode.DeathMatch;
 import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
 import gameMode.ManHunt;
+import gameMode.hydra;
 import graphic.Menu;
 import graphic.GraphicLoad;
 import save.Load;
@@ -37,9 +38,12 @@ public class Jeux {
 				case 5:
 					System.out.println("je charge");
 					Load.load(context);
+					break;
 					
 				case 6:
 					System.out.println("Hydre");
+					hydra.startGame(context);
+					
 
 				}		
 			}		

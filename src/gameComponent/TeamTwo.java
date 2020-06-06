@@ -36,5 +36,9 @@ public class TeamTwo extends ArrayList<Player>{
 		return name;
 	}
 	
+	public void attack(TeamTwo target, Player p) {
+		target.life -= p.getFightPoints();
+		p.addFightPoint(-1*p.getFightPoints());
+	}
 
 }
