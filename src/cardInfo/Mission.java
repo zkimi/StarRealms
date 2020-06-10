@@ -1,7 +1,5 @@
 package cardInfo;
 
-import java.util.Objects;
-
 public class Mission extends AbstractCards{
 
 	public Mission(String title, String description, int cost, String faction) {
@@ -31,7 +29,6 @@ public class Mission extends AbstractCards{
 		if (! (obj instanceof Mission)) {
 			return false;
 		}
-		Mission c = (Mission) obj;		
 		return  super.equals(obj);
 	}
 

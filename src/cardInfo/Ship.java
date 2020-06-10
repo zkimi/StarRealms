@@ -1,7 +1,5 @@
 package cardInfo;
 
-import java.util.Objects;
-
 public class Ship extends AbstractCards{
 
 	public Ship(String title, String description, int cost, String faction) {
@@ -30,7 +28,6 @@ public class Ship extends AbstractCards{
 		if (! (obj instanceof Ship)) {
 			return false;
 		}
-		Ship c = (Ship) obj;		
 		return  super.equals(obj);
 	}
 

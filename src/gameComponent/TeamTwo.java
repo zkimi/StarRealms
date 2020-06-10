@@ -2,6 +2,7 @@ package gameComponent;
 import java.util.ArrayList;
 import java.util.Objects;
 
+@SuppressWarnings("serial")
 public class TeamTwo extends ArrayList<Player>{
 	private final String name;
 	private int life = 75;

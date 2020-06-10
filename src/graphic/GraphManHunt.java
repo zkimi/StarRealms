@@ -112,9 +112,6 @@ public class GraphManHunt {
 	    		graphics.drawString("L'adversaire possède un avant-poste, détruisez-le d'abord.", width/4-150 , Math.round(height/5+50)+Math.round(height/5+50)-25);
 	    		
 	    	}
-
-	    		    	
-	       // graphics.drawString("Cliquez sur la carte à défausser.", width/4 , height/2+50);
     	});
     }
 	

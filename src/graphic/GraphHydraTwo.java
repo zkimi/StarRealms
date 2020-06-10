@@ -23,7 +23,6 @@ import fr.umlv.zen5.Event.Action;
 import gameComponent.Market;
 import gameComponent.Player;
 import gameComponent.TeamTwo;
-import save.Save;
 
 public class GraphHydraTwo {
 private static int show = 0;
@@ -111,9 +110,6 @@ private static int show = 0;
 	    		graphics.drawString("Vous tentez d'attaquer votre allié, c'est interdit.", width/4-150 , Math.round(height/5+50)+Math.round(height/5+50)-25);
 	    		
 	    	}
-
-	    		    	
-	       // graphics.drawString("Cliquez sur la carte à défausser.", width/4 , height/2+50);
     	});
     }
 	

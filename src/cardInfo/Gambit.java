@@ -29,7 +29,6 @@ public class Gambit extends AbstractCards {
 		if (! (obj instanceof Gambit)) {
 			return false;
 		}
-		Gambit c = (Gambit) obj;		
 		return  super.equals(obj);
 	}
 }

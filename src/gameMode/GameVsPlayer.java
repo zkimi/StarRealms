@@ -1,17 +1,14 @@
 package gameMode;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import cardsDetails.CoreSet;
 import fr.umlv.zen5.ApplicationContext;
-import game.Jeux;
 import gameComponent.Market;
 import gameComponent.Player;
 import graphic.EndGame;
-import graphic.ChoiceCap;
 import graphic.MainGame;
 
 public class GameVsPlayer {

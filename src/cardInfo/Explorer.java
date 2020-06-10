@@ -1,7 +1,5 @@
 package cardInfo;
 
-import java.util.Objects;
-
 public class Explorer extends AbstractCards{
 	
 	public Explorer(String title, String description, int cost, String faction, int specialSkill) {
@@ -32,7 +30,6 @@ public class Explorer extends AbstractCards{
 		if (! (obj instanceof Explorer)) {
 			return false;
 		}
-		Explorer c = (Explorer) obj;		
 		return super.equals(obj);
 	}
 

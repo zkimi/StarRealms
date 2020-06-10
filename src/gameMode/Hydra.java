@@ -2,7 +2,6 @@ package gameMode;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 
 import cardsDetails.CoreSet;
 import fr.umlv.zen5.ApplicationContext;
@@ -10,9 +9,7 @@ import gameComponent.Market;
 import gameComponent.Player;
 import gameComponent.TeamTwo;
 import graphic.EndGame;
-import graphic.GraphDeathMatch;
 import graphic.GraphHydraTwo;
-import graphic.MainGame;
 
 public class Hydra {
 	public static void startGame(ApplicationContext context) {

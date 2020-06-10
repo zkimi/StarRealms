@@ -28,7 +28,6 @@ public class Hero extends AbstractCards{
 		if (! (obj instanceof Hero)) {
 			return false;
 		}
-		Hero c = (Hero) obj;		
 		return  super.equals(obj);
 	}
 

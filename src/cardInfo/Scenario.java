@@ -29,7 +29,6 @@ public class Scenario extends AbstractCards{
 		if (! (obj instanceof Scenario)) {
 			return false;
 		}
-		Scenario c = (Scenario) obj;		
 		return  super.equals(obj);
 	}
 }

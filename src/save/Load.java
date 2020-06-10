@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.List;
 
 import fr.umlv.zen5.ApplicationContext;
-import gameComponent.Player;
 import gameMode.DeathMatch;
 import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;

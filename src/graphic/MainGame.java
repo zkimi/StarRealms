@@ -115,9 +115,6 @@ public class MainGame {
 	    		graphics.drawString("L'adversaire possède un avant-poste, détruisez-le d'abord.", width/4-150 , Math.round(height/5+50)+Math.round(height/5+50)-25);
 	    		
 	    	}
-
-	    		    	
-	       // graphics.drawString("Cliquez sur la carte à défausser.", width/4 , height/2+50);
     	});
     }
 	
@@ -243,9 +240,6 @@ public class MainGame {
 	                    throw new RuntimeException("problem while drawing " + p2.showTable().get(p2.getNavigTable()*(i-2)).getTitle() + ".png");
 	                }
 	                }
-	            	
-	            	//graphics.setColor(Color.WHITE);
-	            	//graphics.drawString(p2.showTable().get(p2.getNavigTable()*(i-2)).toString(), (i*width+10)/10, height/5+25);
 				}
 			}     	
 	        
