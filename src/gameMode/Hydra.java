@@ -14,7 +14,7 @@ import graphic.GraphDeathMatch;
 import graphic.GraphHydraTwo;
 import graphic.MainGame;
 
-public class hydra {
+public class Hydra {
 	public static void startGame(ApplicationContext context) {
 		Market.initializeCards();
 		Player p1 = new Player("Joueur 1");
@@ -41,6 +41,7 @@ public class hydra {
 		
 		p4.distributeCards(8, CoreSet.scout);
 		p4.distributeCards(2, CoreSet.viper);
+
 		
 		// On mélange les cartes de chaque joueur
 		p1.shuffleCards();

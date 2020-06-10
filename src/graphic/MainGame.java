@@ -449,7 +449,7 @@ public class MainGame {
 							
 							if (p1.getFightPoints() < p2.showTable().get((i-2)*p2.getNavigTable()).getDefense()) {
 								message(context, "DestroyBaseNotEnoughAttackPoints", 0); // on affiche un msg
-								System.out.println("Destruction échouée");
+								System.out.println("Destruction échouée, perte des points de l'attaquant");
 							}
 							
 							p1.destroyBase(p2, p2.showTable().get((i-2)*p2.getNavigTable()));

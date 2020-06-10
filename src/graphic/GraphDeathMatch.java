@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -42,6 +43,10 @@ public class GraphDeathMatch {
 	        
 	        //ON GERE LES CLICS
 	        if (action == Action.POINTER_DOWN) {
+	        	System.out.println(playerList);
+	        	System.out.println(playerList.indexOf(playerList.get(turn)));//2
+	        	System.out.println(playerList.indexOf(playerList.get(turn))-playerList.indexOf(playerList.get(turn)));
+	        	
 				click(event, context, playerList.get(turn),playerList, turn);
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
@@ -62,6 +67,57 @@ public class GraphDeathMatch {
 	        }
 		}
 	}
+	
+	public static void message(ApplicationContext context, String type, int nb) {
+		for(;;) {
+
+			drawMessage(context, type, nb);
+			
+			Event event = context.pollOrWaitEvent(10);
+	        if (event == null) {  // no event
+	        	continue;
+	        }
+	        try {
+				TimeUnit.SECONDS.sleep(3);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	        break;
+		}
+	}
+	
+	public static void drawMessage(ApplicationContext context, String type, int nbDiscard) {
+    	context.renderFrame(graphics -> {
+    		ScreenInfo screenInfo = context.getScreenInfo();
+            float width = screenInfo.getWidth();
+            float height = screenInfo.getHeight(); 
+            
+	    	graphics.setColor(Color.WHITE);
+	    	graphics.setFont(new Font("Comic Sans MS", Font.ITALIC, 30)); 
+	    	if (type == "OpponentDiscard") {
+	    		graphics.setColor(Color.BLACK);
+	    		graphics.drawString("Vous venez de jouer une carte qui oblige le joueur adverse à défausser "+nbDiscard+ " carte(s) au prochain tour.", width/4-150 , (height/2+150)+2);
+	    		graphics.setColor(Color.WHITE);
+	    		graphics.drawString("Vous venez de jouer une carte qui oblige le joueur adverse à défausser "+nbDiscard+ " carte(s) au prochain tour.", width/4-150 , height/2+150);
+    		}
+	    	if (type == "DestroyBaseNotEnoughAttackPoints") {
+	    		graphics.setColor(Color.BLACK);
+	    		graphics.drawString("Vous avez tenté d'attaquer la base adverse, pas assez de points d'attaque, vous les avez perdu.", width/4-250 , Math.round(height/5+50)+Math.round(height/5+50)-25+2);
+	    		graphics.setColor(Color.WHITE);
+	    		graphics.drawString("Vous avez tenté d'attaquer la base adverse, pas assez de points d'attaque, vous les avez perdu.", width/4-250 , Math.round(height/5+50)+Math.round(height/5+50)-25);
+	    	}
+	    	if (type == "OpponentGotOutpost") {
+	    		graphics.setColor(Color.BLACK);
+	    		graphics.drawString("L'adversaire possède un avant-poste, détruisez-le d'abord.", width/4-150 , Math.round(height/5+50)+Math.round(height/5+50)-25+2);
+	    		graphics.setColor(Color.WHITE);
+	    		graphics.drawString("L'adversaire possède un avant-poste, détruisez-le d'abord.", width/4-150 , Math.round(height/5+50)+Math.round(height/5+50)-25);
+	    		
+	    	}
+
+	    		    	
+	       // graphics.drawString("Cliquez sur la carte à défausser.", width/4 , height/2+50);
+    	});
+    }
 	
 	private static void draw(ApplicationContext context, Player p1, ArrayList<Player> playerList, int turn) {
 	      context.renderFrame(graphics -> {
@@ -351,7 +407,12 @@ public class GraphDeathMatch {
 	        graphics.setColor(Color.BLACK);
 	        graphics.drawString("Tout jouer", width - (width/11) + 10 , (2*height)/5+250);
 	        
-	        
+	     // eventuels messages
+	        if (p1.getPenalityDiscard() > 0) {
+	        	graphics.setColor(Color.WHITE);
+		    	graphics.setFont(new Font("Comic Sans MS", Font.ITALIC, 30)); 
+	        	graphics.drawString("Le joueur adverse a joué une carte qui vous oblige à défausser "+p1.getPenalityDiscard()+ " carte(s), cliquez dessus.", width/4-150 , height/2);
+			}
 	      });
 	      
 	    }
@@ -371,6 +432,29 @@ public class GraphDeathMatch {
 			for (int i = 2; i < 8; i++) {
 				if ((i*width+10)/10 < cooX && cooX < ((i*width+10)/10)+(width+10)/11) {
 					System.out.println("Je clique sur la carte de la main adverse : " + (i-1));
+					
+					if ((i-2) >= 0 && (i-2)*playerList.get(show).getNavigTable() < playerList.get(show).showTable().size()) { // si la carte existe (avoid OutOfBounds Exception)
+						
+						
+						System.out.println(playerList.get(show).showTable().get((i-2)*playerList.get(show).getNavigTable()));
+						
+						if (playerList.get(show).showTable().get((i-2)*playerList.get(show).getNavigTable()).getType() == "Base") {
+							
+							System.out.println("C'est une base, tentative de destruction");
+							
+							if (p1.getFightPoints() < playerList.get(show).showTable().get((i-2)*playerList.get(show).getNavigTable()).getDefense()) {
+								message(context, "DestroyBaseNotEnoughAttackPoints", 0); // on affiche un msg
+								System.out.println("Destruction échouée, perte des points de l'attaquant");
+							}
+							
+							p1.destroyBase(playerList.get(show), playerList.get(show).showTable().get((i-2)*playerList.get(show).getNavigTable()));
+							
+							
+						} else {
+							System.out.println("Ce n'est pas une base");
+						}
+					}
+					
 					
 				}
 			}
@@ -447,6 +531,7 @@ public class GraphDeathMatch {
 		
 		//Attaquer adversaire
 		if (20 < cooY && cooY < 60 && 10 < cooX && cooX < 120 ) {//Il faut bien vérifier que l'utilisateur attaque sa cible
+				System.out.println("J'attaque l'adversaire");
 				p1.attackPlayer(playerList.get(show));			
 		}
 		
@@ -463,6 +548,14 @@ public class GraphDeathMatch {
 			}else if ((3*height)/5+175< cooY && cooY < (3*height)/5+175 +  height/12) {
 				System.out.println("Je clique sur les cartes suivantes");
 				p1.navigH();
+			} else if ((2*height)/5+225<cooY && cooY<(2*height)/5+225 + height/12) {//Bouton tout jouer
+				
+				
+				while (p1.getHand().size() > 0) {
+					p1.playCard(p1.showHand().get(0));
+				}
+				
+				System.out.println("Je joue toutes mes cartes");
 			}
 			//nouveaute DEATHMATCH
 			if (100 + height/12 < cooY && cooY < 100 + 2*height/12) {
