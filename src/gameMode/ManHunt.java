@@ -1,6 +1,5 @@
 package gameMode;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +9,6 @@ import fr.umlv.zen5.ApplicationContext;
 import gameComponent.Market;
 import gameComponent.Player;
 import graphic.EndGame;
-import graphic.GraphDeathMatch;
 import graphic.GraphManHunt;
 
 public class ManHunt {

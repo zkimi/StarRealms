@@ -243,10 +243,13 @@ public class GraphManHunt {
 				}
 			}     	
 	        
-	        graphics.setColor(Color.YELLOW);
-	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10, 50, width/11, height/12));
-	        graphics.setColor(Color.BLACK);
-	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , 75);
+	        Path viewCardsOpponent = Paths.get("res/buttons/viewCards.png");
+            try (InputStream in = Files.newInputStream(viewCardsOpponent)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width-(width/11)-10), 50, 160, 75, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing viewCards.png");
+            }
 	        
 	        
 	        //NOUVEAUTE DEATHMATCH
@@ -349,10 +352,13 @@ public class GraphManHunt {
 			}     	
 	        
 	        
-	        graphics.setColor(Color.YELLOW);
-	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10, (2*height)/5+150, width/11, height/12));
-	        graphics.setColor(Color.BLACK);
-	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , (2*height)/5+175);
+	        Path viewCardsTable = Paths.get("res/buttons/viewCards.png");
+            try (InputStream in = Files.newInputStream(viewCardsTable)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width-(width/11)-10), Math.round((2*height)/5+150), 160, 75, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing viewCards.png");
+            }
 	        
 	        
 	        
@@ -404,16 +410,22 @@ public class GraphManHunt {
 	            
 			}     	
 	        
-	        graphics.setColor(Color.YELLOW);
-	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10, (3*height)/5+175, width/11, height/12));
-	        graphics.setColor(Color.BLACK);
-	        graphics.drawString("Cartes suivantes", width - (width/11) + 10 , (3*height)/5+200);
+	        Path viewCards = Paths.get("res/buttons/viewCards.png");
+            try (InputStream in = Files.newInputStream(viewCards)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width-(width/11)-10), Math.round((3*height)/5+175), 160, 75, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing viewCards.png");
+            }
 	        
 	      //Bouton tout jouer
-	        graphics.setColor(Color.YELLOW);
-	        graphics.fill(new Rectangle2D.Float(width-(width/11)-10, (2*height)/5+225, width/11, height/12));
-	        graphics.setColor(Color.BLACK);
-	        graphics.drawString("Tout jouer", width - (width/11) + 10 , (2*height)/5+250);
+	        Path path_playAll = Paths.get("res/buttons/playAll.png");
+            try (InputStream in = Files.newInputStream(path_playAll)) {
+                BufferedImage img = ImageIO.read(in);
+                graphics.drawImage(img, Math.round(width-(width/11)-10), Math.round((2*height)/5+225), 160, 75, null);
+            } catch (IOException e) {
+                throw new RuntimeException("problem while drawing playAll.png");
+            }
 	        
 	     // eventuels messages
 	        if (p1.getPenalityDiscard() > 0) {
