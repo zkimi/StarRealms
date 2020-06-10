@@ -42,11 +42,7 @@ public class GraphDeathMatch {
 	        
 	        
 	        //ON GERE LES CLICS
-	        if (action == Action.POINTER_DOWN) {
-	        	System.out.println(playerList);
-	        	System.out.println(playerList.indexOf(playerList.get(turn)));//2
-	        	System.out.println(playerList.indexOf(playerList.get(turn))-playerList.indexOf(playerList.get(turn)));
-	        	
+	        if (action == Action.POINTER_DOWN) {        	
 				click(event, context, playerList.get(turn),playerList, turn);
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
