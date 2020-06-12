@@ -9,7 +9,7 @@ import gameComponent.Bot;
 import gameComponent.Market;
 import gameComponent.Player;
 import graphic.EndGame;
-import graphic.MainGame;
+import graphic.GraphMainGame;
 
 public class GameVsBot {
 	
@@ -85,7 +85,7 @@ public class GameVsBot {
 	public static void maingame(Player p1,Bot p2, ApplicationContext context){
 		while (true) {
 			if(p1.isfirst()) {
-				MainGame.controller(p1, p2, context);
+				GraphMainGame.controller(p1, p2, context);
 				p1.endTurn(); //a la fin du tour les ships en jeux partent
 				p1.second();
 				p2.first();

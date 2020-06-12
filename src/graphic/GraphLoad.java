@@ -16,8 +16,8 @@ import fr.umlv.zen5.Event;
 import fr.umlv.zen5.ScreenInfo;
 import fr.umlv.zen5.Event.Action;
 
-public class graphicSave {
-	
+public class GraphLoad {
+
 	public static String controller(ApplicationContext context) {
 		String name = "";
 		for(;;) {
@@ -36,7 +36,14 @@ public class graphicSave {
 				name = click(event,context, name);
 				
 			}else if (action == Action.KEY_PRESSED && event.getKey().toString() == "SPACE") {//passe le tour
-				return name;
+				boolean state_file = verifyFile(name);
+				
+				if (state_file) {
+					return name;
+				} else {
+					System.out.println("Le fichier n'existe pas.");
+					context.exit(0);
+				}
 				
 			}else  if ((action == Action.KEY_PRESSED) && event.getKey().toString() != "SPACE") {//arrete
 	        	name = type(event, name);
@@ -71,6 +78,19 @@ public class graphicSave {
 		return name;
 	}
 	
+	private static boolean verifyFile(String name) {		
+		Path path = Path.of("save/"+name+".sav");
+		
+		if (Files.isReadable(path)) { // si le fichier est lisible
+			System.out.println("Le fichier "+name+".sav"+" existe.");
+			return true;
+		}
+		System.out.println("Le fichier "+name+".sav"+" n'existe pas.");
+		return false;
+	}
+	
+
+		
 
 	
 	private static void draw(ApplicationContext context, String name) {
@@ -88,16 +108,20 @@ public class graphicSave {
             } catch (IOException e) {
                 throw new RuntimeException("problem while drawing background.png ");
             }
-
             
-            Path path_sauvegarde_label = Paths.get("res/misc/sauvegarde_label.png");
+            
+               
+            
+            Path path_sauvegarde_label = Paths.get("res/misc/sauvegarde_load.png");
             try (InputStream in = Files.newInputStream(path_sauvegarde_label)) {
                 BufferedImage img = ImageIO.read(in);
                 graphics.drawImage(img, Math.round(width/4), Math.round(height/3), 960, 105, null);
             } catch (IOException e) {
-                throw new RuntimeException("problem while drawing sauvegarde_label.png ");
+                throw new RuntimeException("problem while drawing sauvegarde_load.png ");
             }
             
+            
+            graphics.drawString(name, width/2-50 , 2*height/3+50);
             Path path_sauvegarde_input = Paths.get("res/misc/sauvegarde_input.png");
             try (InputStream in = Files.newInputStream(path_sauvegarde_input)) {
                 BufferedImage img = ImageIO.read(in);

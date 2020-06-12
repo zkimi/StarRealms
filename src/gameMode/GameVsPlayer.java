@@ -9,7 +9,7 @@ import fr.umlv.zen5.ApplicationContext;
 import gameComponent.Market;
 import gameComponent.Player;
 import graphic.EndGame;
-import graphic.MainGame;
+import graphic.GraphMainGame;
 
 public class GameVsPlayer {
 	
@@ -87,14 +87,14 @@ public class GameVsPlayer {
 	public static void maingame(Player p1,Player p2, ApplicationContext context){
 		while (true) {
 			if(p1.isfirst()) {
-				MainGame.controller(p1, p2, context);
+				GraphMainGame.controller(p1, p2, context);
 				p1.endTurn(); //a la fin du tour les ships en jeux partent
 				p1.second();
 				p2.first();
 				p2.pickCardsInHand(5);
 				
 			}else{
-				MainGame.controller(p2, p1, context);
+				GraphMainGame.controller(p2, p1, context);
 				p2.endTurn(); //a la fin du tour les ships en jeux partent
 				p2.second();
 				p1.first();

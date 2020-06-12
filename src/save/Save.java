@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import fr.umlv.zen5.ApplicationContext;
 import gameComponent.Market;
 import gameComponent.Player;
-import graphic.graphicSave;
+import graphic.GraphSave;
 
 public class Save {
 	public static void gameVsPlayerSave(ApplicationContext  context, Player p1, Player p2) throws IOException {
-		String name = graphicSave.controller(context);
+		String name = GraphSave.controller(context);
 		if (name.length()==0) {
 			context.exit(0);
 		}else {
@@ -66,7 +66,7 @@ public class Save {
 	}
 	
 	public static void manHuntSave(ApplicationContext  context, ArrayList<Player> playerList, int turn) throws IOException{
-		String name = graphicSave.controller(context);
+		String name = GraphSave.controller(context);
 		if (name.length()==0) {
 			context.exit(0);
 		}else {
@@ -107,7 +107,7 @@ public class Save {
 	}
 	
 	public static void manDeathMatch(ApplicationContext  context, ArrayList<Player> playerList, int turn) throws IOException{
-		String name = graphicSave.controller(context);
+		String name = GraphSave.controller(context);
 		if (name.length()==0) {
 			context.exit(0);
 		}else {

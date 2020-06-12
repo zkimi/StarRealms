@@ -11,11 +11,11 @@ import gameMode.DeathMatch;
 import gameMode.GameVsBot;
 import gameMode.GameVsPlayer;
 import gameMode.ManHunt;
-import graphic.GraphicLoad;
+import graphic.GraphLoad;
 
 public class Load {
 	public static void load(ApplicationContext context) {
-		String name = GraphicLoad.controller(context);
+		String name = GraphLoad.controller(context);
 		Path p = Path.of("save/"+name+".sav");
 		
 		List<String> lines;
