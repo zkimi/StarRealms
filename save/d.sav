@@ -1,0 +1,24 @@
+Mode: PlayerVsBot
+Player Joueur 1
+Id: 2
+Life: 48
+Money: 0
+Damage: 0
+Cards: Corvette, Alliance Transport, Alliance Transport, Corvette, 
+Table: 
+Hand: 
+Discarding: 
+Penality: 0
+Bot Joueur 2
+Id: 1
+Life: 50
+Money: 1
+Damage: 1
+Cards: Scout, 
+Table: 
+Hand: Scout, Scout, Scout, Scout, 
+Discarding: Repair Bot, Missile Bot, Federation Shuttle, Viper, Viper, Scout, Scout, Scout, 
+Penality: 0
+Explorer: Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, Explorer, 
+Market: Blob Wheel, Battle Blob, Bioformer, Hive Lord, Union Cluster, The Wrecker, Fleet HQ, The Hive, Predator, Battle Station, Patrol Mech, Alliance Transport, Stealth Needle, The Incinerator, Blob Wheel, Central Office, Supply Bot, Predator, Supply Bot, Space Station, Chairman Haygan, Swarmer, Coalition Freighter, Patrol Mech, Embassy Yacht, Assault Pod, Loyal Colony, Command Center, Defense Center, Patrol Cutter, Stealth Tower, Imperial Frigate, Blob Destroyer, Imperial Fighter, Freighter, Trade Pod, Cutter, Storage Silo, Commodore Zhang, Mech World, Chancellor Hartman, Freighter, Command Ship, Mothership, Peacekeeper, Swarmer, Mining Mech, Supply Bot, Chairman Haygan, Trade Pod, Emperors Dreadnaught, Cargo Pod, Solar Skiff, Imperial Frigate, Command Center, Ram, Trading Post, Stellar Reef, Blob Destroyer, Port Of Call, Space Station, Falcon, Repair Bot, Warning Beacon, Factory World, Embassy Base, Barter World, Orbital Platform, Parasite, War World, Trade Pod, Imperial Fighter, Repair Bot, Trade Escort, Imperial Palace, Central Station, Leviathan, Orbital Platform, Battle Station, Exchange Point, Convoy Bot, Plasma Vent, Convoy Bot, Lookout Post, Central Station, Lancer, Storage Silo, Battle Mech, Solar Skiff, Supply Depot, Imperial Frigate, Star Barge, Battle Bot, Heavy Cruiser, Recycling Station, Missile Bot, Corvette, Battle Bot, Survey Ship, Brain World, CEO Shaner, Recycling Station, Orbital Platform, Cutter, Frontier Ferry, Unity Fighter, Trade Bot, Aging Battleship, Coalition Fortress, Battle Pod, Convoy Bot, Swarmer, Alliance Frigate, Battle Bot, Frontier Station, Alliance Transport, Federation Shipyard, Screecher, Blob Wheel, Ram, Patrol Cutter, Stellar Reef, Battle Pod, Coalition Messenger, Gunship, Warning Beacon, Trade Star, Survey Ship, Battlecruiser, Screecher, Coalition Messenger, Survey Ship, Blob Fighter, Federation Shuttle, Colony Seed Ship, Barter World, The Oracle, Lancer, Unity Fighter, Confessor Morris, Blob Fighter, Trade Hauler, Stellar Reef, Coalition Freighter, Bioformer, Mech Cruiser, Falcon, Solar Skiff, Cargo Pod, Patrol Cutter, Dreadnaught, Trade Hauler, Lancer, Flagship, Warning Beacon, Trade Star, Trade Bot, Chancellor Hartman, Embassy Yacht, Moonwurm, Royal Redoubt, Trading Post, Assault Pod, Blob Bot, Alliance Frigate, Mining Mech, Missile Mech, Imperial Fighter, Federation Shuttle, Union Stronghold, Predator, Commander Klik, Ravager, Blob Bot, Trade Hauler, Cutter, Missile Bot, Junkyard, Star Barge, Ravager, Blob Fighter, Corvette, Cargo Pod, Star Barge, Alliance Landing, Blob World, Commander Klik, 
+Shown: Trade Bot, Blob Carrier, Frontier Ferry, Machine Base, Gunship, 

@@ -3,6 +3,7 @@ package gameComponent;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import cardInfo.Capacity;
 import cardInfo.Cards;
@@ -244,14 +245,29 @@ public class Player {
 		Capacity.applyCap(c.getCapacity(), this, c);
 		
 		if (c.getAlly().keySet().size() > 0) {
-			//On regarde si il y a des cartes de la meme faction
+			//On regarde si il y a des cartes de la meme faction 
+			//Modification ally, on split le tout
 			int count = 0;
-			for (Cards c2 : table) {
-				if (c.getFaction().equals(c2.getFaction())) {
-					count++;
+			
+			String[] f1 = c.getFaction().split("/");
+			int index = table.indexOf(c);
+			for (String fac1 : f1) {
+				System.out.println(fac1);
+				for (int i = 0; i<table.size(); i++) {
+					String[] f2 = table.get(i).getFaction().split("/");
+					for (String fac2 : f2) {
+						//on verifie aussi que ce n'est pas la même carte
+						
+						if (fac1.equals(fac2) && index != i) {
+							count++;
+						}
+					}	
 				}
 			}
-			if (count > 1) {
+			
+			
+			
+			if (count >= 1) {
 				Capacity.applyCap(c.getAlly(), this, c);
 			}
 		}	
