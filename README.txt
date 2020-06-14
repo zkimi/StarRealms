@@ -109,6 +109,6 @@ Phase 3 :
 ○ Restauration des cartes lors de la sauvegarde (a entrainé la création de dictionnaires)
 
 - Fonctionnement du jeu:
-	Appuyer sur espace pour passer le tour, n'importe quelle autre touche pour arrêter le jeu. Pour attaquer l'adversaire cliquer sur son nom.
+	Appuyer sur espace pour passer le tour, n'importe quelle autre touche pour arrêter le jeu. Pour attaquer l'adversaire cliquer sur son influence.
 	Lors de l'écran de sauvegarde, appuyez sur espace pour valider le nom, si l'écran est vide, celà ne sauvegardera pas.
 
