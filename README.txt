@@ -99,7 +99,7 @@ Phase 3 :
 
 ○ L'ensemble decks/pioches/marché sont intégralement gérés avec des ArrayList.
 ○ Les capacités des cartes ont été implémentées dans des dictionnaires (HashMap) grâce à des valeurs permettant de faciliter grandement l'intégration d'une carte.
-
+○ Les équipes pour le mode hydre sont des classes qui héritent des ArrayList. 
 
 - Les éventuels problèmes rencontrés :
 
@@ -110,4 +110,5 @@ Phase 3 :
 
 - Fonctionnement du jeu:
 	Appuyer sur espace pour passer le tour, n'importe quelle autre touche pour arrêter le jeu. Pour attaquer l'adversaire cliquer sur son nom.
+	Lors de l'écran de sauvegarde, appuyez sur espace pour valider le nom, si l'écran est vide, celà ne sauvegardera pas.
 
